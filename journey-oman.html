@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oman · Oct 2025 — heyyysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A063;
+      --dark: #111110;
+      --bg-page: #F7F4EF;
+      --text-main: #1A1714;
+      --text-muted: #8A8278;
+      --border-light: #E2DBD1;
+      --margin: 120px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-page); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* Fade-in util */
+    .fi {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .fi.in { opacity: 1; transform: translateY(0); }
+    .fi-delay-1 { transition-delay: 0.15s; }
+    .fi-delay-2 { transition-delay: 0.3s; }
+    .fi-delay-3 { transition-delay: 0.45s; }
+
+    /* ═══ NAVBAR ═══ */
+    .navbar { z-index: 200; }
+
+    /* ═══════════════════════════
+       CHAPTER BREAK — 章節引言
+    ═══════════════════════════ */
+    .ch-break {
+      background: var(--bg-page);
+      padding: 5rem var(--margin);
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .ch-break-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 96px;
+      font-weight: 300;
+      color: #EAE4DA;
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .ch-break-sep {
+      width: 1px;
+      height: 64px;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+    .ch-break-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .ch-break-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .ch-break-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-main);
+    }
+    .ch-break-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    /* 照片集分節 */
+    .gallery-intro {
+      background: var(--bg-page);
+      padding: 4rem var(--margin) 3rem;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .gallery-intro-label {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .gallery-intro-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-light);
+    }
+
+    /* ═══════════════════════════
+       FRAME 01 — HERO
+    ═══════════════════════════ */
+    .hero {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 70%;
+      animation: hero-zoom 8s ease-in-out forwards;
+    }
+    @keyframes hero-zoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.05); }
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.60) 0%,
+        rgba(0,0,0,0.18) 50%,
+        rgba(0,0,0,0.05) 100%);
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0 var(--margin) 5rem;
+      color: #fff;
+      animation: hero-text 0.8s ease 0.4s both;
+    }
+    @keyframes hero-text {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 0.28rem 0.85rem;
+      border-radius: 2px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 140px;
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-meta-line {
+      margin-top: 1.4rem;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.08em;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.2rem; right: var(--margin);
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: scroll-hint 2.5s ease-in-out infinite;
+    }
+    @keyframes scroll-hint {
+      0%, 100% { opacity: 0.35; transform: translateY(0); }
+      50%       { opacity: 0.7;  transform: translateY(5px); }
+    }
+
+    /* ═══════════════════════════
+       FRAME 02 — CONTEXT
+    ═══════════════════════════ */
+    .context {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      background: var(--bg-page);
+    }
+
+    .ctx-img { overflow: hidden; }
+    .ctx-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      aspect-ratio: 4/5;
+      display: block;
+    }
+
+    .ctx-text {
+      padding: 7rem var(--margin) 7rem 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    .ctx-intro {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 160%;
+      color: var(--text-main);
+      max-width: 420px;
+    }
+
+    .ctx-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+      max-width: 420px;
+    }
+    .meta-row { display: flex; gap: 2rem; align-items: baseline; }
+    .meta-label {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      width: 95px;
+      flex-shrink: 0;
+    }
+    .meta-val {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    .meta-link {
+      color: var(--text-main);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+      transition: text-decoration-color 0.2s;
+    }
+    .meta-link:hover { text-decoration-color: var(--text-main); }
+
+    /* ═══════════════════════════
+       FRAME 03 — CHAPTER FULL BLEED
+    ═══════════════════════════ */
+    .ch-fullbleed {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .ch-fb-img {
+      position: absolute; inset: 0;
+    }
+    .ch-fb-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    .ch-fb-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.30);
+    }
+
+    .ch-fb-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 var(--margin) 5rem;
+      color: #fff;
+    }
+
+    .ch-label {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1rem;
+    }
+
+    .ch-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 1.2rem;
+    }
+
+    .ch-keytxt {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 400;
+      line-height: 1.25;
+      max-width: 580px;
+    }
+    .ch-keytxt em { font-style: italic; }
+
+    /* ═══════════════════════════
+       FRAME 04 — CHAPTER SPLIT
+    ═══════════════════════════ */
+    .ch-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      background: var(--bg-page);
+    }
+    .ch-split.img-right .ch-split-text { order: 1; }
+    .ch-split.img-right .ch-split-img  { order: 2; }
+
+    .ch-split-text {
+      padding: 6rem var(--margin) 6rem 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.8rem;
+    }
+    .ch-split.img-right .ch-split-text {
+      padding: 6rem 6rem 6rem var(--margin);
+    }
+
+    .ch-split-label {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .ch-split-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .ch-split-keytxt {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--text-main);
+    }
+    .ch-split-keytxt em { font-style: italic; }
+
+    .ch-split-body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #5A5450;
+      max-width: 400px;
+    }
+
+    .ch-split-img { overflow: hidden; }
+    .ch-split-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+      display: block;
+    }
+
+    /* 2×2 相片格（用於 split 右側） */
+    .ch-split-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+      height: 100%;
+    }
+    .ch-split-2x2 > div { overflow: hidden; }
+    .ch-split-2x2 > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .ch-split-2x2 > div:hover img { transform: scale(1.03); }
+
+    /* 1 直式 + 2 正方（左高圖 + 右兩格） */
+    .ch-split-1v2s {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+      height: 100%;
+    }
+    .ch-split-1v2s > div { overflow: hidden; }
+    .ch-split-1v2s > div.tall { grid-row: 1 / 3; }
+    .ch-split-1v2s > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .ch-split-1v2s > div:hover img { transform: scale(1.03); }
+
+    /* ═══════════════════════════
+       FRAME 05 — CHAPTER COLLAGE
+    ═══════════════════════════ */
+    .ch-collage {
+      padding: 80px var(--margin) 80px;
+      background: var(--bg-page);
+    }
+
+    /* 8-photo mosaic matching reference layout */
+    .collage-mosaic {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr 1fr;
+      grid-template-rows: 240px 220px 240px;
+      gap: 4px;
+      margin-top: 2.5rem;
+    }
+
+    .cm1 { grid-area: 1 / 1 / 3 / 2; }   /* silhouette — tall left */
+    .cm2 { grid-area: 1 / 2 / 2 / 3; }   /* portrait */
+    .cm3 { grid-area: 1 / 3 / 2 / 5; }   /* landscape — wide */
+    .cm4 { grid-area: 2 / 2 / 4 / 4; }   /* group photo — center large */
+    .cm5 { grid-area: 2 / 4 / 3 / 5; }   /* interior */
+    .cm6 { grid-area: 3 / 1 / 4 / 2; }   /* fort gate */
+    .cm7 { grid-area: 3 / 2 / 4 / 3; }   /* fort with people — shares row with cm6 */
+    .cm8 { grid-area: 3 / 4 / 4 / 5; }   /* cityscape */
+
+    .collage-mosaic > div { overflow: hidden; }
+    .collage-mosaic > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .collage-mosaic > div:hover img { transform: scale(1.03); }
+
+    /* ═══════════════════════════
+       CHAPTER TRIPLE — 3 張直立圖滿版
+    ═══════════════════════════ */
+    .ch-triple {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 100vh;
+      gap: 3px;
+    }
+    .ch-triple > div { overflow: hidden; }
+    .ch-triple > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .ch-triple > div:hover img { transform: scale(1.03); }
+
+    /* Days in Frame */
+    .photo-gallery {
+      background: var(--bg-page);
+      padding: 0 var(--margin) 5rem;
+    }
+
+    .pg-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+
+    .pg-grid > div,
+    .pg-row > div {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .pg-grid > div img,
+    .pg-row > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .pg-grid > div:hover img,
+    .pg-row > div:hover img { transform: scale(1.03); }
+
+    /* editorial mosaic — 大小混排 */
+    .pg-editorial {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(5, 360px);
+      gap: 3px;
+    }
+    .pg-editorial > div {
+      overflow: hidden;
+    }
+    .pg-editorial > div.wide {
+      grid-column: span 2;
+    }
+    .pg-editorial > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .pg-editorial > div:hover img { transform: scale(1.03); }
+
+    .pg-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    /* ═══════════════════════════
+       FRAME 06 — SIGNATURE MOMENT
+    ═══════════════════════════ */
+    .signature {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sig-bg { position: absolute; inset: 0; }
+    .sig-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 65%;
+      animation: sig-zoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes sig-zoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.06); }
+    }
+
+    .sig-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.48);
+    }
+
+    .sig-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      max-width: 680px;
+      padding: 0 2rem;
+      opacity: 0;
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      transform: translateY(20px);
+    }
+    .sig-content.in { opacity: 1; transform: translateY(0); }
+
+    .sig-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    .sig-text em { font-style: italic; }
+
+    /* ═══════════════════════════
+       FRAME 07 — FIELD NOTES
+    ═══════════════════════════ */
+    .field-notes { background: var(--bg-page); padding-top: 80px; }
+
+    .fn-header {
+      padding: 0 var(--margin) 3rem;
+    }
+    .fn-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+    .fn-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+    .fn-subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .fn-scroll {
+      display: flex;
+      gap: 16px;
+      padding: 0 var(--margin) 4rem;
+      overflow-x: auto;
+      cursor: grab;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .fn-scroll::-webkit-scrollbar { display: none; }
+    .fn-scroll.grabbing { cursor: grabbing; }
+
+    /* Video block */
+    .fn-video {
+      flex-shrink: 0;
+      width: 320px;
+      height: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+    }
+    .fn-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Story card */
+    .fn-card {
+      flex-shrink: 0;
+      width: 220px;
+      min-height: 280px;
+      background: #1A1A1A;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: transform 0.25s ease;
+      cursor: default;
+    }
+    .fn-card:hover { transform: translateY(-4px); }
+
+    .fn-card-emoji { font-size: 24px; }
+    .fn-card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #F0EBE3;
+      line-height: 1.45;
+      margin-top: auto;
+    }
+    .fn-card-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: #7A7470;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════
+       FRAME 08 — CLOSING (50/50)
+    ═══════════════════════════ */
+    .closing {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .closing-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 4rem 7rem var(--margin);
+      gap: 2rem;
+    }
+
+    .closing-videos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 5rem 3rem;
+      background: #EDEAE3;
+    }
+
+    .closing-h {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 180%;
+      color: var(--text-main);
+    }
+    .closing-h em { font-style: italic; }
+
+    .closing-body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 180%;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .closing-line {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .back-link-bar {
+      padding: 1rem var(--margin) 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      text-decoration: none;
+      width: fit-content;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--muted);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .back-link:hover { color: var(--text); border-color: var(--text); }
+    .footer { border-top: none; padding-top: 0; margin-top: -2rem; }
+
+    /* ═══════════════════════════
+       CHAPTER 02 — TEXT + STRIP
+    ═══════════════════════════ */
+    .ch-text-strip {
+      padding: 5rem var(--margin) 5rem;
+      background: var(--bg-page);
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .ch-ts-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      max-width: 620px;
+    }
+
+    .ch-strip-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      height: 520px;
+    }
+
+    .ch-strip-inner > div { overflow: hidden; }
+
+    .ch-strip-inner > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .ch-strip-inner > div:hover img { transform: scale(1.03); }
+
+    /* ═══════════════════════════
+       CHAPTER 03 — MOSAIC 1v2
+    ═══════════════════════════ */
+    .ch-mosaic-1v2 {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      grid-template-rows: 1fr 1fr;
+      height: 90vh;
+      gap: 3px;
+    }
+    .ch-mosaic-1v2 .tall { grid-row: 1 / 3; }
+    .ch-mosaic-1v2 > div { overflow: hidden; }
+    .ch-mosaic-1v2 > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .ch-mosaic-1v2 .tall img { object-position: center bottom; }
+    .ch-mosaic-1v2 > div:hover img { transform: scale(1.03); }
+
+    /* ═══════════════════════════
+       CHAPTER 04 — MARKET STRIP
+    ═══════════════════════════ */
+    .ch-market-strip {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 1.5fr;
+      gap: 3px;
+      height: 70vh;
+    }
+    .ch-market-strip > div { overflow: hidden; }
+    .ch-market-strip > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .ch-market-strip > div:hover img { transform: scale(1.03); }
+
+    /* ═══════════════════════════
+       CHAPTER 04 — PORTRAIT HERO
+    ═══════════════════════════ */
+    .ch-portrait-hero {
+      background: #1c1710;
+      padding: 5rem 20vw;
+    }
+    .ch-ph-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .ch-ph-wrap img {
+      width: 100%;
+      display: block;
+    }
+    .ch-ph-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
+    }
+    .ch-ph-text {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 2.5rem;
+      color: #fff;
+    }
+
+    .ch-split-tall { min-height: 110vh; margin-top: -5rem; }
+    .ch-split-tall .ch-split-img img { object-position: center 5%; }
+    .ch-split-tall .ch-split-text { padding-top: 1rem; }
+
+    /* ═══ RWD ═══ */
+    @media (max-width: 900px) {
+      :root { --margin: 2rem; }
+
+      .context { grid-template-columns: 1fr; }
+      .ctx-img { aspect-ratio: 4/3; }
+      .ctx-img img { height: 100%; aspect-ratio: unset; }
+      .ctx-text { padding: 3rem var(--margin); }
+
+      .ch-split { grid-template-columns: 1fr; }
+      .ch-split .ch-split-text,
+      .ch-split.img-right .ch-split-text { padding: 3rem var(--margin); }
+      .ch-split-img img { height: 280px; }
+
+      .ch-strip-inner { height: 260px; }
+      .ch-mosaic-1v2 { grid-template-columns: 1fr; grid-template-rows: auto; height: auto; }
+      .ch-mosaic-1v2 .tall { grid-row: auto; }
+      .ch-mosaic-1v2 > div img { height: 260px; }
+      .ch-market-strip { grid-template-columns: 1fr; height: auto; }
+      .ch-market-strip > div img { height: 240px; }
+      .ch-portrait-hero { padding: 3rem var(--margin); }
+
+      .hero-h1 { font-size: 42px; }
+      .fn-scroll { padding: 0 var(--margin) 3rem; }
+      .collage-grid { grid-template-columns: repeat(2, 1fr); }
+      .collage-cell:nth-child(n) img { height: 200px; }
+      .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 32px; }
+      .sig-text { font-size: 28px; }
+      .closing-h { font-size: 28px; }
+      .ch-keytxt { font-size: 26px; }
+      .ch-split-keytxt { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.svg" alt="heyyysia" class="logo-img" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="journeys.html">JOURNEYS</a>
+      <a href="index.html#about">ABOUT US</a>
+      <a href="contact.html">SAY HELLO</a>
+    </nav>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="journeys.html">JOURNEYS</a>
+    <a href="index.html#about">ABOUT US</a>
+    <a href="contact.html">SAY HELLO</a>
+  </div>
+
+  <!-- ══ FRAME 01 — HERO ══ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="images/oman/18084704098799037.jpg" alt="Oman Desert" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Exploration</span>
+      <h1 class="hero-h1">OMAN</h1>
+      <p class="hero-meta-line">阿曼｜自駕旅行 &nbsp;·&nbsp; Oct. 3 – 12, 2025</p>
+    </div>
+    <a class="hero-scroll" href="#context"><i class="fas fa-chevron-down"></i> scroll</a>
+  </section>
+
+  <!-- ══ FRAME 02 — CONTEXT ══ -->
+  <section class="context" id="context">
+    <div class="ctx-img fi">
+      <img src="images/oman/17851830060569030.jpg" alt="Oman Context" />
+    </div>
+    <div class="ctx-text">
+      <p class="ctx-intro fi">
+        沙漠、峽谷與星空，<br>
+        一路穿越遼闊與未知的阿拉伯世界。
+      </p>
+      <div class="ctx-meta fi fi-delay-1">
+        <div class="meta-row">
+          <span class="meta-label">Duration</span>
+          <span class="meta-val">10 days · 7 in Oman · 3 in transit</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Route</span>
+          <span class="meta-val">Muscat → Wadi Shab → Sur → Wahiba Sands → Nizwa → Muscat</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Mode</span>
+          <span class="meta-val">Road Trip</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Landmarks</span>
+          <span class="meta-val">Sultan Qaboos Grand Mosque<br>Mutrah Souq<br>Wadi Shab<br>Wahiba Sands<br>Nizwa Fort<br>Nizwa Goat Market<br>Bait Al Safah</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Food & Café</span>
+          <span class="meta-val"><a href="https://maps.app.goo.gl/QePtpJUZt8jgaGu59" target="_blank" class="meta-link">Dukanah Cafe</a><br><a href="https://maps.app.goo.gl/WTdd1fvBvvZVXVAa9" target="_blank" class="meta-link">55 Coffee</a><br><a href="https://maps.app.goo.gl/LBJAhiqhRzvcFSETA" target="_blank" class="meta-link">Manart Sur</a><br><a href="https://maps.app.goo.gl/VPbR6VgwzB92mjb68" target="_blank" class="meta-link">Cheese Parata</a><br><a href="https://maps.app.goo.gl/odPufhUaWPgzrE599" target="_blank" class="meta-link">ANAT</a><br><a href="https://maps.app.goo.gl/PniXu9zHoCRNJCd39" target="_blank" class="meta-link">Happy Grill</a></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Daily</span>
+          <span class="meta-val">Lulu Hypermarket<br>Lulu Exchange</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 01 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">01</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">Muscat — Silence of Islamic Culture</span>
+      <span class="ch-break-sub">第一次看見阿曼，一切都是溫暖、安靜、帶著沙色調的沉穩。<br>走進清真寺後，那份安靜變得更深。在空間、對稱與光影之間，都能感受到一種敬畏感。<br>這不只是觀看一個地方，而是學習以尊重與開放的心，走進另一種文化之中。</span>
+    </div>
+  </div>
+
+  <!-- ══ FRAME 03 — CHAPTER 01 Triple ══ -->
+  <section class="ch-triple" style="position: relative;">
+    <div><img src="images/oman/18109795366601364.jpg" alt="Muscat Mosque Garden" /></div>
+    <div><img src="images/oman/17860181439515426.jpg" alt="Muscat Mosque Interior" /></div>
+    <div><img src="images/oman/18119795092522006.jpg" alt="Muscat Mosque Corridor" /></div>
+    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 4rem var(--margin) 2.5rem 32px; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%); pointer-events: none;">
+      <p style="font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 400; font-style: italic; color: #fff; line-height: 1.4;">We entered a culture shaped by light, silence, and devotion.</p>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 02 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">02</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">Wadi Shab — Into Water</span>
+      <span class="ch-break-sub">從岩壁到水裡，一步一步離開乾燥世界。</span>
+    </div>
+  </div>
+
+  <!-- ══ FRAME 04 — CHAPTER 02 Split ══ -->
+  <section class="ch-split img-right fi">
+    <div class="ch-split-text">
+      <p class="ch-split-keytxt">我們開始用身體理解這條路，<br><em>而不是用想像。</em></p>
+      <p class="ch-split-body">Wadi Shab 旅程從小船渡河開始，接著展開沿著炙熱岩壁的健行。深入之後才真正見到水，隨後進入游泳與溯溪的路段。最後穿越狹窄岩縫，抵達隱藏瀑布，整段旅程也在此完整收束。</p>
+    </div>
+    <div class="ch-split-img">
+      <div class="ch-split-2x2">
+        <div><img src="images/oman/18063517853130534.jpg" alt="Wadi Shab Boat" /></div>
+        <div><img src="images/oman/18083875897803304.jpg" alt="Wadi Shab Canyon" /></div>
+        <div><img src="images/oman/18093818314841002.jpg" alt="Wadi Shab Pool" /></div>
+        <div><img src="images/oman/17921683665177585.jpg" alt="Wadi Shab Rope" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 03 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">03</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">Wahiba Sands — Desert Night in a Bubble Dome</span>
+      <span class="ch-break-sub">坐上四輪驅動深入沙丘，再換上駱駝看夕陽慢慢落下。<br>入夜後靜到只剩觀察駱駝的動靜，<br>凌晨硬爬出被窩，則是為了守候那場慢慢亮起、美到屏息的日出。</span>
+    </div>
+  </div>
+
+  <!-- ══ FRAME 05 — CHAPTER 03 Mosaic ══ -->
+  <section class="ch-mosaic-1v2 fi">
+    <div class="tall"><img src="images/oman/18081948974280813.jpg" alt="Desert Night" /></div>
+    <div><img src="images/oman/18024621317582040.jpg" alt="Desert Sunset" /></div>
+    <div><img src="images/oman/18061502498402498.jpg" alt="Bubble Dome Night" /></div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 04 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">04</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">Nizwa — Goat Market & Fort Echoes</span>
+      <span class="ch-break-sub">古老城牆與市集生活，構成這座城市的文化節奏。</span>
+    </div>
+  </div>
+
+  <!-- ══ FRAME — CHAPTER 04 Split ══ -->
+  <section class="ch-split ch-split-tall fi">
+    <div class="ch-split-text">
+      <p class="ch-split-keytxt">城市，<br><em>在聲音裡醒來。</em></p>
+      <p class="ch-split-body">穿梭在 Nizwa 的古堡與市集間，吃著傳統烤餅、喝杯咖啡，再用夜市串燒填滿夜晚。<br>這裡的星期五清晨從羊市開始，圓形市場裡人聲鼎沸，羊隻被牽著展示、議價、成交，一切既真實又熱鬧。</p>
+    </div>
+    <div class="ch-split-img">
+      <img src="images/oman/18391838374126406.jpg" alt="Nizwa Fort" style="object-position: center 80%;" />
+    </div>
+  </section>
+
+
+  <!-- ══ GALLERY INTRO ══ -->
+  <div class="gallery-intro fi">
+    <span class="gallery-intro-label">Days in Frame</span>
+    <div class="gallery-intro-line"></div>
+  </div>
+
+  <!-- ══ PHOTO GALLERY — 16 photos mosaic ══ -->
+  <div class="photo-gallery">
+    <div class="pg-grid fi">
+      <div><img src="images/oman/17966963624825135.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/17877077151329986.jpg" loading="lazy" style="object-position: center 35%;" /></div>
+      <div><img src="images/oman/17921472846178193.jpg" loading="lazy" style="object-position: center 38%;" /></div>
+      <div><img src="images/oman/17961771198004619.jpg" loading="lazy" style="object-position: left 15%; transform: scale(1.08); transform-origin: left top;" /></div>
+      <div><img src="images/oman/18045717872669827.jpg" loading="lazy" style="transform: scale(1.15); transform-origin: center center;" /></div>
+      <div><img src="images/oman/17882645781402317.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/74CA9783.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/18097254391690022.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/18315870295217813.jpg" loading="lazy" style="object-position: center bottom;" /></div>
+      <div><img src="images/oman/17961445659004084.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/18085002889814163.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/18085481728788249.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/18132978709424769.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/18288417868302224.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/18083819102057337.jpg" loading="lazy" /></div>
+      <div><img src="images/oman/18056496368274236.jpg" loading="lazy" style="object-position: 20% center;" /></div>
+    </div>
+  </div>
+
+  <!-- ══ FRAME 06 — SIGNATURE MOMENT ══ -->
+  <section class="signature">
+    <div class="sig-bg">
+      <img src="images/oman/17870229645454365.jpg" alt="Nizwa Night Market" />
+    </div>
+    <div class="sig-overlay"></div>
+    <div class="sig-content" id="sigContent">
+      <p class="sig-text">Silence, water, sand, and voices —<br><em>four echoes of one journey.</em></p>
+    </div>
+  </section>
+
+  <!-- ══ FRAME 07 — FIELD NOTES ══ -->
+  <section class="field-notes" style="background:var(--bg-page);padding:80px var(--margin);">
+    <div class="fi" style="margin-bottom:3rem;">
+      <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.8rem;">Field Notes</p>
+      <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text-main);margin-bottom:0.4rem;">那些沒有被寫進主故事的片段</p>
+    </div>
+    <div class="fi" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch;">
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🐪</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">騎駱駝，比想像中可怕</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">原以為會很平靜，<br>結果只剩一個念頭：不要掉下來。</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🚗</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">不打方向燈的世界</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">在這裡開車沒有預告，<br>一切靠眼神與直覺完成。</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">👖</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">短褲事件</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">穿著短褲走進連鎖超市，<br>才發現有些規則，是需要被尊重的。</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🏠</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">忘記付住宿費</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">離開後才發現忘了付住宿費，<br>現金不夠，最後用美金收尾。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FRAME 08 — CLOSING ══ -->
+  <section class="closing">
+    <div class="closing-text">
+      <h2 class="closing-h fi">We did not just travel.</h2>
+      <p class="closing-body fi fi-delay-1">
+        我們離開的不是地方，<br>
+        而是某種熟悉的自己。
+      </p>
+      <p class="closing-line fi fi-delay-2">Something stayed behind.</p>
+    </div>
+    <div class="closing-videos fi">
+      <video src="images/oman/18084491224989059.mp4" poster="images/oman/poster_18084491224989059.jpg" controls playsinline preload="metadata"
+        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+      <video src="images/oman/17927681910115819.mp4" poster="images/oman/poster_17927681910115819.jpg" controls playsinline preload="metadata"
+        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+    </div>
+  </section>
+
+  <!-- ══ BACK LINK ══ -->
+  <div class="back-link-bar">
+    <a href="journeys.html" class="back-link">← All Journeys</a>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <a href="index.html" class="footer-logo">
+      <img src="images/logo.svg" alt="heyyysia" />
+    </a>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('hamburgerBtn').classList.toggle('open');
+    }
+
+    // Fade-in on scroll
+    const fiEls = document.querySelectorAll('.fi');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fiEls.forEach(el => io.observe(el));
+
+    // Signature trigger
+    const sigEl = document.getElementById('sigContent');
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) sigEl.classList.add('in'); });
+    }, { threshold: 0.4 }).observe(sigEl);
+
+  </script>
+
+</body>
+</html>

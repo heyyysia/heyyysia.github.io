@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spain × Portugal · Apr 2024 — heyyysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A063;
+      --dark: #111110;
+      --bg-page: #F7F4EF;
+      --text-main: #1A1714;
+      --text-muted: #8A8278;
+      --border-light: #E2DBD1;
+      --margin: 120px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-page); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* Fade-in */
+    .fi { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fi.in { opacity: 1; transform: translateY(0); }
+    .fi-delay-1 { transition-delay: 0.15s; }
+    .fi-delay-2 { transition-delay: 0.3s; }
+    .fi-delay-3 { transition-delay: 0.45s; }
+
+    /* NAVBAR */
+    .navbar { z-index: 200; }
+
+    /* CHAPTER BREAK */
+    .ch-break {
+      background: var(--bg-page);
+      padding: 5rem var(--margin);
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .ch-break-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 96px;
+      font-weight: 300;
+      color: #EAE4DA;
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .ch-break-sep { width: 1px; height: 64px; background: var(--border-light); flex-shrink: 0; }
+    .ch-break-meta { display: flex; flex-direction: column; gap: 0.6rem; }
+    .ch-break-eyebrow { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+    .ch-break-heading { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: var(--text-main); }
+    .ch-break-sub { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 640px; }
+
+    /* GALLERY INTRO */
+    .gallery-intro {
+      background: var(--bg-page);
+      padding: 4rem var(--margin) 3rem;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .gallery-intro-label { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+    .gallery-intro-line { flex: 1; height: 1px; background: var(--border-light); }
+
+    /* HERO */
+    .hero { position: relative; height: 80vh; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; animation: hero-zoom 8s ease-in-out forwards; }
+    @keyframes hero-zoom { from { transform: scale(1); } to { transform: scale(1.03); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.20) 55%, rgba(0,0,0,0.05) 100%); }
+    .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 0 var(--margin) 5rem; color: #fff; animation: hero-text 0.8s ease 0.4s both; }
+    @keyframes hero-text { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-tag { display: inline-block; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 0.28rem 0.85rem; border-radius: 2px; margin-bottom: 1.4rem; }
+    .hero-h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 0.88; letter-spacing: 0.06em; text-transform: uppercase; }
+    .hero-meta-line { margin-top: 1.6rem; font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; }
+    .hero-scroll { position: absolute; bottom: 2.2rem; right: var(--margin); color: rgba(255,255,255,0.35); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; animation: scroll-hint 2.5s ease-in-out infinite; }
+    @keyframes scroll-hint { 0%, 100% { opacity: 0.35; transform: translateY(0); } 50% { opacity: 0.7; transform: translateY(5px); } }
+
+    /* CONTEXT */
+    .context { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; background: var(--bg-page); }
+    .ctx-img { overflow: hidden; }
+    .ctx-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; aspect-ratio: 4/5; display: block; }
+    .ctx-text { padding: 6rem var(--margin) 6rem 5rem; display: flex; flex-direction: column; justify-content: center; gap: 2.5rem; }
+    .ctx-intro { font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 300; line-height: 170%; color: var(--text-main); max-width: 400px; }
+    .ctx-meta { display: flex; flex-direction: column; gap: 1.2rem; padding-top: 2rem; border-top: 1px solid var(--border-light); max-width: 440px; }
+    .meta-row { display: flex; gap: 1.5rem; align-items: baseline; }
+    .meta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); width: 88px; flex-shrink: 0; }
+    .meta-val { font-size: 13px; font-weight: 300; color: var(--text-main); line-height: 1.7; }
+    .meta-link { color: var(--text-main); text-decoration: underline; text-decoration-color: var(--border-light); transition: color 0.2s; }
+    .meta-link:hover { color: var(--gold); }
+
+    /* CHAPTER FULL BLEED */
+    .ch-fullbleed { position: relative; min-height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .ch-fb-img { position: absolute; inset: 0; }
+    .ch-fb-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ch-fb-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.32); }
+    .ch-fb-content { position: relative; z-index: 2; padding: 0 var(--margin) 5rem; color: #fff; }
+    .ch-keytxt { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 400; line-height: 1.3; max-width: 600px; }
+    .ch-keytxt em { font-style: italic; }
+
+    /* CHAPTER SPLIT */
+    .ch-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; background: var(--bg-page); }
+    .ch-split.img-right .ch-split-text { order: 1; }
+    .ch-split.img-right .ch-split-img  { order: 2; }
+    .ch-split-text { padding: 6rem 5rem 6rem var(--margin); display: flex; flex-direction: column; justify-content: center; gap: 1.8rem; }
+    .ch-split.img-right .ch-split-text { padding: 6rem 5rem 6rem var(--margin); }
+    .ch-split-label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .ch-split-keytxt { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; line-height: 1.3; color: var(--text-main); }
+    .ch-split-keytxt em { font-style: italic; }
+    .ch-split-body { font-size: 15px; font-weight: 300; line-height: 1.9; color: #5A5450; max-width: 400px; }
+    .ch-split-img { overflow: hidden; }
+    .ch-split-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .ch-split-img:hover img { transform: scale(1.04); }
+
+    /* 2×2 GRID */
+    .ch-split-2x2 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; height: 100%; }
+    .ch-split-2x2 > div { overflow: hidden; }
+    .ch-split-2x2 > div img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .ch-split-2x2 > div:hover img { transform: scale(1.03); }
+
+    /* MOSAIC 1v2 */
+    .ch-mosaic-1v2 { display: grid; grid-template-columns: 3fr 2fr; grid-template-rows: 1fr 1fr; height: 90vh; gap: 3px; }
+    .ch-mosaic-1v2 .tall { grid-row: 1 / 3; }
+    .ch-mosaic-1v2 > div { overflow: hidden; }
+    .ch-mosaic-1v2 > div img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.6s ease; }
+    .ch-mosaic-1v2 > div:hover img { transform: scale(1.03); }
+
+    /* TRIPLE */
+    .ch-triple { display: grid; grid-template-columns: repeat(3, 1fr); height: 100vh; gap: 3px; position: relative; }
+    .ch-triple > div { overflow: hidden; }
+    .ch-triple > div img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.6s ease; }
+    .ch-triple > div:hover img { transform: scale(1.03); }
+
+    /* PHOTO GALLERY */
+    .photo-gallery { background: var(--bg-page); padding: 0 var(--margin) 5rem; }
+    .pg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .pg-grid > div { aspect-ratio: 1 / 1; overflow: hidden; }
+    .pg-grid > div img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .pg-grid > div:hover img { transform: scale(1.03); }
+
+    /* SIGNATURE */
+    .signature { position: relative; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .sig-bg { position: absolute; inset: 0; }
+    .sig-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; animation: sig-zoom 20s ease-in-out infinite alternate; }
+    @keyframes sig-zoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+    .sig-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.50); }
+    .sig-content { position: relative; z-index: 2; text-align: center; color: #fff; max-width: 90vw; padding: 0 2rem; opacity: 0; transition: opacity 1.2s ease, transform 1.2s ease; transform: translateY(20px); }
+    .sig-content.in { opacity: 1; transform: translateY(0); }
+    .sig-text { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 400; line-height: 1.3; }
+    .sig-text em { font-style: italic; }
+
+    /* CLOSING */
+    .closing { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border-light); }
+    .closing-text { display: flex; flex-direction: column; justify-content: center; padding: 7rem 4rem 7rem var(--margin); gap: 2rem; }
+    .closing-videos { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 5rem 3rem; background: #EDEAE3; }
+    .closing-h { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; line-height: 180%; color: var(--text-main); }
+    .closing-h em { font-style: italic; }
+    .closing-body { font-size: 16px; font-weight: 300; line-height: 180%; color: var(--text-muted); max-width: 420px; }
+    .closing-line { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; font-weight: 400; color: var(--text-muted); }
+
+    /* CH01 MOSAIC LEFT + TEXT RIGHT */
+    .ch-mosaic-text { display: grid; grid-template-columns: 1fr 1fr; min-height: 85vh; background: var(--bg-page); }
+    .ch-mosaic-left { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 0.82fr 0.78fr; gap: 3px; padding-top: 3rem; padding-left: 3rem; }
+    .ch-mosaic-left > div { overflow: hidden; }
+    .ch-mosaic-left > div.wide { grid-column: 1 / 3; }
+    .ch-mosaic-left > div img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .ch-mosaic-left > div:hover img { transform: scale(1.03); }
+    .ch-mosaic-right { padding: 6rem var(--margin) 6rem 5rem; display: flex; flex-direction: column; justify-content: center; gap: 1.6rem; }
+
+    /* BACK LINK & FOOTER */
+    .back-link-bar { padding: 1rem var(--margin) 2rem; border-top: 1px solid var(--border); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; text-decoration: none; width: fit-content; padding-bottom: 5px; border-bottom: 1px solid var(--muted); transition: color 0.2s, border-color 0.2s; }
+    .back-link:hover { color: var(--text); border-color: var(--text); }
+    .footer { border-top: none; padding-top: 0; margin-top: -2rem; }
+
+    /* RWD */
+    @media (max-width: 900px) {
+      :root { --margin: 2rem; }
+      .context, .ch-split, .closing { grid-template-columns: 1fr; }
+      .ctx-img { aspect-ratio: 4/3; }
+      .ctx-img img { height: 100%; aspect-ratio: unset; }
+      .ctx-text { padding: 3rem var(--margin); }
+      .closing-text { padding: 3rem var(--margin); }
+      .ch-split .ch-split-text,
+      .ch-split.img-right .ch-split-text { padding: 3rem var(--margin); }
+      .ch-split-img img { height: 280px; }
+      .ch-mosaic-1v2 { grid-template-columns: 1fr; grid-template-rows: auto; height: auto; }
+      .ch-mosaic-1v2 .tall { grid-row: auto; }
+      .ch-mosaic-1v2 > div img { height: 260px; }
+      .ch-triple { grid-template-columns: 1fr; height: auto; }
+      .ch-triple > div img { height: 260px; }
+      .ch-mosaic-text { grid-template-columns: 1fr; }
+      .ch-mosaic-left { height: 420px; }
+      .ch-mosaic-right { padding: 3rem var(--margin); }
+      .hero-h1 { font-size: 52px !important; }
+      .sig-text { font-size: 28px; }
+      .closing-h { font-size: 28px; }
+      .ch-keytxt { font-size: 26px; }
+      .pg-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 36px !important; }
+      .ch-split-keytxt { font-size: 24px; }
+      .sig-text { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.svg" alt="heyyysia" class="logo-img" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="journeys.html">JOURNEYS</a>
+      <a href="index.html#about">ABOUT US</a>
+      <a href="contact.html">SAY HELLO</a>
+    </nav>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="journeys.html">JOURNEYS</a>
+    <a href="index.html#about">ABOUT US</a>
+    <a href="contact.html">SAY HELLO</a>
+  </div>
+
+  <!-- ══ FRAME 01 — HERO ══ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="images/camino/hero.jpg" alt="Camino de Santiago" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Inner Journey</span>
+      <h1 class="hero-h1" style="font-size: 96px;">SPAIN<br>× PORTUGAL</h1>
+      <p class="hero-meta-line">西班牙 × 葡萄牙｜朝聖之路 &nbsp;·&nbsp; Apr. 27 – May 12, 2024</p>
+    </div>
+    <a class="hero-scroll" href="#context"><i class="fas fa-chevron-down"></i> scroll</a>
+  </section>
+
+  <!-- ══ FRAME 02 — CONTEXT ══ -->
+  <section class="context" id="context">
+    <div class="ctx-img fi">
+      <img src="images/camino/context.jpg" alt="Camino de Santiago" />
+    </div>
+    <div class="ctx-text">
+      <p class="ctx-intro fi">
+        <strong>Camino de Santiago — French Way</strong><br>
+        <br>
+        不是為了抵達，而是為了理解。<br>
+        一步一步走著，某些感受慢慢浮現。
+      </p>
+      <div class="ctx-meta fi fi-delay-1">
+        <div class="meta-row">
+          <span class="meta-label">Duration</span>
+          <span class="meta-val">16 days<br>6 in <u>Camino</u> · 1 in End of the World<br>5 in Madrid / Porto · 4 in transit</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Route</span>
+          <span class="meta-val">Madrid → <u>Sarria → Portomarín → Palas de Rei<br>→ Ribadiso → Santa Irene → Monte do Gozo → Santiago de Compostela</u> → Fisterra / Muxía → Santiago de Compostela → Porto → Madrid</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Mode</span>
+          <span class="meta-val">Walking Pilgrimage · Day Tour · City Walk</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Landmarks</span>
+          <span class="meta-val">
+            Santiago de Compostela Cathedral<br>
+            Fisterra Lighthouse &amp; Muxía A Ferida<br>
+            São Bento Railway Station<br>
+            Dom Luís I Bridge<br>
+            Chapel of Santa Catarina<br>
+            Plaza Mayor &amp; Puerta del Sol<br>
+            Retiro Park
+          </span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Food &amp; Café</span>
+          <span class="meta-val">
+            <a href="https://maps.app.goo.gl/uShe8Mr5j634zFMfA" target="_blank" class="meta-link">Pulpería A Garnacha</a><br>
+            <a href="https://maps.app.goo.gl/pq7X1bescwEyAFzr5" target="_blank" class="meta-link">Taberna Nova</a><br>
+            <a href="https://maps.app.goo.gl/rWqTz1DJfoWLbKky9" target="_blank" class="meta-link">Marela Cantina</a><br>
+            <a href="https://maps.app.goo.gl/YjuLmnXpeZpvrnnMA" target="_blank" class="meta-link">Restaurante O Centolo</a><br>
+            <a href="https://maps.app.goo.gl/pewgoVHWRAXKZ1ED6" target="_blank" class="meta-link">Sushi Fafa</a><br>
+            <a href="https://maps.app.goo.gl/nY5n1HdfKrENQdGB6" target="_blank" class="meta-link">Conga</a><br>
+            <a href="https://maps.app.goo.gl/981x5XeZ21u7xJtGA" target="_blank" class="meta-link">La Ricotta</a><br>
+            <a href="https://maps.app.goo.gl/6xuth75xdK5SttcY8" target="_blank" class="meta-link">El Anciano Rey de los Vinos</a>
+          </span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Adventure</span>
+          <span class="meta-val"><a href="https://toxotravel.gal/tour/finisterre-costa-da-morte/?lang=en" target="_blank" class="meta-link">Tour to Finisterre</a></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Daily</span>
+          <span class="meta-val">Camino Ninja App<br>NCS Equipajes<br>DIA / Mercadona</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 01 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">01</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">The Accidental Pilgrims</span>
+      <span class="ch-break-sub">心中的朝聖種子曾靜靜沉睡，直到一場天時地利人和的提議，讓渴望瞬間點燃。兩週內訂票、成團，這支平均 52 歲的 6 人隊伍在命運推動下，從馬德里的悠閒過渡到薩里亞的集結。我們領取朝聖護照、啟動導航，正式將日常簡化為「走路」這件純粹的小事，展開這段浪流連之旅。</span>
+    </div>
+  </div>
+
+  <!-- ══ CH01 FULL BLEED：Sarria 集結 ══ -->
+  <section class="ch-fullbleed">
+    <div class="ch-fb-img">
+      <img src="images/camino/ch01-sarria.jpg" alt="集結於 Sarria" style="object-position: center 32%;" />
+    </div>
+    <div class="ch-fb-overlay"></div>
+    <div class="ch-fb-content fi">
+      <p class="ch-keytxt">Buen Camino,<br><em>taking it one step at a time.</em></p>
+    </div>
+  </section>
+
+  <div style="border-top:1px solid var(--border-light);"></div>
+
+  <!-- ══ CH01 MOSAIC + TEXT ══ -->
+  <section class="ch-mosaic-text fi">
+    <!-- 左：三圖 Mosaic（上兩張 + 下一張滿寬） -->
+    <div class="ch-mosaic-left">
+      <div><img src="images/camino/ch01-credential.jpg" alt="朝聖者護照" style="object-position: top;" /></div>
+      <div><img src="images/camino/ch01-sign.jpg" alt="Buen Camino 路牌" style="object-position: center 65%;" /></div>
+      <div class="wide"><img src="images/camino/ch01-mural2.jpg" alt="Camino 壁畫" style="object-position: center 50%;" /></div>
+    </div>
+    <!-- 右：文字 -->
+    <div class="ch-mosaic-right">
+      <p style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted);">Where Everything Starts to Move</p>
+      <h3 style="font-family:'Playfair Display',serif; font-size:32px; font-weight:400; color:var(--text-main); line-height:1.3;">集結於 Sarria，<br>100 公里旅程啟動。</h3>
+      <p style="font-size:16px; font-weight:300; color:#5A5450; line-height:1.9;">前往 Sarria 的路徑各自不同：有人已在朝聖路上慢行，有人孤身帶隊展現一打三的韌性，也有人在路邊的啤酒微醺中享受 me time。</p>
+      <p style="font-size:16px; font-weight:300; color:#5A5450; line-height:1.9;">直到門鈴響起的那ㄧ刻，六人終於會合，正式成團。</p>
+      <p style="font-size:16px; font-weight:300; color:#5A5450; line-height:1.9;">我們領取了「朝聖者護照」，準備用戳章記錄腳下的痕跡，也以 Camino Ninja App 確立前進的方向，旅程的實感隨之沸騰。</p>
+      <p style="font-size:16px; font-weight:300; color:#5A5450; line-height:1.9;">那一夜，我們在河邊舉杯，為即將開始的第一步乾杯。我們要用最單純的步行節奏，將都市的浮躁踩進西班牙的泥土裡。</p>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 02 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">02</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">Settling into the Rhythm</span>
+      <span style="font-size:13px; font-weight:500; color:var(--text-main); letter-spacing:0.04em;">Sarria → Portomarín（25.6 KM）→ Palas de Rei（27 KM）｜Total Distance：52.6 KM</span>
+      <span class="ch-break-sub">從 Sarria 出發，穿梭在加利西亞鄉間小道，朝聖者們與牛群、驢犬們一同構成日常風景，步伐也悄然變輕。在行走、整理與放下之間，慢慢走進屬於朝聖者的節奏。</span>
+    </div>
+  </div>
+
+  <!-- ══ CH02 SPLIT：text left, 2×2 photos right ══ -->
+  <section class="ch-split img-right fi" style="min-height: calc(80vh - 150px);">
+    <div class="ch-split-text">
+      <p class="ch-split-label">Learning simplicity through walking</p>
+      <p class="ch-split-keytxt">在路上學會輕一點</p>
+      <p class="ch-split-body">隨心前行，想停就停，想走就走。但很快會發現，大多數人其實都在同一個節奏裡。下午抵達庇護所，排隊洗澡、晾衣服、找晚餐、喝一杯酒。夜裡燈光熄滅後，只剩此起彼落的打呼聲，成為朝聖的第一個默契。</p>
+      <p class="ch-split-body">這段旅程不只是距離，更是與「重量」的關係。當你不再執著於背負全部家當，才慢慢理解：原來很多東西，是可以放下的。</p>
+      <p class="ch-split-body">行李運送成為一種餘裕的選擇。每天早上整理背包，綁上信封、寫好目的地、放入費用，再用 WhatsApp 通知收件。然後，只帶著最輕的自己出發。</p>
+      <p class="ch-split-body">但即使如此，每日早晨仍像一場小型戰爭。晾著的衣服、攤開的睡袋與散落的雜物，都必須在出發前，迅速收回成「可以出發」的狀態。</p>
+      <p class="ch-split-body" style="font-style:italic; color:#8A8278;">像是在反覆練習同一件事：把生活縮回最簡單的樣子。</p>
+    </div>
+    <div class="ch-split-img" style="height: 850px; align-self: start; margin-top: 4rem;">
+      <div class="ch-split-2x2">
+        <div><img src="images/camino/ch02-a.jpg" alt="與驢相遇" style="object-position: center 30%;" /></div>
+        <div><img src="images/camino/ch02-b.jpg" alt="鄉間小道前行" style="object-position: center 40%;" /></div>
+        <div><img src="images/camino/ch02-c.jpg" alt="石階上休憩" style="object-position: center top;" /></div>
+        <div><img src="images/camino/ch02-d.jpg" alt="森林中獨行" style="object-position: center center;" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 03 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">03</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">The Way of Faith &amp; Pain</span>
+      <span style="font-size:13px; font-weight:500; color:var(--text-main); letter-spacing:0.04em;">Palas de Rei → Ribadiso（27.5 KM）→ Santa Irene（24.5 KM）｜Total Distance：104.6 KM</span>
+      <span class="ch-break-sub">跨越百公里大關，旅程進入了另一種層次。我們在 Melide 的章魚香氣中舉杯，也在暴雨中尋找落腳處。長時間的負重行走，讓身體真實地感受到了疲憊與不適，卻也讓這份在歡笑與狼狽間擺盪的回憶，深刻得更有溫度。</span>
+    </div>
+  </div>
+
+  <!-- ══ CH03 MOSAIC + TEXT ══ -->
+  <section class="ch-mosaic-text fi">
+    <!-- 左：三圖 Mosaic -->
+    <div class="ch-mosaic-left" style="grid-template-rows: 360px 400px;">
+      <div><img src="images/camino/ch03-a.jpg" alt="與 Guardia Civil 合照（廣角）" style="object-position: center 55%; " /></div>
+      <div><img src="images/camino/ch03-b.jpg" alt="與 Guardia Civil 合照" style="object-position: center 40%; " /></div>
+      <div class="wide"><img src="images/camino/ch03-tall.jpg" alt="雛菊花田中的朝聖者" style="object-position: center 40%; " /></div>
+    </div>
+    <!-- 右：文字 -->
+    <div class="ch-mosaic-right">
+      <p style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted);">Laughter in the Rain, Light in the Pain</p>
+      <h3 style="font-family:'Playfair Display',serif; font-size:28px; font-weight:400; color:var(--text-main); line-height:1.4;">風雨之中負重前行，<br><em>亦能翩然起舞。</em></h3>
+      <p style="font-size:15px; font-weight:300; color:#5A5450; line-height:1.9;">朝聖之路最動人的，往往不是風景，而是與人交織的日常。在餐廳音樂中翩然起舞的自在、夥伴幫忙貼上藥布的默契，或是忍者動作換來的相視一笑，都是疲憊時的養分。</p>
+      <p style="font-size:15px; font-weight:300; color:#5A5450; line-height:1.9;">雖然旅途在晴雨間擺盪，我們還是秉持「美食旅遊團」的信念前進——<br>步伐可以慢，但補給不能少。<br>步行之中總要停上兩間 bar 或餐廳，好好吃、好好喝，讓疲勞在一口食物與一杯酒裡被暫時拋開，甚至忘記體力與意志正在被消耗的事實。</p>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 04 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">04</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">The Final Cathedral：From Last Miles to Lasting Echoes</span>
+      <span style="font-size:13px; font-weight:500; color:var(--text-main); letter-spacing:0.04em;">Santa Irene → Monte do Gozo（24.6 KM）→ Santiago de Compostela（5.7 KM）｜Total Distance：134.9 KM</span>
+      <span class="ch-break-sub">途中遇見騎馬的朝聖者，像是穿越時空的身影，讓這段路多了一層不真實感。站在聖地牙哥大教堂前，細雨落下，彷彿洗去一路疲憊。這一刻的雨不再是阻礙，而成為圓滿與勇氣的見證。拿著集滿印章的護照領取證書，步行朝聖正式畫下句點，也悄然開啟生活的另一段冒險。</span>
+    </div>
+  </div>
+
+  <!-- ══ CH04 TRIPLE：影片 + 2 張照片 ══ -->
+  <section class="ch-triple">
+    <div><img src="images/camino/ch04-a.jpg" alt="朝聖紀念品" style="object-position: center center;" /></div>
+    <div style="overflow:hidden;">
+      <video src="images/camino/ch04-video.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+    </div>
+    <div><img src="images/camino/ch04-b.jpg" alt="大教堂前合照" style="object-position: center 30%;" /></div>
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:3rem var(--margin) 2.5rem;background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 100%);pointer-events:none;">
+      <p style="font-family:'Playfair Display',serif;font-size:34px;font-weight:400;font-style:italic;color:#fff;line-height:1.4;">抵達終點的那刻，<br>我們放下的是木棍與登山杖，帶走的，是一路走來的故事。</p>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 05 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">05</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">To the Edge of the World：Fisterra ＆ Muxía</span>
+      <span class="ch-break-sub">離開徒步的節奏，我們轉以車行延伸旅程，一路向著世界盡頭前行。窗外的風景從步伐的距離，變成流動的海岸與城鎮掠影，旅程也從身體的疲憊，慢慢轉為另一種觀看的狀態。</span>
+    </div>
+  </div>
+
+  <!-- ══ CH05 SPLIT：text left, lighthouse right ══ -->
+  <section class="ch-split img-right fi">
+    <div class="ch-split-text">
+      <p class="ch-split-label">Where Land Ends and Healing Begins</p>
+      <p class="ch-split-keytxt">有些人抵達是為了看海，<br><em>有些人是為了抵達內心的彼岸。</em></p>
+      <p class="ch-split-body">告別徒步，終於過上「上車睡覺、下車拍照」的旅人日常。一路經過 Muros濱海小鎮 、Ézaro 瀑布，在 Fisterra 燈塔前見證 KM 0 地標，也在 Finisterre 以一頓豐盛的西班牙燉飯與竹蟶作為旅程的溫柔犒賞。</p>
+      <p class="ch-split-body">在 Muxía 燈塔前，遇見一位獨旅朝聖者，滿身疲憊卻在電話中激動落淚。我們聽不懂語言，卻看懂情緒——有些人來到這裡，不只是為了風景，而是為了抵達內心某個終點。</p>
+    </div>
+    <div class="ch-split-img">
+      <img src="images/camino/ch05.jpg" alt="Fisterra Lighthouse" />
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 06 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">06</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">Porto : A Canvas of Blue and Red</span>
+      <span class="ch-break-sub">我們走進波多的藍白瓷磚與紅瓦海，從路易一世大橋的壯闊身影，到老城區靜靜矗立的牧師塔，在歷史酒窖與「最美麥當勞」之間穿梭。這是一段感官逐漸復甦的旅程，杜羅河畔的微風與道地美食，重新定義旅行的優雅與自在。在這裡，不再有里程的追趕，只有波多溫柔的低語，也讓人悄悄把這座城市，放進下一次再訪的清單裡。</span>
+    </div>
+  </div>
+
+  <!-- ══ CH06 TRIPLE：Porto ══ -->
+  <section class="ch-triple">
+    <div><img src="images/camino/ch06-a.jpg" alt="杜羅河畔俯瞰" /></div>
+    <div><img src="images/camino/ch06-b.jpg" alt="路易一世大橋" /></div>
+    <div><img src="images/camino/ch06-c.jpg" alt="藍白瓷磚教堂" /></div>
+    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 4rem var(--margin) 2.5rem 32px; background: linear-gradient(to top, rgba(0,0,0,0.58) 0%, transparent 100%); pointer-events: none;">
+      <p style="font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 400; font-style: italic; color: #fff; line-height: 1.4;">波多啊，怎能不讓人深深愛上你。</p>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 07 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">07</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">Madrid : Where It Begins, Where It Returns</span>
+      <span class="ch-break-sub">旅程從馬德里開始，也在馬德里收尾。從麗池公園的午後，到回程街頭的隨意漫遊，在熟悉與陌生之間，為整段旅程畫下一個安靜而完整的句點。</span>
+    </div>
+  </div>
+
+  <!-- ══ CH07 SPLIT：image left, text right ══ -->
+  <section class="ch-split fi">
+    <div class="ch-split-img" style="width: 450px; height: 600px; align-self: start; margin-left: auto;">
+      <img src="images/camino/ch07.jpg" alt="聖伊西德羅節大頭巨人遊行" style="object-position: right top;" />
+    </div>
+    <div class="ch-split-text" style="padding: 6rem var(--margin) 6rem 5rem;">
+      <p class="ch-split-label">A City That Stays With Us</p>
+      <p class="ch-split-keytxt">馬德里不思議，<br><em>突然那麼想念你。</em></p>
+      <p class="ch-split-body">初抵馬德里，是午後的麗池公園。陽光落在草地上，人們散步、野餐、發呆，整座城市瀰漫著週日特有的鬆弛節奏。</p>
+      <p class="ch-split-body">旅程尾聲再度回到這裡，城市已換上聖伊西德羅節的盛裝，大頭巨人遊行與露天音樂會的鼓聲滲入夜色，我們也在不經意間「亂入」了這場屬於馬德里的狂歡。</p>
+      <p class="ch-split-body">最後的時光，在隨意的購物與拖延的行李整理中慢慢流逝。沒有刻意的告別，卻在來回之間明白——有些城市，不只是起點與終點，而是讓一段旅程得以完整的地方。</p>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY INTRO ══ -->
+  <div class="gallery-intro fi">
+    <span class="gallery-intro-label">Days in Frame</span>
+    <div class="gallery-intro-line"></div>
+  </div>
+
+  <!-- ══ PHOTO GALLERY — 16 photos ══ -->
+  <div class="photo-gallery">
+    <div class="pg-grid fi">
+      <div><img src="images/camino/gallery-01.jpg" style="object-position: 20% center;" /></div>
+      <div><img src="images/camino/gallery-02.jpg" /></div>
+      <div><img src="images/camino/gallery-03.jpg" style="object-position: center 30%;" /></div>
+      <div><img src="images/camino/gallery-04.jpg" /></div>
+      <div><img src="images/camino/gallery-05.jpg" style="object-position: center top;" /></div>
+      <div><img src="images/camino/gallery-06.jpg" /></div>
+      <div><img src="images/camino/gallery-07.jpg" style="object-position: 20% center;" /></div>
+      <div><img src="images/camino/gallery-08.jpg" /></div>
+      <div><img src="images/camino/gallery-09.jpg" /></div>
+      <div><img src="images/camino/gallery-10.jpg" /></div>
+      <div><img src="images/camino/gallery-11.jpg" /></div>
+      <div><img src="images/camino/gallery-12.jpg" /></div>
+      <div><img src="images/camino/gallery-13.jpg" style="object-position: center 30%;" /></div>
+      <div><img src="images/camino/gallery-14.jpg" /></div>
+      <div><img src="images/camino/gallery-15.jpg" style="object-position: 70% 30%;" /></div>
+      <div><img src="images/camino/gallery-16.jpg" /></div>
+    </div>
+  </div>
+
+  <!-- ══ SIGNATURE MOMENT ══ -->
+  <section class="signature">
+    <div class="sig-bg" style="background-image: url('images/camino/signature.jpg'); background-size: cover; background-position: center 40%; animation: sig-zoom 20s ease-in-out infinite alternate;"></div>
+    <div class="sig-overlay"></div>
+    <div class="sig-content" id="sigContent" style="margin-bottom: 38vh;">
+      <p class="sig-text"><span style="white-space: nowrap;">We didn't walk to find our way,</span><br><em style="white-space: nowrap;">but to prove we had the courage to be lost.</em></p>
+    </div>
+  </section>
+
+  <!-- ══ FIELD NOTES ══ -->
+  <section style="background:var(--bg-page);padding:80px var(--margin);">
+    <div class="fi" style="margin-bottom:3rem;">
+      <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.8rem;">Field Notes</p>
+      <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text-main);">那些沒有被寫進主故事的片段</p>
+    </div>
+    <div class="fi" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch;">
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🐚</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">無處不在的「指引貝殼」</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">貝殼放射紋象徵朝聖者終將匯聚聖地牙哥，成為共同標記與方向。它懸掛於背包、嵌於路標與地磚，默默指引每一步走向終點。</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🍺🍋</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">朝聖路上的檸檬啤酒<br>Radler（Clara con Limón）</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">源自 1922 年德國酒館老闆因啤酒告急、緊急混入蘇打水的救援意外，竟成了歐洲經典。這款 60% 啤酒與檸檬汽水的完美比例，以 2% 低酒精微醺消暑，讓朝聖者在烈日下補糖補水，午餐乾掉一杯也不怕醉倒路邊，是日行萬步後最超值的靈魂救贖。</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🗑️</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">街道下的「巨胃」保險櫃</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">西班牙路邊那些小巧的垃圾桶，地下竟藏著 3 公尺深的巨大集裝箱！這套系統利用地溫減臭、阻隔蟲蟻，清理時由吊臂整座拔起，宛如都市魔法。不僅節省空間，更優雅地收納了整座城市的煙火氣。</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🍊☀️</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">一杯來自陽光的果汁</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">伊比利半島的現榨柳橙汁是「不加糖」的奇蹟。憑藉陽光充足的瓦倫西亞甜橙，機器現場壓榨出極致甜潤，毫無果皮苦味。無論在轉角小店或超市，這一杯天然、鮮甜的現榨鮮果汁，就是最地道的西葡式解渴。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CLOSING ══ -->
+  <section class="closing">
+    <div class="closing-text">
+      <h2 class="closing-h fi">We did not just walk.</h2>
+      <p class="closing-body fi fi-delay-1">
+        我們帶走的不只是公里數，<br>
+        而是某些在日常生活裡一直找不到的安靜。
+      </p>
+      <p class="closing-line fi fi-delay-2">Something shifted on the road.</p>
+    </div>
+    <div class="closing-videos fi">
+      <video src="images/camino/video-01.mp4" poster="images/camino/video-01-poster.jpg" controls playsinline preload="metadata"
+        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+      <video src="images/camino/video-02.mp4" poster="images/camino/video-02-poster.jpg" controls playsinline preload="metadata"
+        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+    </div>
+  </section>
+
+  <!-- ══ BACK LINK ══ -->
+  <div class="back-link-bar">
+    <a href="journeys.html" class="back-link">← All Journeys</a>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <a href="index.html" class="footer-logo">
+      <img src="images/logo.svg" alt="heyyysia" />
+    </a>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('hamburgerBtn').classList.toggle('open');
+    }
+
+    const fiEls = document.querySelectorAll('.fi');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fiEls.forEach(el => io.observe(el));
+
+    const sigEl = document.getElementById('sigContent');
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) sigEl.classList.add('in'); });
+    }, { threshold: 0.4 }).observe(sigEl);
+  </script>
+
+</body>
+</html>

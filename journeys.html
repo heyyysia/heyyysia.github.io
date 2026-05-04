@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journeys — heyyysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'Inter', sans-serif;
+      --margin: 120px;
+      --gutter: 24px;
+      --dot-exploration: #5B8FAD;
+      --dot-inner: #8BA888;
+      --dot-aesthetic: #C4A882;
+    }
+
+    body { background: var(--bg); font-family: var(--sans); }
+
+    /* ── Navbar ── */
+    .navbar { position: sticky; top: 0; z-index: 200; }
+
+    /* ── Filter bar ── */
+    .filter-bar {
+      position: sticky;
+      top: 65px;
+      left: 0; right: 0;
+      height: 72px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--margin);
+      gap: 2.5rem;
+      z-index: 150;
+    }
+
+    .filter-btn {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .filter-btn:hover { color: var(--text); }
+    .filter-btn.active { color: var(--text); border-bottom-color: var(--text); }
+
+    .filter-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      opacity: 0.55;
+    }
+    .filter-btn.active .filter-dot { opacity: 1; }
+    .dot-all        { background: var(--text); }
+    .dot-exploration  { background: var(--dot-exploration); }
+    .dot-inner      { background: var(--dot-inner); }
+    .dot-aesthetic  { background: var(--dot-aesthetic); }
+
+    /* ── Grid ── */
+    .journeys-grid {
+      padding-top: 60px;
+      padding-bottom: 120px;
+      padding-left: var(--margin);
+      padding-right: var(--margin);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gutter);
+    }
+
+    /* ── Card ── */
+    .journey-card {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #111;
+      text-decoration: none;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .journey-card:hover .card-img { transform: scale(1.04); }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,8,6,0.78) 0%, rgba(10,8,6,0.1) 55%, transparent 100%);
+    }
+
+    .card-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.8rem 2rem;
+      color: #fff;
+      transition: opacity 0.3s;
+    }
+    .journey-card:hover .card-content { opacity: 0; }
+
+    .card-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.5rem;
+    }
+    .card-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .card-dot.exploration  { background: #5B8FAD; }
+    .card-dot.inner-journey { background: var(--dot-inner); }
+    .card-dot.aesthetic    { background: var(--dot-aesthetic); }
+
+    .card-tag-text {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .card-country {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1.1;
+    }
+    .card-year {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.2rem;
+      letter-spacing: 0.06em;
+    }
+
+    /* Hover reveal */
+    .card-reveal {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,8,6,0.88);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.2rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .journey-card:hover .card-reveal { opacity: 1; transform: translateY(0); }
+
+    .reveal-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .reveal-country {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .reveal-year {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+    }
+    .reveal-sentence {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.9;
+      font-family: var(--sans);
+      font-weight: 300;
+    }
+    .reveal-cta {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.5rem;
+    }
+
+    /* Hide card when filtered out */
+    .journey-card[data-hidden] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.svg" alt="heyyysia" class="logo-img" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="journeys.html" class="active">JOURNEYS</a>
+      <a href="index.html#about">ABOUT US</a>
+      <a href="contact.html">SAY HELLO</a>
+    </nav>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="選單" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="journeys.html" class="active">JOURNEYS</a>
+    <a href="index.html#about">ABOUT US</a>
+    <a href="contact.html">SAY HELLO</a>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all"><span class="filter-dot dot-all"></span>全部 ALL</button>
+    <button class="filter-btn" data-filter="exploration"><span class="filter-dot dot-exploration"></span>外向探索 EXPLORATION</button>
+    <button class="filter-btn" data-filter="inner-journey"><span class="filter-dot dot-inner"></span>內在旅程 INNER JOURNEY</button>
+    <button class="filter-btn" data-filter="aesthetic"><span class="filter-dot dot-aesthetic"></span>日常出走 EVERYDAY ESCAPE</button>
+  </div>
+
+  <!-- Grid -->
+  <main class="journeys-grid" id="journeysGrid">
+
+    <a class="journey-card" data-tag="aesthetic" href="journey-japan-color-hunt.html">
+      <img class="card-img" src="images/hero/18575573560022909.jpg" alt="Japan" loading="lazy" />
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <div class="card-tag">
+          <span class="card-dot aesthetic"></span>
+          <span class="card-tag-text">Everyday Escape</span>
+        </div>
+        <p class="card-country">Japan</p>
+        <p class="card-year">2026</p>
+      </div>
+      <div class="card-reveal">
+        <div class="reveal-tag">
+          <span class="card-dot aesthetic"></span>
+          <span class="card-tag-text">日常出走 Everyday Escape</span>
+        </div>
+        <p class="reveal-country">日本｜東京 Color Hunt</p>
+        <p class="reveal-year">2026年3月 &nbsp;·&nbsp; MAR 2026</p>
+        <p class="reveal-sentence">以色彩為線索，<br>用鏡頭記錄每一種的顏色故事。</p>
+        <p class="reveal-cta">Read journey →</p>
+      </div>
+    </a>
+
+    <a class="journey-card" data-tag="exploration" href="journey-oman.html">
+      <img class="card-img" src="images/hero/18079057231881703.jpg" alt="Oman" loading="lazy" />
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <div class="card-tag">
+          <span class="card-dot exploration"></span>
+          <span class="card-tag-text">Exploration</span>
+        </div>
+        <p class="card-country">Oman</p>
+        <p class="card-year">2025</p>
+      </div>
+      <div class="card-reveal">
+        <div class="reveal-tag">
+          <span class="card-dot exploration"></span>
+          <span class="card-tag-text">外向探索 Exploration</span>
+        </div>
+        <p class="reveal-country">阿曼｜自駕旅行</p>
+        <p class="reveal-year">2025年10月 &nbsp;·&nbsp; OCT 2025</p>
+        <p class="reveal-sentence">沙漠、峽谷與星空，<br>一路穿越遼闊與未知的阿拉伯世界。</p>
+        <p class="reveal-cta">Read journey →</p>
+      </div>
+    </a>
+
+    <a class="journey-card" data-tag="exploration" href="journey-vietnam.html">
+      <img class="card-img" src="images/hero/17976696626866298.jpg" alt="Vietnam" loading="lazy" />
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <div class="card-tag">
+          <span class="card-dot exploration"></span>
+          <span class="card-tag-text">Exploration</span>
+        </div>
+        <p class="card-country">Vietnam</p>
+        <p class="card-year">2025</p>
+      </div>
+      <div class="card-reveal">
+        <div class="reveal-tag">
+          <span class="card-dot exploration"></span>
+          <span class="card-tag-text">外向探索 Exploration</span>
+        </div>
+        <p class="reveal-country">越南｜峰牙己榜國家公園</p>
+        <p class="reveal-year">2025年7月 &nbsp;·&nbsp; JUL 2025</p>
+        <p class="reveal-sentence">健行、溯溪、溜索、洞穴露營，<br>深入自然的一場冒險。</p>
+        <p class="reveal-cta">Read journey →</p>
+      </div>
+    </a>
+
+    <a class="journey-card" data-tag="inner-journey" href="journey-camino.html">
+      <img class="card-img" src="images/hero/18098972719603321.jpg" alt="Camino" loading="lazy" />
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <div class="card-tag">
+          <span class="card-dot inner-journey"></span>
+          <span class="card-tag-text">Inner Journey</span>
+        </div>
+        <p class="card-country">Camino de Santiago</p>
+        <p class="card-year">2024</p>
+      </div>
+      <div class="card-reveal">
+        <div class="reveal-tag">
+          <span class="card-dot inner-journey"></span>
+          <span class="card-tag-text">內在旅程 Inner Journey</span>
+        </div>
+        <p class="reveal-country">西班牙 × 葡萄牙｜朝聖之路</p>
+        <p class="reveal-year">2024年4–5月 &nbsp;·&nbsp; APR 2024</p>
+        <p class="reveal-sentence">不是為了抵達，而是為了理解。<br>一步一步走著，某些感受慢慢浮現。</p>
+        <p class="reveal-cta">Read journey →</p>
+      </div>
+    </a>
+
+    <a class="journey-card" data-tag="exploration" href="journey-indonesia.html">
+      <img class="card-img" src="images/hero/18046696997192376.jpg" alt="Indonesia" loading="lazy" />
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <div class="card-tag">
+          <span class="card-dot exploration"></span>
+          <span class="card-tag-text">Exploration</span>
+        </div>
+        <p class="card-country">Indonesia</p>
+        <p class="card-year">2023</p>
+      </div>
+      <div class="card-reveal">
+        <div class="reveal-tag">
+          <span class="card-dot exploration"></span>
+          <span class="card-tag-text">外向探索 Exploration</span>
+        </div>
+        <p class="reveal-country">印尼｜伊真火山</p>
+        <p class="reveal-year">2023年10月 &nbsp;·&nbsp; OCT 2023</p>
+        <p class="reveal-sentence">夜行登山，藍火與硫磺煙霧交織。<br>在黑暗與光之間，靠近火山的心跳。</p>
+        <p class="reveal-cta">Read journey →</p>
+      </div>
+    </a>
+
+  </main>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn  = document.getElementById('hamburgerBtn');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.journey-card');
+
+    function applyFilter(filter) {
+      filterBtns.forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === filter);
+      });
+      cards.forEach(card => {
+        if (filter === 'all' || card.dataset.tag === filter) {
+          delete card.dataset.hidden;
+        } else {
+          card.dataset.hidden = '';
+        }
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+    });
+
+    // 支援 URL 參數自動篩選，例如 journeys.html?filter=exploration
+    const urlFilter = new URLSearchParams(window.location.search).get('filter');
+    applyFilter(urlFilter || 'all');
+  </script>
+
+</body>
+</html>

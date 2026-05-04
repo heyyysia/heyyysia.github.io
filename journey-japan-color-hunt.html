@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Color Hunt Japan · Mar 2026 — heyyysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A063;
+      --dark: #111110;
+      --bg-page: #F7F4EF;
+      --text-main: #1A1714;
+      --text-muted: #8A8278;
+      --border-light: #E2DBD1;
+      --margin: 120px;
+      --sidebar: 168px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-page); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* ── Fade-in ── */
+    .fi { opacity: 0; transform: translateY(24px); transition: opacity 0.85s ease, transform 0.85s ease; }
+    .fi.in { opacity: 1; transform: translateY(0); }
+    .fi-d1 { transition-delay: 0.12s; }
+    .fi-d2 { transition-delay: 0.24s; }
+
+    /* ══════════════════════════
+       HERO
+    ══════════════════════════ */
+    .ch-hero {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+    }
+    .ch-hero-bg { position: absolute; inset: 0; }
+    .ch-hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 28%;
+      animation: hero-zoom 12s ease-in-out forwards;
+    }
+    @keyframes hero-zoom {
+      from { transform: scale(1.0); }
+      to   { transform: scale(1.05); }
+    }
+    .ch-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.65) 0%,
+        rgba(0,0,0,0.20) 50%,
+        rgba(0,0,0,0.05) 100%);
+    }
+    .ch-hero-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0 var(--margin) 5rem;
+      color: #fff;
+      animation: hero-text 0.8s ease 0.4s both;
+    }
+    @keyframes hero-text {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .ch-hero-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 0.28rem 0.85rem;
+      border-radius: 2px;
+      margin-bottom: 1.4rem;
+    }
+    .ch-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 140px; font-weight: 400;
+      line-height: 0.88; letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .ch-hero-meta {
+      margin-top: 1.4rem;
+      font-size: 15px; font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.08em;
+    }
+
+    /* ══════════════════════════
+       COLOR PICKER (below hero)
+    ══════════════════════════ */
+    .ch-picker {
+      background: #F5F3EE;
+      padding: 2.8rem 0;
+      text-align: center;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .ch-picker-sub {
+      font-size: 16px; letter-spacing: 0.08em;
+      color: var(--text-muted); margin-bottom: 2.2rem;
+    }
+    .ch-picker-row {
+      display: flex; gap: 2.8rem;
+      justify-content: center; align-items: flex-start;
+    }
+    .ch-picker-item {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.7rem;
+      text-decoration: none;
+    }
+    .ch-picker-circle {
+      width: 64px; height: 64px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px; font-weight: 400; color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ch-picker-item:hover .ch-picker-circle {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+    }
+    .ch-picker-label {
+      font-size: 12px; letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    /* ══════════════════════════
+       LAYOUT: SIDEBAR + MAIN
+    ══════════════════════════ */
+    .ch-layout {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    /* ── Left sidebar ── */
+    .ch-sidenav {
+      position: sticky;
+      top: 40px;
+      width: var(--sidebar);
+      height: calc(100vh - 40px);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border-light);
+      background: var(--bg-page);
+      z-index: 50;
+      overflow: hidden;
+    }
+    .csn-brand {
+      padding: 1.4rem 1.4rem 1.2rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .csn-brand-top {
+      font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.3rem;
+    }
+    .csn-brand-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 400; color: var(--text-main);
+      line-height: 1.15;
+    }
+    .csn-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.2rem 0;
+      gap: 2px;
+      overflow-y: auto;
+    }
+    .csn-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 1.4rem;
+      text-decoration: none;
+      border-radius: 0;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .csn-item:hover { background: rgba(0,0,0,0.04); }
+    .csn-item.active { background: rgba(0,0,0,0.05); }
+    .csn-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      flex-shrink: 0;
+      border: 1.5px solid currentColor;
+      transition: all 0.3s ease;
+    }
+    .csn-item.active .csn-dot {
+      background: currentColor;
+      transform: scale(1.3);
+    }
+    .csn-dot-mono {
+      width: 10px; height: 10px; border-radius: 50%;
+      flex-shrink: 0;
+      border: none;
+      background: conic-gradient(
+        #1a1a1a 0deg 45deg, #f0f0f0 45deg 90deg,
+        #1a1a1a 90deg 135deg, #f0f0f0 135deg 180deg,
+        #1a1a1a 180deg 225deg, #f0f0f0 225deg 270deg,
+        #1a1a1a 270deg 315deg, #f0f0f0 315deg 360deg
+      );
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .csn-dot-mono::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: #F7F4EF;
+      width: 68%; height: 68%;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .csn-item.active .csn-dot-mono {
+      background: linear-gradient(to right, #1a1a1a 50%, #f0f0f0 50%);
+      box-shadow: 0 0 0 1px #ccc;
+      transform: scale(1.3);
+    }
+    .csn-item.active .csn-dot-mono::after {
+      display: none;
+    }
+    .csn-num {
+      font-size: 10px; letter-spacing: 0.08em;
+      color: var(--text-muted); font-variant-numeric: tabular-nums;
+      transition: color 0.3s;
+    }
+    .csn-item.active .csn-num { color: inherit; }
+    .csn-name {
+      font-size: 12px; font-weight: 400; letter-spacing: 0.04em;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+    .csn-item.active .csn-name { color: inherit; font-weight: 500; }
+    .csn-footer {
+      padding: 1.2rem 1.4rem;
+      border-top: 1px solid var(--border-light);
+      display: flex; gap: 12px;
+    }
+    .csn-footer a {
+      color: var(--text-muted); font-size: 14px;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .csn-footer a:hover { color: var(--text-main); }
+
+    /* ── Main content ── */
+    .ch-main { flex: 1; min-width: 0; }
+
+    /* ══════════════════════════
+       COLOR SECTIONS
+    ══════════════════════════ */
+    .color-section {
+      border-top: 1px solid var(--border-light);
+      padding: 0;
+    }
+
+    /* Section header */
+    .cs-header {
+      padding: 3.5rem 4rem 2.5rem;
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .cs-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 80px; font-weight: 300;
+      line-height: 1; flex-shrink: 0; user-select: none;
+    }
+    .cs-sep { width: 1px; height: 52px; background: var(--border-light); flex-shrink: 0; }
+    .cs-meta { display: flex; flex-direction: column; gap: 0.45rem; }
+    .cs-eyebrow {
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .cs-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 400; color: var(--text-main);
+    }
+
+    /* Grid + text */
+    .cs-body {
+      padding: 0 4rem 4.5rem;
+      display: grid;
+      grid-template-columns: 550px minmax(260px, 1fr);
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    /* 3×3 grid — 550×550px total */
+    .cs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      width: 550px;
+    }
+    .cs-grid-cell {
+      aspect-ratio: 1 / 1; overflow: hidden; border-radius: 2px;
+    }
+    .cs-grid-cell img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.55s ease;
+    }
+    .cs-grid-cell:hover img { transform: scale(1.06); }
+
+    /* Text panel */
+    .cs-text { padding-top: 0.2rem; max-width: 360px; }
+    .cs-text p {
+      font-size: 18px; line-height: 2; color: var(--text-main); font-weight: 300;
+    }
+    .cs-text p + p { margin-top: 1rem; }
+    .cs-next {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 2.2rem; font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid var(--gold); padding-bottom: 2px;
+      transition: opacity 0.3s;
+    }
+    .cs-next:hover { opacity: 0.65; }
+
+    /* ══════════════════════════
+       CLOSING + FOOTER
+    ══════════════════════════ */
+    .ch-closing {
+      background: var(--dark);
+      padding: 6rem 4rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .ch-closing h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px; font-weight: 300; color: #fff; font-style: italic;
+      line-height: 1.2;
+    }
+    .ch-closing p {
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); margin-top: 1.2rem;
+    }
+    .ch-closing-dots {
+      display: flex; gap: 8px; justify-content: center; margin-top: 2rem;
+    }
+    .ch-closing-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .back-wrap {
+      padding: 1rem 4rem 2rem;
+      background: var(--bg-page);
+      border-top: 1px solid var(--border-light);
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      padding-bottom: 5px; border-bottom: 1px solid var(--text-muted);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .back-link:hover { color: var(--text-main); border-color: var(--text-main); }
+    .footer { border-top: none; padding-top: 0; }
+
+    /* ── Special cell transforms with hover ── */
+    .cell-scale img { transform: scale(1.2); }
+    .cell-scale:hover img { transform: scale(1.26); }
+    .cell-daruma img { transform: scale(1.2) translateX(-8%); }
+    .cell-daruma:hover img { transform: scale(1.26) translateX(-8%); }
+    .cell-signholder img { transform: scale(2.4) translateX(-40%); transform-origin: 72% 82%; }
+    .cell-signholder:hover img { transform: scale(2.46) translateX(-40%); transform-origin: 72% 82%; }
+    .cell-hachiko img { transform: scale(1.4) translateY(-10%); }
+    .cell-hachiko:hover img { transform: scale(1.46) translateY(-10%); }
+    .cell-juice img { transform: scale(1.5); transform-origin: 42% 100%; }
+    .cell-juice:hover img { transform: scale(1.56); transform-origin: 42% 100%; }
+    .cell-baseball img { transform: scale(1.2); transform-origin: 80% 100%; }
+    .cell-baseball:hover img { transform: scale(1.26); transform-origin: 80% 100%; }
+    .cell-clinic img { transform: scale(1.3); transform-origin: center top; }
+    .cell-clinic:hover img { transform: scale(1.36); transform-origin: center top; }
+    .cell-watch img { transform: scale(1.5); transform-origin: 50% 88%; }
+    .cell-watch:hover img { transform: scale(1.56); transform-origin: 50% 88%; }
+    .cell-ticket img { transform: scale(1.1); transform-origin: left center; }
+    .cell-ticket:hover img { transform: scale(1.16); transform-origin: left center; }
+    .cell-zoom11 img { transform: scale(1.1); transform-origin: center top; }
+    .cell-zoom11:hover img { transform: scale(1.16); transform-origin: center top; }
+    .cell-sign img { transform: scale(1.4); transform-origin: center 45%; }
+    .cell-sign:hover img { transform: scale(1.46); transform-origin: center 45%; }
+    .cell-figure img { transform: scale(1.1); transform-origin: center 100%; }
+    .cell-figure:hover img { transform: scale(1.16); transform-origin: center 100%; }
+    .cell-washer img { transform: scale(1.05); transform-origin: 100% 100%; }
+    .cell-washer:hover img { transform: scale(1.11); transform-origin: 100% 100%; }
+    .cell-zoomout img { object-position: center 15%; }
+    .cell-zoomout:hover img { transform: scale(1.06); }
+    .cell-up img { transform: scale(1.3); transform-origin: 65% center; }
+    .cell-up:hover img { transform: scale(1.36); transform-origin: 65% center; }
+
+    /* ── Signature section ── */
+    .ch-signature {
+      position: relative;
+      height: 580px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .ch-sig-bg { position: absolute; inset: 0; }
+    .ch-sig-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: right 40%;
+      transform-origin: right 40%;
+      animation: sig-zoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes sig-zoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.06); }
+    }
+    .ch-sig-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.48);
+    }
+    .ch-sig-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      max-width: 680px;
+      padding: 0 2rem 4rem;
+      opacity: 0;
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      transform: translateY(20px);
+    }
+    .ch-sig-content.in { opacity: 1; transform: translateY(0); }
+    .ch-sig-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .ch-sig-text em { font-style: italic; }
+
+    /* ══════════════════════════
+       RESPONSIVE
+    ══════════════════════════ */
+    @media (max-width: 860px) {
+      .ch-sidenav { display: none; }
+      .ch-hero-title { font-size: 68px; }
+      .ch-hero-content { padding-left: 2rem; padding-right: 2rem; }
+      .cs-header { padding: 2.5rem 1.5rem 2rem; }
+      .cs-body { grid-template-columns: 1fr; padding: 0 1.5rem 3rem; gap: 2rem; }
+      .cs-num { font-size: 56px; }
+      .ch-picker-row { flex-wrap: wrap; gap: 1.8rem; padding: 0 1.5rem; }
+      .ch-picker-circle { width: 64px; height: 64px; font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.svg" alt="heyyysia" class="logo-img" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="journeys.html">JOURNEYS</a>
+      <a href="index.html#about">ABOUT US</a>
+      <a href="contact.html">SAY HELLO</a>
+    </nav>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="journeys.html">JOURNEYS</a>
+    <a href="index.html#about">ABOUT US</a>
+    <a href="contact.html">SAY HELLO</a>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section class="ch-hero">
+    <div class="ch-hero-bg">
+      <img src="images/japan-color-hunt-hero.jpg" alt="Japan Shrine" />
+    </div>
+    <div class="ch-hero-overlay"></div>
+    <div class="ch-hero-content">
+      <span class="ch-hero-tag">Everyday Escape</span>
+      <h1 class="ch-hero-title">Japan</h1>
+      <p class="ch-hero-meta">日本｜東京 Color Hunt &nbsp;·&nbsp; Mar. 4 – 12, 2026</p>
+    </div>
+  </section>
+
+  <!-- ══ COLOR PICKER ══ -->
+  <section class="ch-picker">
+    <p class="ch-picker-sub">以色彩為線索，用鏡頭記錄每一種的顏色故事。</p>
+    <div class="ch-picker-row">
+      <a class="ch-picker-item" href="#red">
+        <div class="ch-picker-circle" style="background:#D90010">01</div>
+        <span class="ch-picker-label">Red</span>
+      </a>
+      <a class="ch-picker-item" href="#orange">
+        <div class="ch-picker-circle" style="background:#F06800">02</div>
+        <span class="ch-picker-label">Orange</span>
+      </a>
+      <a class="ch-picker-item" href="#yellow">
+        <div class="ch-picker-circle" style="background:#F5C000">03</div>
+        <span class="ch-picker-label">Yellow</span>
+      </a>
+      <a class="ch-picker-item" href="#green">
+        <div class="ch-picker-circle" style="background:#18A838">04</div>
+        <span class="ch-picker-label">Green</span>
+      </a>
+      <a class="ch-picker-item" href="#blue">
+        <div class="ch-picker-circle" style="background:#1E50CC">05</div>
+        <span class="ch-picker-label">Blue</span>
+      </a>
+      <a class="ch-picker-item" href="#purple">
+        <div class="ch-picker-circle" style="background:#C49EF0">06</div>
+        <span class="ch-picker-label">Violet</span>
+      </a>
+      <a class="ch-picker-item" href="#pink">
+        <div class="ch-picker-circle" style="background:#F5AACF">07</div>
+        <span class="ch-picker-label">Pink</span>
+      </a>
+      <a class="ch-picker-item" href="#mono">
+        <div class="ch-picker-circle" style="background:linear-gradient(90deg,#1a1a1a 50%,#f0f0f0 50%);border:1px solid #ccc;color:#999">08</div>
+        <span class="ch-picker-label">Monotone</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ LAYOUT: SIDEBAR + CONTENT ══ -->
+  <div class="ch-layout">
+
+    <!-- ── Left sidebar ── -->
+    <aside class="ch-sidenav" id="chSidenav">
+      <div class="csn-brand">
+        <p class="csn-brand-top">Color Hunt</p>
+        <p class="csn-brand-title">Tokyo, Japan<br><span style="font-size:13px;font-weight:300;color:var(--text-muted);font-family:'Inter',sans-serif;letter-spacing:0.05em">Mar 2026</span></p>
+      </div>
+      <nav class="csn-list" id="csnList">
+        <a class="csn-item" href="#red"    style="color:#FF3B30" data-id="red">
+          <div class="csn-dot"></div>
+          <span class="csn-num">01</span>
+          <span class="csn-name">Red</span>
+        </a>
+        <a class="csn-item" href="#orange" style="color:#FF7A00" data-id="orange">
+          <div class="csn-dot"></div>
+          <span class="csn-num">02</span>
+          <span class="csn-name">Orange</span>
+        </a>
+        <a class="csn-item" href="#yellow" style="color:#F5C800" data-id="yellow">
+          <div class="csn-dot"></div>
+          <span class="csn-num">03</span>
+          <span class="csn-name">Yellow</span>
+        </a>
+        <a class="csn-item" href="#green"  style="color:#2EAA55" data-id="green">
+          <div class="csn-dot"></div>
+          <span class="csn-num">04</span>
+          <span class="csn-name">Green</span>
+        </a>
+        <a class="csn-item" href="#blue"   style="color:#1E5EFF" data-id="blue">
+          <div class="csn-dot"></div>
+          <span class="csn-num">05</span>
+          <span class="csn-name">Blue</span>
+        </a>
+        <a class="csn-item" href="#purple" style="color:#A882E8" data-id="purple">
+          <div class="csn-dot"></div>
+          <span class="csn-num">06</span>
+          <span class="csn-name">Violet</span>
+        </a>
+        <a class="csn-item" href="#pink"   style="color:#F2AACC" data-id="pink">
+          <div class="csn-dot"></div>
+          <span class="csn-num">07</span>
+          <span class="csn-name">Pink</span>
+        </a>
+        <a class="csn-item" href="#mono"   style="color:#888" data-id="mono">
+          <div class="csn-dot-mono"></div>
+          <span class="csn-num">08</span>
+          <span class="csn-name">Monotone</span>
+        </a>
+      </nav>
+      <div class="csn-footer">
+        <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </aside>
+
+    <!-- ── Main content ── -->
+    <main class="ch-main">
+
+      <!-- ══ 01 RED ══ -->
+      <section id="red" class="color-section" style="background:rgba(255,59,48,0.03)">
+        <div class="cs-header fi">
+          <span class="cs-num" style="color:rgba(255,59,48,0.18)">01</span>
+          <div class="cs-sep"></div>
+          <div class="cs-meta">
+            <span class="cs-eyebrow">Color Hunt &nbsp;✦&nbsp; 01</span>
+            <h2 class="cs-title">紅色 | Red Vibes ❤️</h2>
+          </div>
+        </div>
+        <div class="cs-body fi fi-d1">
+          <div class="cs-grid">
+            <div class="cs-grid-cell"><img src="ig-posts/202603/17989528316951950.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202603/18076177817174116.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202603/17865641850665094.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202603/17881983135506868.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202603/18002011667882524.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202603/18059459429432729.jpg" alt="" style="object-position:center 85%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202603/18099118201810735.jpg" alt="" style="object-position:25% center" /></div>
+            <div class="cs-grid-cell cell-scale"><img src="ig-posts/202603/18454115497104280.jpg" alt="" style="object-position:8% center" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202603/18099358667096329.jpg" alt="" style="object-position:center 5%" /></div>
+          </div>
+          <div class="cs-text">
+            <p>誰能拒絕多巴胺爆棚的紅色？<br>走進紅色的扭蛋區，心跳自動加速；<br>看著那盤肥美的鮪魚，食慾瞬間滿格！</p>
+            <p>紅色就是有一種魔力：讓你慢不下來，只想瘋狂購物、大口吃飯、用力玩耍。</p>
+            <a href="#orange" class="cs-next">02 橙色 &nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 02 ORANGE ══ -->
+      <section id="orange" class="color-section" style="background:rgba(255,122,0,0.04)">
+        <div class="cs-header fi">
+          <span class="cs-num" style="color:rgba(255,122,0,0.2)">02</span>
+          <div class="cs-sep"></div>
+          <div class="cs-meta">
+            <span class="cs-eyebrow">Color Hunt &nbsp;✦&nbsp; 02</span>
+            <h2 class="cs-title">橙色 | Energetic Orange 🧡</h2>
+          </div>
+        </div>
+        <div class="cs-body fi fi-d1">
+          <div class="cs-grid">
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18144128512491892.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17873390784571176.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17912491830358920.jpg" alt="" style="object-position:35% center" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17918782581328534.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17925813549260221.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17936394153039397.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-juice"><img src="ig-posts/202604/18353099713230789.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17971151823010831.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-daruma"><img src="ig-posts/202604/18004972409718377.jpg" alt="" style="object-position:center 40%" /></div>
+          </div>
+          <div class="cs-text">
+            <p>橘色是能量，也是慾望。它是黃昏時分的溫柔光芒，也是盤子裡閃閃發亮的鮭魚卵。更是永遠難以抗拒的魔力提袋。</p>
+            <p>提在手上，連走路都有風。錢錢沒有不見，只是變成喜歡的樣子。（但心在淌血）</p>
+            <a href="#yellow" class="cs-next">03 黃色 &nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 03 YELLOW ══ -->
+      <section id="yellow" class="color-section" style="background:rgba(220,170,0,0.04)">
+        <div class="cs-header fi">
+          <span class="cs-num" style="color:rgba(200,154,0,0.22)">03</span>
+          <div class="cs-sep"></div>
+          <div class="cs-meta">
+            <span class="cs-eyebrow">Color Hunt &nbsp;✦&nbsp; 03</span>
+            <h2 class="cs-title">黃色 | Spotlight Yellow 💛</h2>
+          </div>
+        </div>
+        <div class="cs-body fi fi-d1">
+          <div class="cs-grid">
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18212285290326358.jpg" alt="" style="object-position:center 35%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18016047914832948.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/sign-cropped.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18090607373142666.jpg" alt="" style="object-position:center 10%" /></div>
+            <div class="cs-grid-cell cell-hachiko"><img src="ig-posts/202604/18091581815128950.jpg" alt="" style="object-position:center 100%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18106481734849299.jpg" alt="" style="object-position:center 80%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18076440770628959.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17962885737064753.jpg" alt="" style="object-position:center 50%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18085235123603152.jpg" alt="" style="object-position:center 20%" /></div>
+          </div>
+          <div class="cs-text">
+            <p>大腦很誠實，看到黃色就會忍不住多看一眼。它是布丁狗的療癒、玉子燒的幸福，也是街頭醒目的指引。</p>
+            <p>不必刻意尋找，黃色自帶主角光環，總會主動跳進眼簾。生活裡的點睛之筆，通常都要配上這種讓人心情變好的電波。</p>
+            <a href="#green" class="cs-next">04 綠色 &nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 04 GREEN ══ -->
+      <section id="green" class="color-section" style="background:rgba(46,160,70,0.04)">
+        <div class="cs-header fi">
+          <span class="cs-num" style="color:rgba(46,160,70,0.2)">04</span>
+          <div class="cs-sep"></div>
+          <div class="cs-meta">
+            <span class="cs-eyebrow">Color Hunt &nbsp;✦&nbsp; 04</span>
+            <h2 class="cs-title">綠色 | Healing Green 💚</h2>
+          </div>
+        </div>
+        <div class="cs-body fi fi-d1">
+          <div class="cs-grid">
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17858253921586335.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17872391238593990.jpg" alt="" style="object-position:center 100%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17874730239568572.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17905394340219857.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-baseball"><img src="ig-posts/202604/18181221754377494.jpg" alt="" style="object-position:right 100%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17961107708914454.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18099916781067471.jpg" alt="" style="object-position:center center" /></div>
+            <div class="cs-grid-cell cell-clinic"><img src="ig-posts/202604/18063110756688186.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17992113803946710.jpg" alt="" /></div>
+          </div>
+          <div class="cs-text">
+            <p>世界太吵，讓眼睛吃點維他命。<br>它是抹茶的苦、山葵的辣，<br>也是 WBC 球場那讓人熱血沸騰的草皮！</p>
+            <p>不管是路面電車的復古綠，還是大谷翔平、安可踩過的綠，反正多看兩眼，視力都變 2.0 了。</p>
+            <a href="#blue" class="cs-next">05 藍色 &nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 05 BLUE ══ -->
+      <section id="blue" class="color-section" style="background:rgba(30,94,255,0.04)">
+        <div class="cs-header fi">
+          <span class="cs-num" style="color:rgba(30,94,255,0.18)">05</span>
+          <div class="cs-sep"></div>
+          <div class="cs-meta">
+            <span class="cs-eyebrow">Color Hunt &nbsp;✦&nbsp; 05</span>
+            <h2 class="cs-title">藍色 | CT Blue 💙</h2>
+          </div>
+        </div>
+        <div class="cs-body fi fi-d1">
+          <div class="cs-grid">
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17853322089644073.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-up"><img src="ig-posts/202604/18013959923683576.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17944227986997915.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18189592540370188.jpg" alt="" style="object-position:center 30%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18332822566220153.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18044494565584637.jpg" alt="" style="object-position:center 55%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18108467839888691.jpg" alt="" style="object-position:center 25%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18089164616256105.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-watch"><img src="ig-posts/202604/17908276764202786.jpg" alt="" /></div>
+          </div>
+          <div class="cs-text">
+            <p>東京街頭的理智色，東京巨蛋裡的狂熱藍！<br>藍色視覺可以很冷靜，但應援團的靈魂絕對是滾燙的。</p>
+            <p>理智交給導航，熱血交給中華隊！<br>冷靜是假象的，熱血才是藍色本質。</p>
+            <a href="#purple" class="cs-next">06 紫色 &nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 06 PURPLE ══ -->
+      <section id="purple" class="color-section" style="background:rgba(123,63,242,0.04)">
+        <div class="cs-header fi">
+          <span class="cs-num" style="color:rgba(123,63,242,0.18)">06</span>
+          <div class="cs-sep"></div>
+          <div class="cs-meta">
+            <span class="cs-eyebrow">Color Hunt &nbsp;✦&nbsp; 06</span>
+            <h2 class="cs-title">紫色 | Violet Signal 💜</h2>
+          </div>
+        </div>
+        <div class="cs-body fi fi-d1">
+          <div class="cs-grid">
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18122276950613598.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18070596329285105.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18076862264428514.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-zoom11"><img src="ig-posts/202604/18077789081153845.jpg" alt="" style="object-position:center 0%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18089820556959361.jpg" alt="" style="object-position:right center" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18094685926890136.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18104898599498183.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-ticket"><img src="ig-posts/202604/18110744326793595.jpg" alt="" style="object-position:0% center" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18311380708262758.jpg" alt="" /></div>
+          </div>
+          <div class="cs-text">
+            <p>這場旅行，從機艙裡的一抹淡紫開始。它沒有聲音，卻悄悄蔓延——落在街景、雪地與那些不經意的城市角落。</p>
+            <p>最後停留在晴空塔，變成了一束劃破夜空的冷光，完成一場優雅的登陸。</p>
+            <a href="#pink" class="cs-next">07 粉色 &nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 07 PINK ══ -->
+      <section id="pink" class="color-section" style="background:rgba(217,59,140,0.04)">
+        <div class="cs-header fi">
+          <span class="cs-num" style="color:rgba(217,59,140,0.18)">07</span>
+          <div class="cs-sep"></div>
+          <div class="cs-meta">
+            <span class="cs-eyebrow">Color Hunt &nbsp;✦&nbsp; 07</span>
+            <h2 class="cs-title">粉色 | Sakura Pink 🌸</h2>
+          </div>
+        </div>
+        <div class="cs-body fi fi-d1">
+          <div class="cs-grid">
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17885146836474572.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-zoom11"><img src="ig-posts/202604/17937878727197152.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17988127769971241.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18087547675999488.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18089325650254395.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18092049962177366.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18093999869333134.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-figure"><img src="ig-posts/202604/18312539269273641.jpg" alt="" style="object-position:center 95%" /></div>
+            <div class="cs-grid-cell cell-sign"><img src="ig-posts/202604/18356294221226109.jpg" alt="" /></div>
+          </div>
+          <div class="cs-text">
+            <p>在粉紅色的面前，理智通常當場離職。<br>它是東京街頭的櫻花，也是讓人瞬間失守的草莓大福。</p>
+            <p>視覺可以很夢幻，但心跳跟錢包失血的感覺絕對很真實。如果生活太苦，就讓眼睛多吃一點甜。</p>
+            <a href="#mono" class="cs-next">08 黑白 &nbsp;→</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ 08 MONO ══ -->
+      <section id="mono" class="color-section" style="background:rgba(0,0,0,0.03)">
+        <div class="cs-header fi">
+          <span class="cs-num" style="color:rgba(0,0,0,0.12)">08</span>
+          <div class="cs-sep"></div>
+          <div class="cs-meta">
+            <span class="cs-eyebrow">Color Hunt &nbsp;✦&nbsp; 08</span>
+            <h2 class="cs-title">黑或白 | Monotone 🖤🤍</h2>
+          </div>
+        </div>
+        <div class="cs-body fi fi-d1">
+          <div class="cs-grid">
+            <div class="cs-grid-cell cell-zoomout"><img src="ig-posts/202604/18126473578582639.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17922537366305499.jpg" alt="" style="object-position:62% center" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/17958753492102330.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-washer"><img src="ig-posts/202604/18014876681838971.jpg" alt="" style="object-position:72% 100%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18038907992785338.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18063767219363683.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18107365048896306.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18078726362541745.jpg" alt="" style="object-position:center 8%" /></div>
+            <div class="cs-grid-cell"><img src="ig-posts/202604/18097973656957549.jpg" alt="" /></div>
+          </div>
+          <div class="cs-text">
+            <p>世界太亂，只有黑白最簡單。它是東京巨蛋的榮耀刻痕，是路燈下拉長的孤傲影子，也是洗衣機或人孔蓋上，那些被忽略的幾何線條。</p>
+            <p>這不是沒調色，而是所有色彩的沈澱。既然生活已經夠鮮豔，照片就負責留下物件最安靜的輪廓。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ SIGNATURE MOMENT ══ -->
+      <div class="ch-signature">
+        <div class="ch-sig-bg">
+          <img src="ig-posts/202604/sig-japan2-v3.jpg" alt="" />
+        </div>
+        <div class="ch-sig-overlay"></div>
+        <div class="ch-sig-content" id="japanSig">
+          <p class="ch-sig-text">Just fragments of where we've been—<br>
+          in colors, in moments,<br>
+          <em>and somehow, they stay longer.</em></p>
+        </div>
+      </div>
+
+      <div class="back-wrap">
+        <a href="journeys.html" class="back-link">← All Journeys</a>
+      </div>
+
+    </main><!-- /ch-main -->
+  </div><!-- /ch-layout -->
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <a href="index.html" class="footer-logo">
+      <img src="images/logo.svg" alt="heyyysia" />
+    </a>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('hamburgerBtn').classList.toggle('open');
+    }
+
+    /* Fade-in */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+    /* Active sidebar item on scroll */
+    const sectionIds = ['red','orange','yellow','green','blue','purple','pink','mono'];
+    const navItems = document.querySelectorAll('.csn-item');
+
+    const sio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navItems.forEach(n => n.classList.remove('active'));
+          const match = document.querySelector(`.csn-item[data-id="${e.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sio.observe(el);
+    });
+
+    /* Signature fade-in */
+    const sigEl = document.getElementById('japanSig');
+    if (sigEl) {
+      const sigObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in'); sigObs.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      sigObs.observe(sigEl);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vietnam · Jul 2025 — heyyysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A063;
+      --dark: #111110;
+      --bg-page: #F7F4EF;
+      --text-main: #1A1714;
+      --text-muted: #8A8278;
+      --border-light: #E2DBD1;
+      --margin: 120px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-page); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    .fi { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fi.in { opacity: 1; transform: translateY(0); }
+    .fi-delay-1 { transition-delay: 0.15s; }
+    .fi-delay-2 { transition-delay: 0.3s; }
+    .fi-delay-3 { transition-delay: 0.45s; }
+
+    .navbar { z-index: 200; }
+
+    /* ── Chapter Break ── */
+    .ch-break {
+      background: var(--bg-page);
+      padding: 5rem var(--margin);
+      display: flex; align-items: center; gap: 3.5rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .ch-break-num { font-family: 'Playfair Display', serif; font-size: 96px; font-weight: 300; color: #EAE4DA; line-height: 1; flex-shrink: 0; user-select: none; }
+    .ch-break-sep { width: 1px; height: 64px; background: var(--border-light); flex-shrink: 0; }
+    .ch-break-meta { display: flex; flex-direction: column; gap: 0.6rem; }
+    .ch-break-eyebrow { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+    .ch-break-heading { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: var(--text-main); }
+    .ch-break-sub { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 640px; }
+
+    /* ── Gallery Intro ── */
+    .gallery-intro { background: var(--bg-page); padding: 4rem var(--margin) 3rem; border-top: 1px solid var(--border-light); display: flex; align-items: center; gap: 2rem; }
+    .gallery-intro-label { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+    .gallery-intro-line { flex: 1; height: 1px; background: var(--border-light); }
+
+    /* ── Hero ── */
+    .hero { position: relative; height: 80vh; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 14%; animation: hero-zoom 8s ease-in-out forwards; }
+    @keyframes hero-zoom { from { transform: scale(1); } to { transform: scale(1.05); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0.05) 100%); }
+    .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 0 var(--margin) 5rem; color: #fff; animation: hero-text 0.8s ease 0.4s both; }
+    @keyframes hero-text { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-tag { display: inline-block; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 0.28rem 0.85rem; border-radius: 2px; margin-bottom: 1.4rem; }
+    .hero-h1 { font-family: 'Cormorant Garamond', serif; font-size: 140px; font-weight: 400; line-height: 0.9; letter-spacing: 0.06em; text-transform: uppercase; }
+    .hero-meta-line { margin-top: 1.4rem; font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; }
+    .hero-scroll { position: absolute; bottom: 2.2rem; right: var(--margin); color: rgba(255,255,255,0.35); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; animation: scroll-hint 2.5s ease-in-out infinite; }
+    @keyframes scroll-hint { 0%, 100% { opacity: 0.35; transform: translateY(0); } 50% { opacity: 0.7; transform: translateY(5px); } }
+
+    /* ── Context ── */
+    .context { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; background: var(--bg-page); }
+    .ctx-img { overflow: hidden; }
+    .ctx-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; aspect-ratio: 4/5; display: block; }
+    .ctx-text { padding: 7rem var(--margin) 7rem 6rem; display: flex; flex-direction: column; justify-content: center; gap: 3rem; }
+    .ctx-intro { font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 300; line-height: 160%; color: var(--text-main); max-width: 420px; }
+    .ctx-meta { display: flex; flex-direction: column; gap: 1.2rem; padding-top: 2rem; border-top: 1px solid var(--border-light); max-width: 420px; }
+    .meta-row { display: flex; gap: 2rem; align-items: baseline; }
+    .meta-label { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); width: 90px; flex-shrink: 0; }
+    .meta-val { font-size: 14px; font-weight: 300; color: var(--text-main); line-height: 1.6; }
+    .meta-link { color: var(--text-main); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border-light); transition: text-decoration-color 0.2s; }
+    .meta-link:hover { text-decoration-color: var(--text-main); }
+
+    /* ── Chapter Full Bleed ── */
+    .ch-fullbleed { position: relative; min-height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .ch-fb-img { position: absolute; inset: 0; }
+    .ch-fb-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .ch-fb-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); }
+    .ch-fb-content { position: relative; z-index: 2; padding: 0 var(--margin) 5rem; color: #fff; }
+    .ch-label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+    .ch-title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; color: #fff; margin-bottom: 1.2rem; }
+    .ch-keytxt { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 400; line-height: 1.25; max-width: 580px; }
+    .ch-keytxt em { font-style: italic; }
+
+    /* ── Chapter Split ── */
+    .ch-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; background: var(--bg-page); }
+    .ch-split.img-right .ch-split-text { order: 1; }
+    .ch-split.img-right .ch-split-img  { order: 2; }
+    .ch-split-text { padding: 6rem var(--margin) 6rem 6rem; display: flex; flex-direction: column; justify-content: center; gap: 1.8rem; }
+    .ch-split.img-right .ch-split-text { padding: 6rem 6rem 6rem var(--margin); }
+    .ch-split-label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .ch-split-title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; color: var(--text-main); }
+    .ch-split-keytxt { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; line-height: 1.3; color: var(--text-main); }
+    .ch-split-keytxt em { font-style: italic; }
+    .ch-split-body { font-size: 16px; font-weight: 300; line-height: 1.9; color: #5A5450; max-width: 400px; }
+    .ch-split-img { overflow: hidden; }
+    .ch-split-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1/1; display: block; }
+    .ch-split-1v2s { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; height: 100%; }
+    .ch-split-1v2s > div { overflow: hidden; }
+    .ch-split-1v2s > div.tall { grid-row: 1 / 3; }
+    .ch-split-1v2s > div img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: unset; display: block; transition: transform 0.5s ease; }
+    .ch-split-1v2s > div:hover img { transform: scale(1.03); }
+    .ch-split-2x2 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; height: 100%; }
+    .ch-split-2x2 > div { overflow: hidden; }
+    .ch-split-2x2 > div img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .ch-split-2x2 > div:hover img { transform: scale(1.03); }
+
+    /* ── 1v2 mosaic ── */
+    .ch-mosaic-1v2 { display: grid; grid-template-columns: 3fr 2fr; grid-template-rows: 1fr 1fr; height: 90vh; gap: 3px; }
+    .ch-mosaic-1v2 .tall { grid-row: 1 / 3; }
+    .ch-mosaic-1v2 > div { overflow: hidden; }
+    .ch-mosaic-1v2 > div img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.6s ease; }
+    .ch-mosaic-1v2 > div:hover img { transform: scale(1.03); }
+
+    /* ── Triple ── */
+    .ch-triple { display: grid; grid-template-columns: repeat(3, 1fr); height: 100vh; gap: 3px; }
+    .ch-triple > div { overflow: hidden; }
+    .ch-triple > div img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.6s ease; }
+    .ch-triple > div:hover img { transform: scale(1.03); }
+
+    /* ── Text + Strip ── */
+    .ch-text-strip { padding: 5rem var(--margin); background: var(--bg-page); display: flex; flex-direction: column; gap: 2.5rem; }
+    .ch-ts-text { display: flex; flex-direction: column; gap: 1.8rem; max-width: 620px; }
+    .ch-strip-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; height: 520px; }
+    .ch-strip-inner > div { overflow: hidden; }
+    .ch-strip-inner > div img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .ch-strip-inner > div:hover img { transform: scale(1.03); }
+
+    /* ── Days in Frame ── */
+    .photo-gallery { background: var(--bg-page); padding: 0 var(--margin) 5rem; }
+    .pg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .pg-grid > div { aspect-ratio: 1/1; overflow: hidden; }
+    .pg-grid > div img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .pg-grid > div:hover img { transform: scale(1.03); }
+
+    /* ── Signature ── */
+    .signature { position: relative; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .sig-bg { position: absolute; inset: 0; }
+    .sig-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    @keyframes sig-zoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+    .sig-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.50); }
+    .sig-content { position: relative; z-index: 2; text-align: center; color: #fff; max-width: 900px; padding: 0 2rem; opacity: 0; transition: opacity 1.2s ease, transform 1.2s ease; transform: translateY(20px); }
+    .sig-content.in { opacity: 1; transform: translateY(0); }
+    .sig-text { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 400; line-height: 1.25; }
+    .sig-text em { font-style: italic; }
+
+    /* ── Field Notes ── */
+    .field-notes { background: var(--bg-page); padding-top: 80px; }
+    .fn-header { padding: 0 var(--margin) 3rem; }
+    .fn-eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.8rem; }
+    .fn-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; color: var(--text-main); margin-bottom: 0.5rem; }
+    .fn-subtitle { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+    .fn-scroll { display: flex; gap: 16px; padding: 0 var(--margin) 4rem; overflow-x: auto; cursor: grab; scrollbar-width: none; -ms-overflow-style: none; }
+    .fn-scroll::-webkit-scrollbar { display: none; }
+    .fn-scroll.grabbing { cursor: grabbing; }
+    .fn-video { flex-shrink: 0; width: 320px; height: 420px; border-radius: 16px; overflow: hidden; background: #000; }
+    .fn-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fn-card { flex-shrink: 0; width: 220px; min-height: 280px; background: #1A1A1A; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 0.8rem; transition: transform 0.25s ease; cursor: default; }
+    .fn-card:hover { transform: translateY(-4px); }
+    .fn-card-emoji { font-size: 24px; }
+    .fn-card-title { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: #F0EBE3; line-height: 1.45; margin-top: auto; }
+    .fn-card-body { font-size: 13px; font-weight: 300; color: #7A7470; line-height: 1.7; }
+
+    /* ── Closing ── */
+    .closing { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border-light); }
+    .closing-text { display: flex; flex-direction: column; justify-content: center; padding: 7rem 4rem 7rem var(--margin); gap: 2rem; }
+    .closing-videos { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 5rem 3rem; background: #EDEAE3; }
+    .closing-h { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; line-height: 180%; color: var(--text-main); }
+    .closing-h em { font-style: italic; }
+    .closing-body { font-size: 16px; font-weight: 300; line-height: 180%; color: var(--text-muted); max-width: 420px; }
+    .closing-line { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; font-weight: 400; color: var(--text-muted); }
+
+    /* ── Water Ripple ── */
+    .ripple-wrap { position: relative; width: 300px; height: 300px; flex-shrink: 0; }
+    .ripple-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center 55%; display: block; }
+    .ripple-wrap::before,
+    .ripple-wrap::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(180,160,110,0.35); animation: ripple-out 3s ease-out infinite; pointer-events: none; }
+    .ripple-wrap::after { animation-delay: 1.5s; }
+    @keyframes ripple-out { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.18); opacity: 0; } }
+    @keyframes float-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+    /* ── Back Link ── */
+    .back-link-bar { padding: 1rem var(--margin) 2rem; border-top: 1px solid var(--border-light); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; text-decoration: none; width: fit-content; padding-bottom: 5px; border-bottom: 1px solid var(--muted); transition: color 0.2s, border-color 0.2s; }
+    .back-link:hover { color: var(--text); border-color: var(--text); }
+    .footer { border-top: none; padding-top: 0; margin-top: -2rem; }
+
+    /* ── RWD ── */
+    @media (max-width: 900px) {
+      :root { --margin: 2rem; }
+      .context { grid-template-columns: 1fr; }
+      .ctx-img { aspect-ratio: 4/3; }
+      .ctx-img img { height: 100%; aspect-ratio: unset; }
+      .ctx-text { padding: 3rem var(--margin); }
+      .ch-split { grid-template-columns: 1fr; }
+      .ch-split .ch-split-text,
+      .ch-split.img-right .ch-split-text { padding: 3rem var(--margin); }
+      .ch-split-img img { height: 280px; }
+      .ch-mosaic-1v2 { grid-template-columns: 1fr; grid-template-rows: auto; height: auto; }
+      .ch-mosaic-1v2 .tall { grid-row: auto; }
+      .ch-mosaic-1v2 > div img { height: 260px; }
+      .ch-triple { grid-template-columns: 1fr; height: auto; }
+      .ch-triple > div img { height: 260px; }
+      .ch-strip-inner { height: 260px; }
+      .hero-h1 { font-size: 42px; }
+      .fn-scroll { padding: 0 var(--margin) 3rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 32px; }
+      .sig-text { font-size: 28px; }
+      .closing-h { font-size: 28px; }
+      .ch-keytxt { font-size: 26px; }
+      .ch-split-keytxt { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.svg" alt="heyyysia" class="logo-img" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="journeys.html">JOURNEYS</a>
+      <a href="index.html#about">ABOUT US</a>
+      <a href="contact.html">SAY HELLO</a>
+    </nav>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="journeys.html">JOURNEYS</a>
+    <a href="index.html#about">ABOUT US</a>
+    <a href="contact.html">SAY HELLO</a>
+  </div>
+
+  <!-- ══ FRAME 01 — HERO ══ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="images/vietnam/18030656498704834.jpg" alt="Vietnam Cave" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Exploration</span>
+      <h1 class="hero-h1">VIETNAM</h1>
+      <p class="hero-meta-line">越南｜峰牙己榜國家公園 &nbsp;·&nbsp; Jul. 21 – 28, 2025</p>
+    </div>
+    <a class="hero-scroll" href="#context"><i class="fas fa-chevron-down"></i> scroll</a>
+  </section>
+
+  <!-- ══ FRAME 02 — CONTEXT ══ -->
+  <section class="context" id="context">
+    <div class="ctx-img fi">
+      <img src="images/vietnam/18053296622445195.jpg" alt="Vietnam Context" />
+    </div>
+    <div class="ctx-text">
+      <p class="ctx-intro fi">
+        健行、溯溪、溜索、洞穴露營，<br>
+        深入自然的一場冒險。
+      </p>
+      <div class="ctx-meta fi fi-delay-1">
+        <div class="meta-row">
+          <span class="meta-label">Duration</span>
+          <span class="meta-val">8 days ·<br>4 in Hanoi · 4 in Dong Hoi & Phong Nha</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Route</span>
+          <span class="meta-val">Hanoi → Dong Hoi → Phong Nha → Hanoi</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Mode</span>
+          <span class="meta-val">City Walk · Cave Tours · Sleeping Bus</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Landmarks</span>
+          <span class="meta-val">
+            <a href="https://maps.app.goo.gl/y5t4kxjjBvw8tFPd6" target="_blank" class="meta-link">Hanoi Train Street</a><br>
+            <a href="https://maps.app.goo.gl/D1rvZALayZK394DaA" target="_blank" class="meta-link">Quang Phu Sand Dunes</a><br>
+            <a href="https://maps.app.goo.gl/qfutWtHCWnKXKWvi6" target="_blank" class="meta-link">Paradise Cave</a><br>
+            <a href="https://maps.app.goo.gl/VS9y5DSzQAjBLfyB9" target="_blank" class="meta-link">Dark Cave</a><br>
+            <a href="https://maps.app.goo.gl/8jKmwUY9tqNrkTECA" target="_blank" class="meta-link">Hang En Cave</a>
+          </span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Food & Café</span>
+          <span class="meta-val">
+            <a href="https://maps.app.goo.gl/pVePGBsJdRTkRMFC8" target="_blank" class="meta-link">My Pho</a><br>
+            <a href="https://maps.app.goo.gl/9rmXd7vrUP8CP86CA" target="_blank" class="meta-link">Hanoi Garden Restaurant</a><br>
+            <a href="https://maps.app.goo.gl/iFnbvZUwSqcWeu8t5" target="_blank" class="meta-link">Banh Mi 25</a>
+          </span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Adventures</span>
+          <span class="meta-val">
+            <a href="https://www.klook.com/zh-TW/activity/28779-paradise-cave-dark-day-tour/" target="_blank" class="meta-link">Day tour：Paradise Cave & Dark Cave</a><br>
+            <a href="https://oxalisadventure.com/tour/hang-en-adventure-cave-camp/" target="_blank" class="meta-link">2D1N：Hang En Cave</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 01 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">01</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <p class="ch-break-heading">Hanoi — A reunion with the familiar honks</p>
+      <p class="ch-break-sub">這次旅程的目的地，是位在河內以南約 500 公里、車程 7-8 小時的「峰牙己榜國家公園」。<br>我們幾乎與中颱薇帕同時登陸越南——河內旅程開場不斷遇到暴雨，但好處是氣溫涼爽不少。</p>
+    </div>
+  </div>
+
+  <!-- ══ FRAME 03 — CH01 TRIPLE ══ -->
+  <section class="ch-triple" style="height: 70vh;">
+    <div><img src="images/vietnam/IMG_8623.jpg" alt="Hanoi Train Street" /></div>
+    <div><img src="images/vietnam/17906194278092311.jpg" alt="Hanoi Cathedral" style="object-position: center 20%;" /></div>
+    <div><img src="images/vietnam/IMG_8621.jpg" alt="Hanoi Food" style="object-position: 60% 85%;" /></div>
+  </section>
+
+  <!-- ══ CH01 SPLIT — 河內敘事 ══ -->
+  <section class="ch-split">
+    <div class="ch-split-text fi">
+      <p class="ch-split-label">From Stormy Hanoi to Dune Adventures</p>
+      <p class="ch-split-keytxt">洞海：在雲層散去之後</p>
+      <p class="ch-split-body">
+        邊擔心颱風會不會影響國內班機，邊大快朵頤久違的河粉與春捲，最後再靠一場舒壓按摩，把焦慮感揉散。<br><br>
+        幸好飛行順利，安全抵達洞海。<br><br>
+        廣富沙丘上，坐越野車衝刺、挑戰沙板滑行——好玩歸好玩，體力瞬間見底。
+      </p>
+    </div>
+    <div class="ch-split-img">
+      <img src="images/vietnam/18524790010020497.jpg" alt="Quang Phu Sand Dunes" style="height: auto; object-fit: unset; aspect-ratio: unset;" />
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 02 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">02</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <p class="ch-break-heading">Phong Nha-Ke Bang National Park：Underground Adventures</p>
+      <p class="ch-break-sub">落腳峰牙小鎮後，換上腳踏車，穿梭於寧靜街道，這裡不只適合放空，更是展開冒險的出發地。<br>天堂洞 Paradise Cave · 黑洞 Dark Cave——<br>一邊壯觀得像電影場景，一邊漆黑到只能依靠頭燈前行。</p>
+    </div>
+  </div>
+
+  <!-- ══ SECTION A — 峰牙小鎮 PHOTOS ══ -->
+  <div style="padding: 0 var(--margin); background: var(--bg-page);">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;height:45vh;overflow:hidden;">
+      <div style="overflow:hidden;"><img src="images/vietnam/18057204404606548.jpg" alt="Phong Nha Sign" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transition:transform 0.6s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" /></div>
+      <div style="overflow:hidden;"><img src="images/vietnam/18058160417106409.jpg" alt="Phong Nha Guesthouse" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;transition:transform 0.6s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" /></div>
+      <div style="overflow:hidden;"><img src="images/vietnam/18082089376810079.jpg" alt="Phong Nha Bicycle" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform 0.6s ease;transform:scale(1.1);transform-origin:center 15%;" onmouseover="this.style.transform='scale(1.13)'" onmouseout="this.style.transform='scale(1.1)'" /></div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION B — 天堂洞 ══ -->
+  <div style="width:90px;height:1px;background:var(--gold);margin:3rem auto;"></div>
+  <section class="ch-split img-right">
+    <div class="ch-split-text fi">
+      <p class="ch-split-label">Beyond the Limits of Imagination</p>
+      <p class="ch-split-title">天堂洞：壯觀的地底皇宮</p>
+      <p class="ch-split-keytxt">以散步啟程，在奇蹟之中前行。</p>
+      <p class="ch-split-body">
+        天堂洞總長 31.4 公里，是一座隱匿地下的巨型乾洞。洞內鐘乳石與石筍林立，壯麗得如同電影中的魔幻場景。<br><br>
+        僅開放前段約一公里參觀，原以為一小時綽綽有餘，卻在驚嘆與拍照之間不斷停下，只能邊看邊趕路。
+      </p>
+    </div>
+    <div class="ch-split-img">
+      <img src="images/vietnam/18320215219215094.jpg" alt="Paradise Cave" />
+    </div>
+  </section>
+
+  <!-- ══ SECTION C — 黑洞 ══ -->
+  <div style="width:90px;height:1px;background:var(--gold);margin:3rem auto;"></div>
+  <section class="ch-split">
+    <div class="ch-split-img">
+      <div class="ch-split-2x2">
+        <div><img src="images/vietnam/17959736552971614.jpg" alt="Dark Cave Zip Line Harness" /></div>
+        <div><img src="images/vietnam/18107354035485330.jpg" alt="Dark Cave River Swimming" /></div>
+        <div><img src="images/vietnam/18090642055613660.jpg" alt="Dark Cave Entrance" /></div>
+        <div><img src="images/vietnam/B3FDED97.jpg" alt="Dark Cave Mud Bath" /></div>
+      </div>
+    </div>
+    <div class="ch-split-text fi">
+      <p class="ch-split-label">Dive into the Dark, Discover the Fun</p>
+      <p class="ch-split-title">黑洞：野性十足的冒險體驗</p>
+      <p class="ch-split-keytxt">放下對乾淨的執著，<br><em>在地底盡情探索。</em></p>
+      <p class="ch-split-body">
+        比起天堂洞的沉靜，黑洞則是純粹的冒險體驗！<br><br>我們換上泳衣，從高空滑索直衝洞口，縱身躍入清涼的水中游進地底。洞內一片漆黑，僅能依仗頭燈微光探索古老遺址與化石。在地下湖游泳後，緊接著是一場「泥浴 SPA」，全身塗滿泥巴的過程既荒唐又好玩。<br><br>
+        雖然洪水讓河水變黃、活動部分關閉，依然不減它的魅力——絕對是峰牙必去的經典！
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ CHAPTER BREAK 03 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">03</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <p class="ch-break-heading">Hang En Cave — Into the Vast Unknown</p>
+      <p class="ch-break-sub">恆恩洞為世界第三大洞穴，兩天一夜的旅程從叢林徒步開始，穿越溪流與村落，逐步深入山林與地底入口，途中也難免遇上水蛭的「熱情招呼」。</p>
+    </div>
+  </div>
+
+  <!-- ══ FRAME 05 — CH03 FULLBLEED ══ -->
+  <section class="ch-fullbleed">
+    <div class="ch-fb-img">
+      <img src="images/vietnam/094639DD.jpg" alt="Hang En Cave" style="object-position: center 50%;" />
+    </div>
+    <div class="ch-fb-overlay"></div>
+    <div class="ch-fb-content fi" style="padding-left: 4rem;">
+      <p class="ch-keytxt">A short pause in the jungle, where<br><em>the sense of exploration never really stops.</em></p>
+    </div>
+  </section>
+
+  <!-- ══ CH03 TEXT + STRIP ══ -->
+  <div class="ch-text-strip fi">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem;">
+    <div class="ch-ts-text">
+      <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);">DAY 1 - Camping in the Cave</p>
+      <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;line-height:1.4;color:var(--text-main);">在洞穴深處，退回最原始的安寧。</p>
+      <p style="font-size:15px;font-weight:300;line-height:1.9;color:#5A5450;">
+        走進高達百米的巨型洞口，戴上手套攀爬岩石，乘膠筏橫渡湖泊，最終抵達如電影場景般的洞穴營地。洞內湖泊就是我們的天然澡堂，跳入水中，洗去徒步的疲憊與汗味，瞬間神清氣爽。<br><br>
+        飽餐過後，隨著夜幕降臨，大家窩在營地椅上欣賞從洞穴口灑落的星光，徹底遠離城市燈火與日常喧囂。越南語中，「恆 Hang」意為「洞穴」，「恩 En」指「燕子」，因此恆恩洞即稱「燕子洞」。入夜後，就在成千上萬隻燕子的低語作伴下，我們在帳裡輾轉難眠，別有一番奇妙體驗。<br><br>
+        而洞穴中最美好的時刻，不只在夜晚。清晨陽光從洞口灑落，光影交錯在岩壁與營地之間，溫柔地喚醒整個空間，也悄悄療癒了心情。
+      </p>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <div class="ripple-wrap">
+        <img src="images/vietnam/17889988905336547.jpg" />
+      </div>
+    </div>
+    </div>
+    <div class="ch-strip-inner" style="grid-template-columns: repeat(4, 1fr);">
+      <div><img src="images/vietnam/18311048233246399.jpg" alt="Hang En Stream" style="object-position: 40% center;" /></div>
+      <div><img src="images/vietnam/IMG_4404.jpg" alt="Hang En Trekking" style="object-position: 38% center; transform: scale(1.12); transform-origin: 38% center; transition: transform 0.6s ease;" onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1.12)'" /></div>
+      <div><img src="images/vietnam/IMG_4433.jpg" alt="Hang En River" style="object-position: left center; transform: scale(1.25) translateX(-18%); transform-origin: left center; transition: transform 0.6s ease;" onmouseover="this.style.transform='scale(1.28) translateX(-18%)'" onmouseout="this.style.transform='scale(1.25) translateX(-18%)'" /></div>
+      <div><img src="images/vietnam/IMG_4463.jpg" alt="Hang En Cave Camp" /></div>
+    </div>
+  </div>
+
+  <!-- ══ CHAPTER BREAK 04 ══ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">04</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <p class="ch-break-heading">Hang En Cave — Day 2</p>
+      <p class="ch-break-sub">第二天上午，我們沿著洞穴深處前行。鐘乳石、古老化石、層疊的石梯田，以及倒掛的蝙蝠群，交織成一場視覺盛宴。回程最後一個半小時的陡坡最是虐心，體力燃盡的狼狽，卻也成了冒險最難忘的註腳。</p>
+    </div>
+  </div>
+
+  <!-- ══ FRAME 06 — CH04 TRIPLE ══ -->
+  <div class="ch-triple">
+    <div><img src="images/vietnam/ch4_cave_climb.jpg" alt="Cave Climbing" /></div>
+    <div><img src="images/vietnam/18305413909217153.jpg" alt="Cave Exit Celebration" /></div>
+    <div><img src="images/vietnam/18077860294946678_ch4.jpg" alt="Jungle Trek" /></div>
+  </div>
+
+  <!-- ══ CH04 SPLIT — 第二天敘事 ══ -->
+  <section class="ch-split">
+    <div class="ch-split-text fi">
+      <p class="ch-split-label">Beyond the Adventure: Coexistence</p>
+      <p class="ch-split-title">探險的終點，是共生的起點</p>
+      <p class="ch-split-keytxt">在失去訊號的三十個小時裡，<br><em>重新與世界連線。</em></p>
+      <p class="ch-split-body">
+        整趟旅程幾乎全程斷訊，這場被動的數位排毒，讓感官回到最原始的狀態，只剩泥濘小徑、溪流流動與自然的呼吸聲。在沒有訊號的三十個小時裡，我們徹底沉浸於大自然的壯闊懷抱。<br><br>
+        結束探險後回到 Oxalis Adventure Homebase，洗去一身疲憊，與一期一會的團友們道別，在搭上回河內的臥鋪巴士前，也在這享用最後一餐峰牙風味。<br><br>
+        這趟旅程中，深刻體會到 Oxalis Adventure 的用心：專業導遊與完整後援團隊的全程支援，讓冒險毫無後顧之憂；更難能可貴的是，部分團費投入了洞穴保育與社區回饋，創造就業並落實民生建設。這段旅程不只是個人冒險，更是一份支持環境與地方共生的力量。
+      </p>
+    </div>
+    <div class="ch-split-img" style="display: flex; align-items: center; justify-content: center; padding: 3rem; background: var(--bg-page);">
+      <div class="ch-split-2x2" style="width: 650px; height: 650px; flex-shrink: 0;">
+        <div><img src="images/vietnam/ch4_medal_ceremony.jpg" alt="Medal Ceremony" /></div>
+        <div><img src="images/vietnam/18081062401931122.jpg" alt="Coca Cola" /></div>
+        <div><img src="images/vietnam/ch4_medal.jpg" alt="Medal" /></div>
+        <div><img src="images/vietnam/18368489536146649.jpg" alt="Oxalis Sign" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DAYS IN FRAME ══ -->
+  <div class="gallery-intro fi">
+    <span class="gallery-intro-label">Days in Frame</span>
+    <div class="gallery-intro-line"></div>
+  </div>
+  <div class="photo-gallery">
+    <div class="pg-grid">
+      <!-- Row 1: 城市與美食 -->
+      <div><img src="images/vietnam/18132523702439024.jpg" /></div>
+      <div><img src="images/vietnam/18087774073757924.jpg" /></div>
+      <div><img src="images/vietnam/18072935528023058.jpg" /></div>
+      <div><img src="images/vietnam/17990482952831248.jpg" /></div>
+      <!-- Row 2: 叢林與戶外 -->
+      <div><img src="images/vietnam/17976611597866231.jpg" /></div>
+      <div><img src="images/vietnam/17937999365939238.jpg" /></div>
+      <div><img src="images/vietnam/18041599349375246.jpg" /></div>
+      <div><img src="images/vietnam/18065310029219813.jpg" style="object-position: 20% 42%; transform: scale(1.2); transform-origin: 20% 42%; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.23)'" onmouseout="this.style.transform='scale(1.2)'" /></div>
+      <!-- Row 3: 洞穴探險 -->
+      <div><img src="images/vietnam/17941971069026257.jpg" /></div>
+      <div><img src="images/vietnam/F956BDBD-CEF3-48CB-843D-A91B89FDE70D.jpg" style="object-position: 30% 20%;" /></div>
+      <div><img src="images/vietnam/18038950565427416.jpg" /></div>
+      <div><img src="images/vietnam/17922788403121168.jpg" /></div>
+      <!-- Row 4: 旅途片段 -->
+      <div><img src="images/vietnam/18086012110852509.jpg" /></div>
+      <div><img src="images/vietnam/17853106206519481.jpg" /></div>
+      <div><img src="images/vietnam/IMG_8622.JPG" /></div>
+      <div><img src="images/vietnam/9BCF9B82-17F2-4429-9CE6-B5242F119196.jpg" style="object-position: center 13%;" /></div>
+    </div>
+  </div>
+
+  <!-- ══ FRAME 07 — SIGNATURE MOMENT ══ -->
+  <section class="signature">
+    <div class="sig-bg" style="background-image: url('images/vietnam/signature_landscape.jpg'); background-size: cover; background-position: center; animation: sig-zoom 20s ease-in-out infinite alternate;">
+    </div>
+    <div class="sig-overlay"></div>
+    <div class="sig-content" id="sigContent">
+      <p class="sig-text">Left the exhaustion in the mud,<br><em>brought the light back from the deep.</em></p>
+    </div>
+  </section>
+
+  <!-- ══ FRAME 08 — FIELD NOTES ══ -->
+  <section class="field-notes" style="background:var(--bg-page);padding:80px var(--margin);">
+    <div class="fi" style="margin-bottom:3rem;">
+      <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.8rem;">Field Notes</p>
+      <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text-main);margin-bottom:0.4rem;">那些沒有被寫進主故事的片段</p>
+    </div>
+    <div class="fi" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch;">
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🇳🇱</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">被荷蘭人包圍的體感</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">先是一日遊全是荷蘭人，恆恩洞又遇見兩個荷蘭家庭。只能說：荷蘭的越南觀光宣傳，肯定是神等級。</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🚌</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">VVIP 臥鋪巴士—接送司機的膽識</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">高爾夫球車接送，塞進 6 人與過載行李，在街道間高速穿梭——內心一路大聲尖叫。</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🪞</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">西方人眼中，年紀少十歲</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">這是亞洲人的集體外掛，可惜，體力騙不了人。</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">🥥🍉</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">店員的英文自由發揮</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">椰子汁被介紹成 Watermelon Juice，蒜片則是 Onion，一切靠默契修正。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FRAME 09 — CLOSING ══ -->
+  <section class="closing">
+    <div class="closing-text">
+      <h2 class="closing-h fi">We did not just travel.</h2>
+      <p class="closing-body fi fi-delay-1">
+        我們離開的不是地方，<br>
+        而是某種熟悉的自己。
+      </p>
+      <p class="closing-line fi fi-delay-2">Something stayed behind.</p>
+    </div>
+    <div class="closing-videos fi">
+      <video src="images/vietnam/IMG_4119.mp4" poster="images/vietnam/poster_4119.jpg" controls playsinline preload="metadata"
+        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+      <video src="images/vietnam/IMG_4319.mp4" poster="images/vietnam/poster_4319.jpg" controls playsinline preload="metadata"
+        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+    </div>
+  </section>
+
+  <!-- ══ BACK LINK ══ -->
+  <div class="back-link-bar">
+    <a href="journeys.html" class="back-link">← All Journeys</a>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <a href="index.html" class="footer-logo">
+      <img src="images/logo.svg" alt="heyyysia" />
+    </a>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('hamburgerBtn').classList.toggle('open');
+    }
+
+    const fiEls = document.querySelectorAll('.fi');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    fiEls.forEach(el => io.observe(el));
+
+    const sigEl = document.getElementById('sigContent');
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) sigEl.classList.add('in'); });
+    }, { threshold: 0.4 }).observe(sigEl);
+
+    // Field Notes drag scroll
+    const fnScroll = document.getElementById('fnScroll');
+    let isDown = false, startX, scrollLeft;
+    fnScroll.addEventListener('mousedown', e => { isDown = true; fnScroll.classList.add('grabbing'); startX = e.pageX - fnScroll.offsetLeft; scrollLeft = fnScroll.scrollLeft; });
+    fnScroll.addEventListener('mouseleave', () => { isDown = false; fnScroll.classList.remove('grabbing'); });
+    fnScroll.addEventListener('mouseup', () => { isDown = false; fnScroll.classList.remove('grabbing'); });
+    fnScroll.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - fnScroll.offsetLeft; fnScroll.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+  </script>
+
+</body>
+</html>

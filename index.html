@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>heyyysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.svg" alt="heyyysia" class="logo-img" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">HOME</a>
+      <a href="journeys.html">JOURNEYS</a>
+      <a href="#about">ABOUT US</a>
+      <a href="contact.html">SAY HELLO</a>
+    </nav>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <button class="search-btn" aria-label="搜尋" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="選單" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 手機選單 -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active">HOME</a>
+    <a href="journeys.html">JOURNEYS</a>
+    <a href="#about">ABOUT US</a>
+    <a href="contact.html">SAY HELLO</a>
+  </div>
+
+  <!-- 搜尋列 -->
+  <div class="search-bar" id="searchBar">
+    <input type="text" placeholder="搜尋旅程、地點..." id="searchInput" />
+    <button onclick="toggleSearch()"><i class="fas fa-times"></i></button>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg">
+      <img src="images/18052955750207024.jpg" alt="hero" />
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">heyyysia</h1>
+      <p class="hero-tagline">we didn't go far to escape,<br>we went to feel something</p>
+    </div>
+  </section>
+
+  <!-- Recent Trips -->
+  <section class="trips-section">
+    <div class="trips-header">
+      <h2 class="section-heading">我們的旅程</h2>
+      <div class="trip-filter-tags">
+        <span class="filter-tag exploration">● 外向探索 exploration</span>
+        <span class="filter-tag inner-journey">● 內在旅程 inner journey</span>
+        <span class="filter-tag aesthetic">● 日常出走 everyday escape</span>
+      </div>
+      <a href="journeys.html" class="view-all-link">view all journeys →</a>
+    </div>
+    <div class="trips-layout">
+      <div class="trips-carousel">
+        <div class="carousel-track" id="carouselTrack"></div>
+        <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">&#8249;</button>
+        <button class="carousel-btn carousel-next" onclick="changeSlide(1)">&#8250;</button>
+      </div>
+      <div class="timeline-scroll-wrapper">
+          <div class="trips-timeline" id="tripsTimeline"></div>
+          <div class="plane-track" id="planeTrack">
+            <div class="plane-thumb" id="planeThumb"><i class="fas fa-plane"></i></div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="map-section">
+    <div class="map-left">
+      <h2 class="map-heading">a map of<br>where we've been</h2>
+      <p class="map-sub">not everywhere,<br>but enough to quietly stay with us.</p>
+      <div class="map-legend">
+        <p class="legend-title">three ways of seeing the world.</p>
+        <div class="legend-item"><span class="dot exploration-dot"></span>外向探索&nbsp;&nbsp;&nbsp;exploration</div>
+        <div class="legend-item"><span class="dot inner-dot"></span>內在旅程&nbsp;&nbsp;&nbsp;inner journey</div>
+        <div class="legend-item"><span class="dot aesthetic-dot"></span>日常出走&nbsp;&nbsp;&nbsp;everyday escape</div>
+      </div>
+    </div>
+    <div class="map-right">
+      <svg id="worldMap"></svg>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-section" id="about">
+    <div class="about-photo">
+      <div class="about-photo-grid">
+        <div class="about-photo-item" id="photoInfj">
+          <img src="images/about-1.jpg" alt="INFJ" />
+        </div>
+        <div class="about-photo-item" id="photoIntp">
+          <img src="images/about-2.jpg" alt="INTP" />
+        </div>
+        <div class="about-photo-item" id="photoIsfp">
+          <img src="images/about-3.jpg" alt="ISFP" />
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <h2 class="about-heading">ABOUT US</h2>
+      <p class="about-sub">three girls, many stories</p>
+      <p class="about-desc">we're different,<br>but somehow always in sync.</p>
+      <div class="mbti-cards">
+        <div class="mbti-card infj-card">
+          <div class="mbti-icon">✦</div>
+          <p class="mbti-type">INFJ</p>
+          <p class="mbti-title">the observer</p>
+          <p class="mbti-sub">sees ahead.</p>
+          <p class="mbti-hover">plans quietly,<br>feels everything.</p>
+        </div>
+        <div class="mbti-card intp-card">
+          <div class="mbti-icon">○</div>
+          <p class="mbti-type">INTP</p>
+          <p class="mbti-title">the thinker</p>
+          <p class="mbti-sub">questions why.</p>
+          <p class="mbti-hover">overthinks,<br>then figures it out.</p>
+        </div>
+        <div class="mbti-card isfp-card">
+          <div class="mbti-icon">〜</div>
+          <p class="mbti-type">ISFP</p>
+          <p class="mbti-title">the feeler</p>
+          <p class="mbti-sub">feels deeply.</p>
+          <p class="mbti-hover">lives in the moment,<br>beautifully.</p>
+        </div>
+      </div>
+      <p class="about-quote">we'll keep going,<br>and let it become what it is.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="index.html" class="footer-logo">
+      <img src="images/logo.svg" alt="heyyysia" />
+    </a>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
+  <script src="js/map.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

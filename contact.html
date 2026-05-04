@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Say Hello — heyyysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.svg" alt="heyyysia" class="logo-img" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="journeys.html">JOURNEYS</a>
+      <a href="index.html#about">ABOUT US</a>
+      <a href="contact.html" class="active">SAY HELLO</a>
+    </nav>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="選單" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 手機選單 -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="journeys.html">JOURNEYS</a>
+    <a href="index.html#about">ABOUT US</a>
+    <a href="contact.html" class="active">SAY HELLO</a>
+  </div>
+
+  <!-- 主體 -->
+  <main class="contact-main">
+
+    <!-- 左側文案 -->
+    <div class="contact-left">
+      <p class="contact-eyebrow">get in touch</p>
+      <h1 class="contact-heading">say<br><em>hello.</em></h1>
+      <p class="contact-desc">
+        whether you have a question,<br>
+        a collab idea,<br>
+        or just want to share<br>
+        where you've been —<br>
+        we'd love to hear from you.
+      </p>
+      <div class="contact-socials">
+        <a href="https://www.instagram.com/ah.heyyysia/" target="_blank">
+          <i class="fab fa-instagram"></i> @ah.heyyysia
+        </a>
+        <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank">
+          <i class="fab fa-facebook-f"></i> heyyysia
+        </a>
+      </div>
+    </div>
+
+    <!-- 右側表單 -->
+    <div class="contact-right">
+      <form class="contact-form" action="https://formspree.io/wenchenlee1127@gmail.com" method="POST">
+        <div class="form-group">
+          <label for="name">your name</label>
+          <input type="text" id="name" name="name" placeholder="what do we call you?" required />
+        </div>
+        <div class="form-group">
+          <label for="email">email</label>
+          <input type="email" id="email" name="email" placeholder="so we can write back" required />
+        </div>
+        <div class="form-group">
+          <label for="message">message</label>
+          <textarea id="message" name="message" rows="6" placeholder="tell us anything ↓" required></textarea>
+        </div>
+        <button type="submit" class="contact-submit">send it →</button>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer-tagline">we'll keep going,</p>
+    <p class="footer-tagline">and let it become what it is.</p>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn  = document.getElementById('hamburgerBtn');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
