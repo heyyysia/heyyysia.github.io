@@ -767,6 +767,16 @@ a { text-decoration: none; color: inherit; }
   to   { transform: translateX(5px); }
 }
 
+@keyframes infj-pulse {
+  0%, 100% { transform: scale(1.06); filter: drop-shadow(0 0 3px rgba(0,0,0,0.12)); }
+  50%       { transform: scale(1.14); filter: drop-shadow(0 0 8px rgba(0,0,0,0.28)); }
+}
+
+@keyframes intp-think {
+  0%, 100% { transform: rotate(-4deg); }
+  50%       { transform: rotate(6deg); }
+}
+
 /* 共用 hover 文字 */
 .mbti-card:hover .mbti-title,
 .mbti-card.active .mbti-title { color: #111; }
@@ -780,14 +790,13 @@ a { text-decoration: none; color: inherit; }
 /* INFJ active */
 .infj-card.active .mbti-icon {
   opacity: 1;
-  transform: scale(1.08);
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.18));
+  animation: infj-pulse 2.2s ease-in-out infinite;
 }
 
 /* INTP active */
 .intp-card.active .mbti-icon {
   opacity: 1;
-  transform: rotate(5deg);
+  animation: intp-think 1.8s ease-in-out infinite;
 }
 
 /* ISFP active */
