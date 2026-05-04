@@ -773,8 +773,8 @@ a { text-decoration: none; color: inherit; }
 }
 
 @keyframes intp-think {
-  0%, 100% { transform: rotate(-4deg); }
-  50%       { transform: rotate(6deg); }
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.4); }
 }
 
 /* 共用 hover 文字 */
@@ -916,7 +916,9 @@ a { text-decoration: none; color: inherit; }
 
   /* About */
   .about-section { grid-template-columns: 1fr; }
-  .about-photo img { max-height: 380px; object-fit: cover; width: 100%; }
+  .about-photo { height: 260px; overflow: hidden; }
+  .about-photo-grid { height: 260px; }
+  .about-photo img { height: 260px; object-fit: cover; width: 100%; }
   .about-content { padding: 3rem 1.5rem; }
   .mbti-cards { gap: 1rem; }
 }

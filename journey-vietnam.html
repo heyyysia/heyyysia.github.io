@@ -215,6 +215,10 @@
       .fn-scroll { padding: 0 var(--margin) 3rem; }
       html, body { max-width: 100%; overflow-x: hidden; }
       .fn-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+      .ch-ts-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+      .ripple-wrap img { max-width: 100% !important; width: 100% !important; height: auto !important; }
+      .ch-strip-inner { grid-template-columns: repeat(2, 1fr) !important; height: auto !important; }
+      .ch-strip-inner > div img { height: 160px !important; object-fit: cover !important; }
       .ch-split-body span { white-space: normal !important; }
       .ch-split-img > div { max-width: 100% !important; overflow: hidden; }
       .ch-split-img > div > img { height: auto !important; width: 100% !important; }
@@ -442,7 +446,7 @@
 
   <!-- ══ CH03 TEXT + STRIP ══ -->
   <div class="ch-text-strip fi">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem;">
+    <div class="ch-ts-grid" style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem;">
     <div class="ch-ts-text">
       <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);">DAY 1 - Camping in the Cave</p>
       <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;line-height:1.4;color:var(--text-main);">在洞穴深處，退回最原始的安寧。</p>
