@@ -204,6 +204,17 @@
     .journey-card[data-hidden] {
       display: none;
     }
+
+    @media (max-width: 900px) {
+      .filter-bar { padding: 0 1.5rem; gap: 1.5rem; overflow-x: auto; }
+      .filter-btn { white-space: nowrap; flex-shrink: 0; }
+      .journeys-grid { grid-template-columns: repeat(2, 1fr); padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .journeys-grid { grid-template-columns: 1fr; }
+      .journey-card { height: 260px; }
+    }
   </style>
 </head>
 <body>
