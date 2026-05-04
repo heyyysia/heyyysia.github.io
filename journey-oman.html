@@ -892,6 +892,16 @@
       .collage-grid { grid-template-columns: repeat(2, 1fr); }
       .collage-cell:nth-child(n) img { height: 200px; }
       .site-footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      html, body { max-width: 100%; overflow-x: hidden; }
+      .fn-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+      .ch-split-body span { white-space: normal !important; }
+      .ch-split-img > div { max-width: 100% !important; overflow: hidden; }
+      .ch-split-img > div > img { height: auto !important; width: 100% !important; }
+      .pg-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .closing { grid-template-columns: 1fr; }
+      .closing-text { padding: 3rem var(--margin); }
+      .closing-videos { flex-wrap: wrap; padding: 3rem 1.5rem; gap: 16px; }
+      .closing-videos video { width: 100% !important; height: auto !important; }
     }
 
     @media (max-width: 480px) {
@@ -1116,7 +1126,7 @@
       <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.8rem;">Field Notes</p>
       <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text-main);margin-bottom:0.4rem;">那些沒有被寫進主故事的片段</p>
     </div>
-    <div class="fi" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch;">
+    <div class="fi fn-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch;">
       <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
         <span style="font-size:22px;display:flex;align-items:center;">🐪</span>
         <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">騎駱駝，比想像中可怕</p>
