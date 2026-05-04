@@ -238,6 +238,22 @@ mbtiCards.forEach((card, i) => {
   });
 });
 
+// 手機點擊：暫停輪播，顯示被點的卡，3 秒後恢復
+mbtiCards.forEach((card, i) => {
+  card.addEventListener('click', () => {
+    if (window.matchMedia('(hover: none)').matches) {
+      clearInterval(mbtiTimer);
+      mbtiTimer = null;
+      mbtiCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      triggerPhotoFloat(i);
+      setTimeout(() => {
+        if (!mbtiTimer) startMbtiRotation();
+      }, 3000);
+    }
+  });
+});
+
 // 直式時間軸
 const destTimeline = document.getElementById('destTimeline');
 if (destTimeline) {
