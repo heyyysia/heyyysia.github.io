@@ -894,6 +894,12 @@ a { text-decoration: none; color: inherit; }
   .trips-carousel { aspect-ratio: 4/3; width: 100%; }
   .timeline-scroll-wrapper { max-height: 320px; }
 
+  /* Chapter Break */
+  .ch-break { flex-direction: column; align-items: flex-start; gap: 1.2rem; padding: 3rem 1.5rem; }
+  .ch-break-num { font-size: 64px; }
+  .ch-break-sep { display: none; }
+  .ch-break-sub { max-width: 100%; }
+
   /* Map */
   .map-section { grid-template-columns: 1fr; }
   .map-left { padding: 2.5rem 1.5rem 1.5rem; }
