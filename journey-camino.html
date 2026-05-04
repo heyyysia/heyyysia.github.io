@@ -206,11 +206,17 @@
       .closing-h { font-size: 28px; }
       .ch-keytxt { font-size: 26px; }
       .pg-grid { grid-template-columns: repeat(2, 1fr); }
+      .fn-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .ch-split-img { width: 100% !important; margin-left: 0 !important; }
+      .closing-videos { flex-wrap: wrap; padding: 3rem 1.5rem; gap: 16px; }
+      .closing-videos video { width: 100% !important; height: auto !important; }
     }
     @media (max-width: 480px) {
       .hero-h1 { font-size: 36px !important; }
       .ch-split-keytxt { font-size: 24px; }
       .sig-text { font-size: 22px; }
+      .fn-grid { grid-template-columns: 1fr !important; }
+      .pg-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -558,7 +564,7 @@
       <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.8rem;">Field Notes</p>
       <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text-main);">那些沒有被寫進主故事的片段</p>
     </div>
-    <div class="fi" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch;">
+    <div class="fi fn-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch;">
       <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
         <span style="font-size:22px;display:flex;align-items:center;">🐚</span>
         <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">無處不在的「指引貝殼」</p>

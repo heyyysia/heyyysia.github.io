@@ -887,9 +887,11 @@ a { text-decoration: none; color: inherit; }
 
   /* Trips */
   .trips-section { padding: 3rem 1.5rem; }
-  .trips-header { flex-wrap: wrap; gap: 0.8rem; }
+  .trips-header { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+  .trip-filter-tags { flex-wrap: wrap; gap: 0.5rem 1.2rem; }
+  .filter-tag { white-space: nowrap; }
   .trips-layout { grid-template-columns: 1fr; gap: 2rem; }
-  .trips-carousel { aspect-ratio: 4/3; }
+  .trips-carousel { aspect-ratio: 4/3; width: 100%; }
   .timeline-scroll-wrapper { max-height: 320px; }
 
   /* Map */
