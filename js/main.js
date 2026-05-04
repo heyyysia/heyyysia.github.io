@@ -13,6 +13,13 @@ function toggleMenu() {
   btn.classList.toggle('open');
 }
 
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+  });
+});
+
 // 旅程資料（由舊到新）
 const trips = [
   {
