@@ -962,15 +962,16 @@ a { text-decoration: none; color: inherit; }
 
   /* About */
   .about-heading { font-size: 1.8rem; }
+  .about-content { padding: 2rem 1rem; }
   .mbti-cards { grid-template-columns: 1fr; gap: 1.2rem; }
   .mbti-x { display: none; }
-  .mbti-card { display: flex; flex-direction: row; align-items: flex-start; gap: 0.5rem; }
-  .mbti-icon { flex-shrink: 0; width: 1.4rem; text-align: center; margin-bottom: 0; font-size: 1rem; }
-  .mbti-text-block { display: grid; grid-template-columns: 2.5rem 4.5rem 1fr; column-gap: 0.4rem; row-gap: 0.1rem; flex: 1; min-width: 0; }
+  .mbti-card { display: flex; flex-direction: row; align-items: flex-start; gap: 0.4rem; }
+  .mbti-icon { flex-shrink: 0; width: 1.2rem; text-align: center; margin-bottom: 0; font-size: 0.9rem; }
+  .mbti-text-block { display: grid; grid-template-columns: 2.2rem 4.8rem 5rem 1fr; column-gap: 0.3rem; row-gap: 0; flex: 1; min-width: 0; }
+  .mbti-desc-row { display: contents; }
   .mbti-type, .mbti-title, .mbti-sub { margin-bottom: 0; align-self: baseline; }
-  .mbti-sub { opacity: 1; flex-shrink: 0; }
-  .mbti-desc-row { display: flex; gap: 0.4rem; align-items: baseline; }
-  .mbti-hover { display: block; opacity: 0.35; margin-bottom: 0; flex: 1; transition: opacity 0.4s; }
+  .mbti-sub { opacity: 1; }
+  .mbti-hover { display: block; opacity: 0.35; margin-bottom: 0; align-self: baseline; transition: opacity 0.4s; }
   .mbti-card.active .mbti-hover { opacity: 1; }
 
   /* Footer */
