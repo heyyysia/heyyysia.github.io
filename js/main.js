@@ -1,10 +1,3 @@
-// 搜尋列
-function toggleSearch() {
-  const bar = document.getElementById('searchBar');
-  bar.classList.toggle('open');
-  if (bar.classList.contains('open')) document.getElementById('searchInput').focus();
-}
-
 // 手機選單
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
