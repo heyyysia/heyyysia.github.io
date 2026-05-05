@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[COUNTRY] · [MONTH YEAR] — heyyysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A063;
+      --dark: #111110;
+      --bg-page: #F7F4EF;
+      --text-main: #1A1714;
+      --text-muted: #8A8278;
+      --border-light: #E2DBD1;
+      --margin: 120px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg-page); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* Fade-in util */
+    .fi {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .fi.in { opacity: 1; transform: translateY(0); }
+    .fi-delay-1 { transition-delay: 0.15s; }
+    .fi-delay-2 { transition-delay: 0.3s; }
+    .fi-delay-3 { transition-delay: 0.45s; }
+
+    /* ═══ NAVBAR ═══ */
+    .navbar { z-index: 200; }
+
+    /* ═══════════════════════════
+       CHAPTER BREAK — 章節引言
+    ═══════════════════════════ */
+    .ch-break {
+      background: var(--bg-page);
+      padding: 5rem var(--margin);
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .ch-break-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 96px;
+      font-weight: 300;
+      color: #EAE4DA;
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .ch-break-sep {
+      width: 1px;
+      height: 64px;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+    .ch-break-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .ch-break-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .ch-break-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-main);
+    }
+    .ch-break-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 380px;
+    }
+
+    /* 照片集分節 */
+    .gallery-intro {
+      background: var(--bg-page);
+      padding: 4rem var(--margin) 3rem;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .gallery-intro-label {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .gallery-intro-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-light);
+    }
+
+    /* ═══════════════════════════
+       FRAME 01 — HERO
+    ═══════════════════════════ */
+    .hero {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 38%;
+      animation: hero-zoom 8s ease-in-out forwards;
+    }
+    @keyframes hero-zoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.05); }
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.60) 0%,
+        rgba(0,0,0,0.18) 50%,
+        rgba(0,0,0,0.05) 100%);
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0 var(--margin) 5rem;
+      color: #fff;
+      animation: hero-text 0.8s ease 0.4s both;
+    }
+    @keyframes hero-text {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 0.28rem 0.85rem;
+      border-radius: 2px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 140px;
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-meta-line {
+      margin-top: 1.4rem;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.08em;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.2rem; right: var(--margin);
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: scroll-hint 2.5s ease-in-out infinite;
+    }
+    @keyframes scroll-hint {
+      0%, 100% { opacity: 0.35; transform: translateY(0); }
+      50%       { opacity: 0.7;  transform: translateY(5px); }
+    }
+
+    /* ═══════════════════════════
+       FRAME 02 — CONTEXT
+    ═══════════════════════════ */
+    .context {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      background: var(--bg-page);
+    }
+
+    .ctx-img { overflow: hidden; }
+    .ctx-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      aspect-ratio: 4/5;
+      display: block;
+    }
+
+    .ctx-text {
+      padding: 7rem var(--margin) 7rem 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    .ctx-intro {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 160%;
+      color: var(--text-main);
+      max-width: 420px;
+    }
+
+    .ctx-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+      max-width: 420px;
+    }
+    .meta-row { display: flex; gap: 2rem; align-items: baseline; }
+    .meta-label {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      width: 70px;
+      flex-shrink: 0;
+    }
+    .meta-val {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════
+       FRAME 03 — CHAPTER FULL BLEED
+    ═══════════════════════════ */
+    .ch-fullbleed {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .ch-fb-img {
+      position: absolute; inset: 0;
+    }
+    .ch-fb-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ch-fb-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.30);
+    }
+
+    .ch-fb-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 var(--margin) 5rem;
+      color: #fff;
+    }
+
+    .ch-label {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1rem;
+    }
+
+    .ch-keytxt {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 400;
+      line-height: 1.25;
+      max-width: 580px;
+    }
+    .ch-keytxt em { font-style: italic; }
+
+    /* ═══════════════════════════
+       FRAME 04 — CHAPTER SPLIT
+    ═══════════════════════════ */
+    .ch-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      background: var(--bg-page);
+    }
+    .ch-split.img-right .ch-split-text { order: 1; }
+    .ch-split.img-right .ch-split-img  { order: 2; }
+
+    .ch-split-text {
+      padding: 6rem var(--margin) 6rem 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.8rem;
+    }
+    .ch-split.img-right .ch-split-text {
+      padding: 6rem 6rem 6rem var(--margin);
+    }
+
+    .ch-split-label {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .ch-split-keytxt {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--text-main);
+    }
+    .ch-split-keytxt em { font-style: italic; }
+
+    .ch-split-body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #5A5450;
+      max-width: 400px;
+    }
+
+    .ch-split-img { overflow: hidden; }
+    .ch-split-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+      display: block;
+    }
+
+    /* ═══════════════════════════
+       Days in Frame — 正方形 4 欄，有框住感
+    ═══════════════════════════ */
+    .photo-gallery {
+      background: var(--bg-page);
+      padding: 0 var(--margin) 5rem;
+    }
+
+    .pg-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+
+    .pg-grid > div {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .pg-grid > div img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .pg-grid > div:hover img { transform: scale(1.03); }
+
+    /* ═══════════════════════════
+       FRAME 06 — SIGNATURE MOMENT
+    ═══════════════════════════ */
+    .signature {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sig-bg { position: absolute; inset: 0; }
+    .sig-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      animation: sig-zoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes sig-zoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.06); }
+    }
+
+    .sig-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.48);
+    }
+
+    .sig-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      max-width: 680px;
+      padding: 0 2rem;
+      opacity: 0;
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      transform: translateY(20px);
+    }
+    .sig-content.in { opacity: 1; transform: translateY(0); }
+
+    .sig-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    .sig-text em { font-style: italic; }
+
+    /* ═══════════════════════════
+       FRAME 08 — CLOSING (50/50)
+    ═══════════════════════════ */
+    .closing {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .closing-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 4rem 7rem var(--margin);
+      gap: 2rem;
+    }
+
+    .closing-videos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 5rem 3rem;
+      background: #EDEAE3;
+    }
+
+    .closing-h {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 180%;
+      color: var(--text-main);
+    }
+    .closing-h em { font-style: italic; }
+
+    .closing-body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 180%;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .closing-line {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    /* ═══ RWD ═══ */
+    @media (max-width: 900px) {
+      :root { --margin: 2rem; }
+      .context, .ch-split, .closing { grid-template-columns: 1fr; }
+      .ctx-text, .closing-text { padding: 3rem var(--margin); }
+      .ch-split .ch-split-text,
+      .ch-split.img-right .ch-split-text { padding: 3rem var(--margin); }
+      .hero-h1 { font-size: 72px; }
+      .sig-text { font-size: 28px; }
+      .closing-h { font-size: 28px; }
+      .ch-keytxt { font-size: 26px; }
+      .pg-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .back-link-bar {
+      padding: 1rem var(--margin) 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      text-decoration: none;
+      width: fit-content;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--muted);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .back-link:hover { color: var(--text); border-color: var(--text); }
+    .footer { border-top: none; padding-top: 0; margin-top: -2rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="images/logo.svg" alt="heyyysia" class="logo-img" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="journeys.html">JOURNEYS</a>
+      <a href="index.html#about">ABOUT US</a>
+      <a href="contact.html">SAY HELLO</a>
+    </nav>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="menu-close" onclick="toggleMenu()" aria-label="關閉選單">✕</button>
+    <a href="index.html">HOME</a>
+    <a href="journeys.html">JOURNEYS</a>
+    <a href="index.html#about">ABOUT US</a>
+    <a href="contact.html">SAY HELLO</a>
+    <div class="menu-social">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FRAME 01 — HERO
+       換：src 圖片、[TAG]、[COUNTRY]、[旅程簡介]
+  ══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="images/[FOLDER]/[HERO_IMAGE].jpg" alt="[COUNTRY]" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tag">[TAG]</span><!-- Exploration / Inner Journey / Everyday Escape -->
+      <h1 class="hero-h1">[COUNTRY]</h1>
+      <p class="hero-meta-line">[中文國名]｜[旅行方式] &nbsp;·&nbsp; [日期區間]</p>
+    </div>
+    <a class="hero-scroll" href="#context"><i class="fas fa-chevron-down"></i> scroll</a>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FRAME 02 — CONTEXT
+       換：圖片、簡介文字、Duration / Route / Mode
+  ══════════════════════════════════════ -->
+  <section class="context" id="context">
+    <div class="ctx-img fi">
+      <img src="images/[FOLDER]/[CONTEXT_IMAGE].jpg" alt="[COUNTRY]" />
+    </div>
+    <div class="ctx-text">
+      <p class="ctx-intro fi">
+        [一兩句旅程簡介]<br>
+        [可用詩意的方式描述]
+      </p>
+      <div class="ctx-meta fi fi-delay-1">
+        <div class="meta-row">
+          <span class="meta-label">Duration</span>
+          <span class="meta-val">[X days]</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Route</span>
+          <span class="meta-val">[城市 → 城市 → 城市]</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Mode</span>
+          <span class="meta-val">[Self-drive / Train / Hiking...]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CHAPTER BREAK 01
+       換：數字、標題、副標（描述這段旅程的簡短說明）
+  ══════════════════════════════════════ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">01</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">[Chapter 01 標題]</span>
+      <span class="ch-break-sub">[這一章節的簡短說明，1–2句]</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FRAME 03 — CHAPTER 01 FULL BLEED
+       換：圖片、引言文字
+  ══════════════════════════════════════ -->
+  <section class="ch-fullbleed">
+    <div class="ch-fb-img">
+      <img src="images/[FOLDER]/[CH01_IMAGE].jpg" alt="Chapter 01" />
+    </div>
+    <div class="ch-fb-overlay"></div>
+    <div class="ch-fb-content fi">
+      <p class="ch-keytxt">[引言第一句]<br><em>[引言第二句（斜體）]</em></p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CHAPTER BREAK 02
+  ══════════════════════════════════════ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">02</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">[Chapter 02 標題]</span>
+      <span class="ch-break-sub">[這一章節的簡短說明，1–2句]</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FRAME 04 — CHAPTER 02 SPLIT（圖在右）
+       換：文字引言、說明文、圖片
+  ══════════════════════════════════════ -->
+  <section class="ch-split img-right fi">
+    <div class="ch-split-text">
+      <p class="ch-split-keytxt">[引言，可中文]<br><em>[斜體第二句]</em></p>
+      <p class="ch-split-body">[這段的說明文字，2–3句英文或中文皆可]</p>
+    </div>
+    <div class="ch-split-img">
+      <img src="images/[FOLDER]/[CH02_IMAGE].jpg" alt="Chapter 02" />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CHAPTER BREAK 03
+  ══════════════════════════════════════ -->
+  <div class="ch-break fi">
+    <span class="ch-break-num">03</span>
+    <div class="ch-break-sep"></div>
+    <div class="ch-break-meta">
+      <span class="ch-break-eyebrow">Chapter</span>
+      <span class="ch-break-heading">[Chapter 03 標題]</span>
+      <span class="ch-break-sub">[這一章節的簡短說明，1–2句]</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FRAME 05 — CHAPTER 03 FULL BLEED
+  ══════════════════════════════════════ -->
+  <section class="ch-fullbleed">
+    <div class="ch-fb-img">
+      <img src="images/[FOLDER]/[CH03_IMAGE].jpg" alt="Chapter 03" />
+    </div>
+    <div class="ch-fb-overlay"></div>
+    <div class="ch-fb-content fi">
+      <p class="ch-keytxt"><em>[引言第一句（斜體）]</em><br>[引言第二句]</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       GALLERY INTRO
+  ══════════════════════════════════════ -->
+  <div class="gallery-intro fi">
+    <span class="gallery-intro-label">Days in Frame</span>
+    <div class="gallery-intro-line"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       PHOTO GALLERY — 16 張正方形，4×4
+       換：全部 16 張圖片路徑
+  ══════════════════════════════════════ -->
+  <div class="photo-gallery">
+    <div class="pg-grid fi">
+      <div><img src="images/[FOLDER]/[PHOTO_01].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_02].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_03].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_04].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_05].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_06].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_07].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_08].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_09].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_10].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_11].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_12].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_13].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_14].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_15].jpg" loading="lazy" /></div>
+      <div><img src="images/[FOLDER]/[PHOTO_16].jpg" loading="lazy" /></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SIGNATURE MOMENT
+       換：圖片、中心引言
+  ══════════════════════════════════════ -->
+  <section class="signature">
+    <div class="sig-bg">
+      <img src="images/[FOLDER]/[SIGNATURE_IMAGE].jpg" alt="Signature moment" />
+    </div>
+    <div class="sig-overlay"></div>
+    <div class="sig-content" id="sigContent">
+      <p class="sig-text">[引言第一句]<br><em>[引言第二句（斜體）]</em></p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FIELD NOTES — 4 張白底卡片
+       換：emoji、標題、說明文字（共 4 組）
+  ══════════════════════════════════════ -->
+  <section class="field-notes" style="background:var(--bg-page);padding:80px var(--margin);">
+    <div class="fi" style="margin-bottom:3rem;">
+      <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.8rem;">Field Notes</p>
+      <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text-main);margin-bottom:0.4rem;">那些沒有被寫進主故事的片段</p>
+    </div>
+    <div class="fi" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch;">
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">[EMOJI_1]</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">[標題 1]</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">[說明文字，1–2行]</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">[EMOJI_2]</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">[標題 2]</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">[說明文字，1–2行]</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">[EMOJI_3]</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">[標題 3]</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">[說明文字，1–2行]</p>
+      </div>
+      <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
+        <span style="font-size:22px;display:flex;align-items:center;">[EMOJI_4]</span>
+        <p style="font-size:14px;font-weight:500;color:var(--text-main);line-height:1.45;">[標題 4]</p>
+        <p style="font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;">[說明文字，1–2行]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CLOSING — 50/50，文字左、影片右
+       換：結語文字、兩支影片路徑
+  ══════════════════════════════════════ -->
+  <section class="closing">
+    <div class="closing-text">
+      <h2 class="closing-h fi">[結語標題，英文]</h2>
+      <p class="closing-body fi fi-delay-1">
+        [結語說明，中文或英文，2–3行]
+      </p>
+      <p class="closing-line fi fi-delay-2">[結尾斜體句]</p>
+    </div>
+    <div class="closing-videos fi">
+      <video src="images/[FOLDER]/[VIDEO_01].mp4" controls playsinline preload="metadata"
+        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+      <video src="images/[FOLDER]/[VIDEO_02].mp4" controls playsinline preload="metadata"
+        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+    </div>
+  </section>
+
+  <!-- Back Link -->
+  <div class="back-link-bar">
+    <a href="journeys.html" class="back-link">← All Journeys</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a href="index.html" class="footer-logo">
+      <img src="images/logo.svg" alt="heyyysia" />
+    </a>
+    <div class="footer-icons">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('hamburgerBtn').classList.toggle('open');
+    }
+
+    // Fade-in on scroll
+    const fiEls = document.querySelectorAll('.fi');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fiEls.forEach(el => io.observe(el));
+
+    // Signature trigger
+    const sigEl = document.getElementById('sigContent');
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) sigEl.classList.add('in'); });
+    }, { threshold: 0.4 }).observe(sigEl);
+  </script>
+
+  <script src="js/scroll-top.js"></script>
+</body>
+</html>
