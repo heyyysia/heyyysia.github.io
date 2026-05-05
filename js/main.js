@@ -1,17 +1,45 @@
-// 手機選單
+// 手機選單側邊 drawer
 function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const btn  = document.getElementById('hamburgerBtn');
+  const menu    = document.getElementById('mobileMenu');
+  const btn     = document.getElementById('hamburgerBtn');
+  const overlay = document.getElementById('menuOverlay');
   menu.classList.toggle('open');
   btn.classList.toggle('open');
+  if (overlay) overlay.classList.toggle('open');
 }
 
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('hamburgerBtn').classList.remove('open');
+// 建立遮罩層
+(function() {
+  const overlay = document.createElement('div');
+  overlay.id = 'menuOverlay';
+  overlay.className = 'menu-overlay';
+  overlay.addEventListener('click', toggleMenu);
+  document.body.insertBefore(overlay, document.body.firstChild);
+})();
+
+// 加入社群 icon 到選單底部
+(function() {
+  const menu = document.getElementById('mobileMenu');
+  if (!menu) return;
+  const social = document.createElement('div');
+  social.className = 'menu-social';
+  social.innerHTML = '<a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook-f"></i></a>';
+  menu.appendChild(social);
+})();
+
+// 點選連結後關閉選單（事件委派）
+(function() {
+  const menu = document.getElementById('mobileMenu');
+  if (!menu) return;
+  menu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) {
+      menu.classList.remove('open');
+      document.getElementById('hamburgerBtn').classList.remove('open');
+      const overlay = document.getElementById('menuOverlay');
+      if (overlay) overlay.classList.remove('open');
+    }
   });
-});
+})();
 
 // 旅程資料（由舊到新）
 const trips = [
