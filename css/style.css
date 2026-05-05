@@ -967,11 +967,12 @@ a { text-decoration: none; color: inherit; }
   .mbti-x { display: none; }
   .mbti-card { display: flex; flex-direction: row; align-items: flex-start; gap: 0.4rem; }
   .mbti-icon { flex-shrink: 0; width: 1.2rem; text-align: center; margin-bottom: 0; font-size: 0.9rem; }
-  .mbti-text-block { display: grid; grid-template-columns: 2.2rem 4.8rem 5rem 1fr; column-gap: 0.3rem; row-gap: 0; flex: 1; min-width: 0; }
+  .mbti-text-block { display: grid; grid-template-columns: 2rem 6rem 5rem 1fr; column-gap: 0.3rem; row-gap: 0; flex: 1; min-width: 0; }
   .mbti-desc-row { display: contents; }
   .mbti-type, .mbti-title, .mbti-sub { margin-bottom: 0; align-self: baseline; }
+  .mbti-title { white-space: nowrap; }
   .mbti-sub { opacity: 1; }
-  .mbti-hover { display: block; opacity: 0.35; margin-bottom: 0; align-self: baseline; transition: opacity 0.4s; }
+  .mbti-hover { display: block; opacity: 0; margin-bottom: 0; align-self: baseline; transition: opacity 0.5s; }
   .mbti-card.active .mbti-hover { opacity: 1; }
 
   /* Footer */
