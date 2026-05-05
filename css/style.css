@@ -944,12 +944,10 @@ a { text-decoration: none; color: inherit; }
   .about-heading { font-size: 1.8rem; }
   .mbti-cards { grid-template-columns: 1fr; gap: 1.5rem; }
   .mbti-x { display: none; }
-  .mbti-card { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.25rem 1rem; align-items: start; }
-  .mbti-icon { grid-column: 1; grid-row: 1 / 5; align-self: start; margin-bottom: 0; }
-  .mbti-type { grid-column: 2; }
-  .mbti-title { grid-column: 2; }
-  .mbti-sub { grid-column: 2; }
-  .mbti-hover { grid-column: 2; opacity: 0; }
+  .mbti-card { display: flex; flex-direction: row; align-items: flex-start; gap: 1rem; }
+  .mbti-icon { flex-shrink: 0; margin-bottom: 0; }
+  .mbti-text-block { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .mbti-hover { opacity: 0; }
 
   /* Footer */
   .footer-tagline { font-size: 1.2rem; }
