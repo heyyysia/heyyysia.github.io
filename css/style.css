@@ -882,7 +882,6 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   gap: 1.4rem;
   padding: 1.5rem 2rem;
-  margin-top: auto;
 }
 .mobile-menu .menu-social a {
   padding: 0;
