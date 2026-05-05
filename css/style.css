@@ -957,7 +957,8 @@ a { text-decoration: none; color: inherit; }
   .mbti-text-block { display: grid; grid-template-columns: 3rem 6rem 1fr; column-gap: 0.5rem; row-gap: 0.1rem; flex: 1; min-width: 0; }
   .mbti-type, .mbti-title, .mbti-sub { margin-bottom: 0; align-self: baseline; }
   .mbti-sub { opacity: 1; }
-  .mbti-hover { display: block; opacity: 1; margin-bottom: 0; grid-column: 3; }
+  .mbti-hover { display: block; opacity: 0.35; margin-bottom: 0; grid-column: 3; transition: opacity 0.4s; }
+  .mbti-card.active .mbti-hover { opacity: 1; }
 
   /* Footer */
   .footer-tagline { font-size: 1.2rem; }
