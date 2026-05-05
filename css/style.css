@@ -952,12 +952,12 @@ a { text-decoration: none; color: inherit; }
   .about-heading { font-size: 1.8rem; }
   .mbti-cards { grid-template-columns: 1fr; gap: 1.2rem; }
   .mbti-x { display: none; }
-  .mbti-card { display: flex; flex-direction: row; align-items: flex-start; gap: 0.6rem; }
-  .mbti-icon { flex-shrink: 0; margin-bottom: 0; font-size: 1rem; }
-  .mbti-text-block { display: flex; flex-direction: row; flex-wrap: wrap; flex: 1; min-width: 0; gap: 0.1rem 0.5rem; align-items: baseline; }
-  .mbti-type, .mbti-title, .mbti-sub { margin-bottom: 0; }
+  .mbti-card { display: flex; flex-direction: row; align-items: flex-start; gap: 0.5rem; }
+  .mbti-icon { flex-shrink: 0; width: 1.4rem; text-align: center; margin-bottom: 0; font-size: 1rem; }
+  .mbti-text-block { display: grid; grid-template-columns: 3rem 6rem 1fr; column-gap: 0.5rem; row-gap: 0.1rem; flex: 1; min-width: 0; }
+  .mbti-type, .mbti-title, .mbti-sub { margin-bottom: 0; align-self: baseline; }
   .mbti-sub { opacity: 1; }
-  .mbti-hover { display: block; opacity: 1; margin-bottom: 0; }
+  .mbti-hover { display: block; opacity: 1; margin-bottom: 0; grid-column: 3; }
 
   /* Footer */
   .footer-tagline { font-size: 1.2rem; }
