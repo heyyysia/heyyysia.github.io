@@ -206,14 +206,19 @@
     }
 
     @media (max-width: 900px) {
-      .filter-bar { padding: 0 1.5rem; gap: 1.5rem; overflow-x: auto; }
-      .filter-btn { white-space: nowrap; flex-shrink: 0; }
+      .filter-bar { padding: 0 1.5rem; gap: 1.5rem; }
+      .filter-btn { white-space: nowrap; }
       .journeys-grid { grid-template-columns: repeat(2, 1fr); padding-left: 1.5rem; padding-right: 1.5rem; }
     }
 
     @media (max-width: 480px) {
       .journeys-grid { grid-template-columns: 1fr; }
       .journey-card { height: 260px; }
+      .filter-bar { overflow-x: visible; justify-content: space-around; gap: 0; padding: 0 0.5rem; }
+      .filter-btn { flex: 1; flex-direction: column; align-items: center; justify-content: center; text-align: center; white-space: normal; padding: 0.8rem 0.2rem; gap: 0.25rem; }
+      .filter-dot { margin-bottom: 0.15rem; }
+      .filter-zh { display: block; font-size: 0.72rem; }
+      .filter-en { display: block; font-size: 0.6rem; letter-spacing: 0.04em; color: var(--muted); margin-top: 0.1rem; }
     }
   </style>
 </head>
@@ -249,10 +254,10 @@
 
   <!-- Filter bar -->
   <div class="filter-bar">
-    <button class="filter-btn active" data-filter="all"><span class="filter-dot dot-all"></span>全部 ALL</button>
-    <button class="filter-btn" data-filter="exploration"><span class="filter-dot dot-exploration"></span>外向探索 EXPLORATION</button>
-    <button class="filter-btn" data-filter="inner-journey"><span class="filter-dot dot-inner"></span>內在旅程 INNER JOURNEY</button>
-    <button class="filter-btn" data-filter="aesthetic"><span class="filter-dot dot-aesthetic"></span>日常出走 EVERYDAY ESCAPE</button>
+    <button class="filter-btn active" data-filter="all"><span class="filter-dot dot-all"></span><span class="filter-zh">全部</span><span class="filter-en">ALL</span></button>
+    <button class="filter-btn" data-filter="exploration"><span class="filter-dot dot-exploration"></span><span class="filter-zh">外向探索</span><span class="filter-en">EXPLORATION</span></button>
+    <button class="filter-btn" data-filter="inner-journey"><span class="filter-dot dot-inner"></span><span class="filter-zh">內在旅程</span><span class="filter-en">INNER JOURNEY</span></button>
+    <button class="filter-btn" data-filter="aesthetic"><span class="filter-dot dot-aesthetic"></span><span class="filter-zh">日常出走</span><span class="filter-en">EVERYDAY ESCAPE</span></button>
   </div>
 
   <!-- Grid -->
