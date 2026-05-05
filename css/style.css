@@ -947,7 +947,8 @@ a { text-decoration: none; color: inherit; }
   .mbti-card { display: flex; flex-direction: row; align-items: flex-start; gap: 1rem; }
   .mbti-icon { flex-shrink: 0; margin-bottom: 0; }
   .mbti-text-block { display: flex; flex-direction: column; flex: 1; min-width: 0; }
-  .mbti-hover { opacity: 0; }
+  .mbti-hover { display: none; }
+  .mbti-card.active .mbti-hover { display: block; opacity: 1; }
 
   /* Footer */
   .footer-tagline { font-size: 1.2rem; }
