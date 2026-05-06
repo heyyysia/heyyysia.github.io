@@ -126,7 +126,7 @@ function buildCarousel() {
   carouselPhotos.forEach((src, i) => {
     const slide = document.createElement('div');
     slide.className = 'carousel-slide' + (i === 0 ? ' active' : '');
-    slide.innerHTML = `<img src="${src}" alt="recent trip photo" loading="${i === 0 ? 'eager' : 'lazy'}" />`;
+    slide.innerHTML = `<img src="${src}" alt="recent trip photo" loading="${i === 0 ? 'eager' : 'auto'}" />`;
     track.appendChild(slide);
   });
 }
@@ -202,6 +202,11 @@ matchTimelineHeight();
 setupPlaneScrollbar();
 window.addEventListener('resize', matchTimelineHeight);
 setInterval(() => changeSlide(1), 3000);
+
+// 頁面載入後背景預載其餘輪播圖片，避免切換時黑屏
+window.addEventListener('load', () => {
+  carouselPhotos.slice(1).forEach(src => { new Image().src = src; });
+});
 
 // MBTI 卡片捲入進場 + 自動輪播
 const mbtiCards = document.querySelectorAll('.mbti-card');
