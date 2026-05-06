@@ -311,11 +311,8 @@ a { text-decoration: none; color: inherit; }
 .tl-item {
   display: flex;
   gap: 1.2rem;
-  cursor: pointer;
-  transition: opacity 0.25s;
 }
 .tl-item:not(.active) { opacity: 0.35; }
-.tl-item:hover { opacity: 1; }
 
 .tl-dot-col {
   display: flex;
