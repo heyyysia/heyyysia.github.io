@@ -126,7 +126,7 @@ function buildCarousel() {
   carouselPhotos.forEach((src, i) => {
     const slide = document.createElement('div');
     slide.className = 'carousel-slide' + (i === 0 ? ' active' : '');
-    slide.innerHTML = `<img src="${src}" alt="recent trip photo" loading="lazy" />`;
+    slide.innerHTML = `<img src="${src}" alt="recent trip photo" loading="${i === 0 ? 'eager' : 'lazy'}" />`;
     track.appendChild(slide);
   });
 }
