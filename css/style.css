@@ -609,7 +609,7 @@ a { text-decoration: none; color: inherit; }
 .about-photo-item.floating-2 { animation: float-up-mid 1.8s ease-in-out forwards; }
 .about-photo-item.floating-3 { animation: float-up 1.8s ease-in-out forwards; }
 
-.about-content { padding: 3.5rem 3rem; }
+.about-content { padding: 1.7rem 3rem; }
 
 .about-heading {
   font-family: var(--font-title);
