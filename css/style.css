@@ -933,9 +933,9 @@ a { text-decoration: none; color: inherit; }
 
   /* About */
   .about-section { grid-template-columns: 1fr; }
-  .about-photo { height: 260px; overflow: hidden; }
-  .about-photo-grid { height: 260px; }
-  .about-photo img { height: 260px; object-fit: cover; width: 100%; }
+  .about-photo { height: 234px; overflow: hidden; }
+  .about-photo-grid { height: 234px; }
+  .about-photo img { height: 234px; object-fit: cover; width: 100%; }
   .about-content { padding: 3rem 1.5rem; }
   .mbti-cards { gap: 1rem; }
 }
