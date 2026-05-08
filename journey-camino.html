@@ -161,9 +161,9 @@
     /* CLOSING */
     .closing { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border-light); }
     .closing-text { display: flex; flex-direction: column; justify-content: center; padding: 7rem 4rem 7rem var(--margin); gap: 2rem; }
-    .closing-videos { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; padding: 5rem 3rem; background: #EDEAE3; }
+    .closing-videos { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.5rem; padding: 5rem var(--margin); background: #EDEAE3; }
     .closing-videos-label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
-    .closing-videos-inner { display: flex; gap: 10px; align-items: center; justify-content: center; }
+    .closing-videos-inner { display: flex; gap: 10px; align-items: center; justify-content: center; width: 100%; }
     .closing-h { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; line-height: 180%; color: var(--text-main); }
     .closing-h em { font-style: italic; }
     .closing-body { font-size: 16px; font-weight: 300; line-height: 180%; color: var(--text-muted); max-width: 420px; }
@@ -212,6 +212,8 @@
       .ch-keytxt { font-size: 20px; }
       .ch-fb-content { padding-bottom: 1.5rem; }
       .ch-triple-caption p { font-size: 18px !important; line-height: 1.5 !important; }
+      #sigContent { margin-bottom: 0 !important; }
+      .fn-subtitle { font-size: 22px !important; }
       .pg-grid { grid-template-columns: repeat(2, 1fr); }
       .fn-grid { grid-template-columns: 1fr !important; }
       .ch-split { min-height: 0; }
@@ -583,7 +585,7 @@
   <section style="background:var(--bg-page);padding:80px var(--margin);">
     <div class="fi" style="margin-bottom:3rem;">
       <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.8rem;">Field Notes</p>
-      <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text-main);">那些沒有被寫進主故事的片段</p>
+      <p class="fn-subtitle" style="font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text-main);">那些沒有被寫進主故事的片段</p>
     </div>
     <div class="fi fn-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch;">
       <div style="background:#F0EBE3;padding:1.8rem;display:grid;grid-template-rows:44px auto 1fr;gap:0.8rem;">
