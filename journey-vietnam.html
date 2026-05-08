@@ -173,7 +173,9 @@
     /* ── Closing ── */
     .closing { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border-light); }
     .closing-text { display: flex; flex-direction: column; justify-content: center; padding: 7rem 4rem 7rem var(--margin); gap: 2rem; }
-    .closing-videos { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 5rem 3rem; background: #EDEAE3; }
+    .closing-videos { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; padding: 5rem 3rem; background: #EDEAE3; }
+    .closing-videos-label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .closing-videos-inner { display: flex; gap: 10px; align-items: center; justify-content: center; }
     .closing-h { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; line-height: 180%; color: var(--text-main); }
     .closing-h em { font-style: italic; }
     .closing-body { font-size: 16px; font-weight: 300; line-height: 180%; color: var(--text-muted); max-width: 420px; }
@@ -233,8 +235,9 @@
       .pg-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .closing { grid-template-columns: 1fr; }
       .closing-text { padding: 3rem var(--margin); }
-      .closing-videos { flex-wrap: wrap; padding: 3rem 1.5rem; gap: 16px; }
-      .closing-videos video { width: 100% !important; height: auto !important; }
+      .closing-videos { padding: 3rem 1.5rem; gap: 1rem; }
+      .closing-videos-inner { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      .closing-videos-inner video { width: 100% !important; height: auto !important; }
     }
     @media (max-width: 480px) {
       .hero-h1 { font-size: 32px; }
@@ -595,6 +598,15 @@
 
   <!-- ══ FRAME 09 — CLOSING ══ -->
   <section class="closing">
+    <div class="closing-videos fi">
+      <p class="closing-videos-label">Fragments We Kept</p>
+      <div class="closing-videos-inner">
+        <video src="images/vietnam/IMG_4119.mp4" poster="images/vietnam/poster_4119.jpg" controls playsinline preload="metadata"
+          style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+        <video src="images/vietnam/IMG_4319.mp4" poster="images/vietnam/poster_4319.jpg" controls playsinline preload="metadata"
+          style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+      </div>
+    </div>
     <div class="closing-text">
       <h2 class="closing-h fi">We did not just travel.</h2>
       <p class="closing-body fi fi-delay-1">
@@ -602,12 +614,6 @@
         而是某種熟悉的自己。
       </p>
       <p class="closing-line fi fi-delay-2">Something stayed behind.</p>
-    </div>
-    <div class="closing-videos fi">
-      <video src="images/vietnam/IMG_4119.mp4" poster="images/vietnam/poster_4119.jpg" controls playsinline preload="metadata"
-        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
-      <video src="images/vietnam/IMG_4319.mp4" poster="images/vietnam/poster_4319.jpg" controls playsinline preload="metadata"
-        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
     </div>
   </section>
 

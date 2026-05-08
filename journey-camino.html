@@ -161,7 +161,9 @@
     /* CLOSING */
     .closing { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border-light); }
     .closing-text { display: flex; flex-direction: column; justify-content: center; padding: 7rem 4rem 7rem var(--margin); gap: 2rem; }
-    .closing-videos { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 5rem 3rem; background: #EDEAE3; }
+    .closing-videos { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; padding: 5rem 3rem; background: #EDEAE3; }
+    .closing-videos-label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .closing-videos-inner { display: flex; gap: 10px; align-items: center; justify-content: center; }
     .closing-h { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; line-height: 180%; color: var(--text-main); }
     .closing-h em { font-style: italic; }
     .closing-body { font-size: 16px; font-weight: 300; line-height: 180%; color: var(--text-muted); max-width: 420px; }
@@ -214,8 +216,9 @@
       .fn-grid { grid-template-columns: 1fr !important; }
       .ch-split { min-height: 0; }
       .ch-split-img { width: 100% !important; height: auto !important; margin-left: 0 !important; }
-      .closing-videos { flex-wrap: wrap; padding: 3rem 1.5rem; gap: 16px; }
-      .closing-videos video { width: 100% !important; height: auto !important; }
+      .closing-videos { padding: 3rem 1.5rem; gap: 1rem; }
+      .closing-videos-inner { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      .closing-videos-inner video { width: 100% !important; height: auto !important; }
       .ch-mosaic-left { height: auto !important; grid-template-rows: 180px 220px !important; padding: 0 !important; overflow: hidden; }
       .ch-mosaic-text { overflow: hidden; }
       html, body { max-width: 100%; overflow-x: hidden; }
@@ -608,6 +611,15 @@
 
   <!-- ══ CLOSING ══ -->
   <section class="closing">
+    <div class="closing-videos fi">
+      <p class="closing-videos-label">Fragments We Kept</p>
+      <div class="closing-videos-inner">
+        <video src="images/camino/video-01.mp4" poster="images/camino/video-01-poster.jpg" controls playsinline preload="metadata"
+          style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+        <video src="images/camino/video-02.mp4" poster="images/camino/video-02-poster.jpg" controls playsinline preload="metadata"
+          style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+      </div>
+    </div>
     <div class="closing-text">
       <h2 class="closing-h fi">We did not just walk.</h2>
       <p class="closing-body fi fi-delay-1">
@@ -615,12 +627,6 @@
         而是某些在日常生活裡一直找不到的安靜。
       </p>
       <p class="closing-line fi fi-delay-2">Something shifted on the road.</p>
-    </div>
-    <div class="closing-videos fi">
-      <video src="images/camino/video-01.mp4" poster="images/camino/video-01-poster.jpg" controls playsinline preload="metadata"
-        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
-      <video src="images/camino/video-02.mp4" poster="images/camino/video-02-poster.jpg" controls playsinline preload="metadata"
-        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
     </div>
   </section>
 

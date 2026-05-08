@@ -706,12 +706,15 @@
 
     .closing-videos {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 1.5rem;
       padding: 5rem 3rem;
       background: #EDEAE3;
     }
+    .closing-videos-label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .closing-videos-inner { display: flex; gap: 10px; align-items: center; justify-content: center; }
 
     .closing-h {
       font-family: 'Playfair Display', serif;
@@ -905,8 +908,9 @@
       .pg-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .closing { grid-template-columns: 1fr; }
       .closing-text { padding: 3rem var(--margin); }
-      .closing-videos { flex-wrap: wrap; padding: 3rem 1.5rem; gap: 16px; }
-      .closing-videos video { width: 100% !important; height: auto !important; }
+      .closing-videos { padding: 3rem 1.5rem; gap: 1rem; }
+      .closing-videos-inner { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      .closing-videos-inner video { width: 100% !important; height: auto !important; }
       .back-link-bar { padding-bottom: 4rem; }
       .footer { margin-top: 0; }
     }
@@ -1164,6 +1168,15 @@
 
   <!-- ══ FRAME 08 — CLOSING ══ -->
   <section class="closing">
+    <div class="closing-videos fi">
+      <p class="closing-videos-label">Fragments We Kept</p>
+      <div class="closing-videos-inner">
+        <video src="images/oman/18084491224989059.mp4" poster="images/oman/poster_18084491224989059.jpg" controls playsinline preload="metadata"
+          style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+        <video src="images/oman/17927681910115819.mp4" poster="images/oman/poster_17927681910115819.jpg" controls playsinline preload="metadata"
+          style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+      </div>
+    </div>
     <div class="closing-text">
       <h2 class="closing-h fi">We did not just travel.</h2>
       <p class="closing-body fi fi-delay-1">
@@ -1171,12 +1184,6 @@
         而是某種熟悉的自己。
       </p>
       <p class="closing-line fi fi-delay-2">Something stayed behind.</p>
-    </div>
-    <div class="closing-videos fi">
-      <video src="images/oman/18084491224989059.mp4" poster="images/oman/poster_18084491224989059.jpg" controls playsinline preload="metadata"
-        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
-      <video src="images/oman/17927681910115819.mp4" poster="images/oman/poster_17927681910115819.jpg" controls playsinline preload="metadata"
-        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
     </div>
   </section>
 
