@@ -181,6 +181,23 @@
     .closing-body { font-size: 16px; font-weight: 300; line-height: 180%; color: var(--text-muted); max-width: 420px; }
     .closing-line { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; font-weight: 400; color: var(--text-muted); }
 
+    /* ── The Personality Index ── */
+    .pi-wrap { display: flex; flex-direction: column; gap: 2rem; }
+    .pi-title { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); }
+    .pi-table { display: grid; grid-template-columns: 1fr repeat(3, auto); gap: 0.55rem 1.4rem; align-items: center; }
+    .pi-th { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+    .pi-sym { font-size: 15px; color: var(--text-muted); line-height: 1; }
+    .pi-mbti { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+    .pi-crit { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+    .pi-dots { display: flex; gap: 4px; }
+    .pi-d { width: 7px; height: 7px; border-radius: 50%; background: var(--text-main); opacity: 0.15; flex-shrink: 0; }
+    .pi-d.on { opacity: 0.75; }
+    .pi-divider { grid-column: 1 / -1; height: 1px; background: var(--border-light); margin: 0.3rem 0; }
+    .pi-comments { display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid var(--border-light); padding-top: 1.4rem; }
+    .pi-comment { display: flex; gap: 0.9rem; align-items: flex-start; }
+    .pi-c-sym { font-size: 14px; color: var(--text-muted); flex-shrink: 0; margin-top: 1px; }
+    .pi-c-text { font-size: 13px; font-style: italic; color: var(--text-muted); line-height: 1.75; }
+
     /* ── Water Ripple ── */
     .ripple-wrap { position: relative; width: 300px; height: 300px; flex-shrink: 0; }
     .ripple-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center 55%; display: block; }
@@ -608,12 +625,56 @@
       </div>
     </div>
     <div class="closing-text">
-      <h2 class="closing-h fi">We did not just travel.</h2>
-      <p class="closing-body fi fi-delay-1">
-        我們離開的不是地方，<br>
-        而是某種熟悉的自己。
-      </p>
-      <p class="closing-line fi fi-delay-2">Something stayed behind.</p>
+      <div class="pi-wrap fi">
+        <p class="pi-title">The Personality Index</p>
+
+        <div class="pi-table">
+          <!-- column headers -->
+          <div></div>
+          <div class="pi-th"><span class="pi-sym">♦</span><span class="pi-mbti">INFJ</span></div>
+          <div class="pi-th"><span class="pi-sym">○</span><span class="pi-mbti">INTP</span></div>
+          <div class="pi-th"><span class="pi-sym">~</span><span class="pi-mbti">ISFJ</span></div>
+
+          <!-- Emotional Impact -->
+          <div class="pi-crit">Emotional Impact</div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span></div>
+
+          <!-- Energy Drain -->
+          <div class="pi-crit">Energy Drain</div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+
+          <!-- Would Return -->
+          <div class="pi-crit">Would Return</div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span></div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+
+          <!-- Palate Compat. -->
+          <div class="pi-crit">Palate Compat.</div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+        </div>
+
+        <div class="pi-comments">
+          <div class="pi-comment">
+            <span class="pi-c-sym">♦</span>
+            <p class="pi-c-text">那片沉默的黑，比任何風景都更讓人想起自己是誰。</p>
+          </div>
+          <div class="pi-comment">
+            <span class="pi-c-sym">○</span>
+            <p class="pi-c-text">知道洞有多大之後，突然對「無限」這個詞有了新的解釋。</p>
+          </div>
+          <div class="pi-comment">
+            <span class="pi-c-sym">~</span>
+            <p class="pi-c-text">只要身邊的人是對的，任何地方都可以是家。</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
