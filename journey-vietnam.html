@@ -199,6 +199,19 @@
     .pi-comment { display: flex; gap: 0.9rem; align-items: flex-start; }
     .pi-c-sym { font-size: 14px; color: var(--text-muted); flex-shrink: 0; margin-top: 1px; }
     .pi-c-text { font-size: 13px; font-style: italic; color: var(--text-muted); line-height: 1.75; }
+    /* MBTI 分色 */
+    .pi-infj .pi-d { background: #9B8B6E; opacity: 0.18; }
+    .pi-infj .pi-d.on { background: #9B8B6E; opacity: 0.9; }
+    .pi-intp .pi-d { background: #7A8FA6; opacity: 0.18; }
+    .pi-intp .pi-d.on { background: #7A8FA6; opacity: 0.9; }
+    .pi-isfp .pi-d { background: #A6807A; opacity: 0.18; }
+    .pi-isfp .pi-d.on { background: #A6807A; opacity: 0.9; }
+    .pi-th.pi-infj .pi-sym, .pi-th.pi-infj .pi-mbti { color: #9B8B6E; }
+    .pi-th.pi-intp .pi-sym, .pi-th.pi-intp .pi-mbti { color: #7A8FA6; }
+    .pi-th.pi-isfp .pi-sym, .pi-th.pi-isfp .pi-mbti { color: #A6807A; }
+    .pi-comment.pi-infj .pi-c-sym { color: #9B8B6E; }
+    .pi-comment.pi-intp .pi-c-sym { color: #7A8FA6; }
+    .pi-comment.pi-isfp .pi-c-sym { color: #A6807A; }
 
     /* ── Water Ripple ── */
     .ripple-wrap { position: relative; width: 300px; height: 300px; flex-shrink: 0; }
@@ -633,46 +646,46 @@
         <div class="pi-table">
           <!-- column headers -->
           <div></div>
-          <div class="pi-th"><span class="pi-sym">✦</span><span class="pi-mbti">INFJ</span></div>
-          <div class="pi-th"><span class="pi-sym">○</span><span class="pi-mbti">INTP</span></div>
-          <div class="pi-th"><span class="pi-sym">〜</span><span class="pi-mbti">ISFP</span></div>
+          <div class="pi-th pi-infj"><span class="pi-sym">✦</span><span class="pi-mbti">INFJ</span></div>
+          <div class="pi-th pi-intp"><span class="pi-sym">○</span><span class="pi-mbti">INTP</span></div>
+          <div class="pi-th pi-isfp"><span class="pi-sym">〜</span><span class="pi-mbti">ISFP</span></div>
 
           <!-- Emotional Impact -->
           <div class="pi-crit"><span class="pi-crit-en">Emotional Impact</span><span class="pi-crit-zh">後勁強不強</span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span></div>
+          <div class="pi-dots pi-infj"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-intp"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-isfp"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span></div>
 
           <!-- Social Energy Cost -->
           <div class="pi-crit"><span class="pi-crit-en">Social Energy Cost</span><span class="pi-crit-zh">社交電量消耗</span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-infj"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-intp"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-isfp"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
 
           <!-- Food Compatibility -->
           <div class="pi-crit"><span class="pi-crit-en">Food Compatibility</span><span class="pi-crit-zh">胃口合不合</span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-infj"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span></div>
+          <div class="pi-dots pi-intp"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-isfp"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
 
           <!-- Return Likelihood -->
           <div class="pi-crit"><span class="pi-crit-en">Return Likelihood</span><span class="pi-crit-zh">下次還去嗎</span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
-          <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-infj"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-intp"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
+          <div class="pi-dots pi-isfp"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
         </div>
 
         <div class="pi-comments">
           <p class="pi-title">Short Comment</p>
-          <div class="pi-comment">
+          <div class="pi-comment pi-infj">
             <span class="pi-c-sym">✦</span>
             <p class="pi-c-text">comment</p>
           </div>
-          <div class="pi-comment">
+          <div class="pi-comment pi-intp">
             <span class="pi-c-sym">○</span>
             <p class="pi-c-text">comment</p>
           </div>
-          <div class="pi-comment">
+          <div class="pi-comment pi-isfp">
             <span class="pi-c-sym">〜</span>
             <p class="pi-c-text">comment</p>
           </div>
