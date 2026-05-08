@@ -172,7 +172,7 @@
 
     /* ── Closing ── */
     .closing { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border-light); }
-    .closing-text { display: flex; flex-direction: column; justify-content: flex-start; padding: 5rem 4rem 5rem var(--margin); gap: 2rem; }
+    .closing-text { display: flex; flex-direction: column; justify-content: flex-start; padding: 4.6rem 4rem 5rem var(--margin); gap: 2rem; }
     .closing-videos { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.5rem; padding: 5rem var(--margin); background: #EDEAE3; }
     .closing-videos-label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
     .closing-videos-inner { display: flex; gap: 10px; align-items: center; justify-content: center; width: 100%; }
@@ -184,11 +184,13 @@
     /* ── The Personality Index ── */
     .pi-wrap { display: flex; flex-direction: column; gap: 2rem; }
     .pi-title { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); }
-    .pi-table { display: grid; grid-template-columns: max-content repeat(3, max-content); gap: 0.55rem 1.6rem; align-items: center; width: fit-content; }
+    .pi-table { display: grid; grid-template-columns: max-content repeat(3, max-content); gap: 0.7rem 2.2rem; align-items: center; width: fit-content; }
     .pi-th { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
     .pi-sym { font-size: 15px; color: var(--text-muted); line-height: 1; }
     .pi-mbti { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
-    .pi-crit { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+    .pi-crit { display: flex; flex-direction: column; gap: 2px; }
+    .pi-crit-en { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+    .pi-crit-zh { font-size: 11px; color: var(--text-muted); font-weight: 300; white-space: nowrap; }
     .pi-dots { display: flex; gap: 4px; }
     .pi-d { width: 7px; height: 7px; border-radius: 50%; background: var(--text-main); opacity: 0.15; flex-shrink: 0; }
     .pi-d.on { opacity: 0.75; }
@@ -636,31 +638,32 @@
           <div class="pi-th"><span class="pi-sym">〜</span><span class="pi-mbti">ISFP</span></div>
 
           <!-- Emotional Impact -->
-          <div class="pi-crit">Emotional Impact</div>
+          <div class="pi-crit"><span class="pi-crit-en">Emotional Impact</span><span class="pi-crit-zh">後勁強不強</span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span></div>
 
-          <!-- Energy Drain -->
-          <div class="pi-crit">Energy Drain</div>
+          <!-- Social Energy Cost -->
+          <div class="pi-crit"><span class="pi-crit-en">Social Energy Cost</span><span class="pi-crit-zh">社交電量消耗</span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
 
-          <!-- Would Return -->
-          <div class="pi-crit">Would Return</div>
+          <!-- Food Compatibility -->
+          <div class="pi-crit"><span class="pi-crit-en">Food Compatibility</span><span class="pi-crit-zh">胃口合不合</span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
 
-          <!-- Palate Compat. -->
-          <div class="pi-crit">Palate Compat.</div>
+          <!-- Return Likelihood -->
+          <div class="pi-crit"><span class="pi-crit-en">Return Likelihood</span><span class="pi-crit-zh">下次還去嗎</span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span></div>
           <div class="pi-dots"><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d on"></span><span class="pi-d"></span><span class="pi-d"></span></div>
         </div>
 
         <div class="pi-comments">
+          <p class="pi-title">Comment</p>
           <div class="pi-comment">
             <span class="pi-c-sym">✦</span>
             <p class="pi-c-text">comment</p>
