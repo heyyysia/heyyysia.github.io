@@ -175,11 +175,10 @@
     .pi-wrap { display: flex; flex-direction: column; gap: 2rem; min-width: 0; }
     .pi-title { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
     .pi-desc { font-size: 12px; color: var(--text-muted); font-weight: 300; line-height: 1.9; margin-top: -1.4rem; }
-    .pi-table-wrap { position: relative; overflow-x: auto; width: 100%; min-width: 0; padding-bottom: 10px; -webkit-overflow-scrolling: touch; }
-    .pi-table-wrap::-webkit-scrollbar { height: 7px; }
-    .pi-table-wrap::-webkit-scrollbar-track { background: var(--border-light); border-radius: 4px; }
-    .pi-table-wrap::-webkit-scrollbar-thumb { background: #8A8278; border-radius: 4px; }
-    .pi-table-wrap::after { content: ''; position: absolute; bottom: 0; left: 0; width: var(--crit-w, 280px); height: 7px; background: #F7F4EF; pointer-events: none; z-index: 10; }
+    .pi-table-wrap { position: relative; overflow-x: auto; width: 100%; min-width: 0; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; }
+    .pi-table-wrap::-webkit-scrollbar { display: none; }
+    .pi-scrollbar { height: 4px; background: #D4CCC4; border-radius: 2px; position: relative; overflow: hidden; margin-top: 6px; }
+    .pi-scrollbar-thumb { position: absolute; top: 0; left: 0; height: 100%; background: #8A8278; border-radius: 2px; }
     .pi-table { border-collapse: separate; border-spacing: 0; min-width: 700px; }
     .pi-table .pi-crit, .pi-table .pi-th:first-child { width: 180px; max-width: 180px; }
     .pi-table .pi-score, .pi-table .pi-th:not(:first-child):not(.sum-head) { width: 80px; }
@@ -212,7 +211,7 @@
     /* ── RWD ── */
     @media (max-width: 900px) {
       :root { --margin: 2rem; }
-      .br-m { display: initial; }
+      .br-m { display: block; }
       .context { grid-template-columns: 1fr; }
       .ctx-img { aspect-ratio: 4/5; }
       .ctx-text { padding: 3rem var(--margin); }
@@ -619,6 +618,7 @@
             </tbody>
           </table>
         </div>
+        <div class="pi-scrollbar"><div class="pi-scrollbar-thumb"></div></div>
         <div class="pi-comments">
           <p class="pi-title">Short Comment</p>
           <div class="pi-comment"><span class="pi-c-sym">✦</span><p class="pi-c-text">親眼看見藍色火焰的那一刻，讓人覺得此行已無所求。壯烈而不真實的景色，像來自另一個星球。最後雖然還是體驗了傳說中的 Bali stomach，只能苦笑說一句——這趟，確實不枉此行。</p></div>
@@ -662,43 +662,36 @@
       entries.forEach(e => { if (e.isIntersecting) sigEl.classList.add('in'); });
     }, { threshold: 0.4 }).observe(sigEl);
 
-    // PI table scrollbar mask
-    (function fixMask() {
+    // PI table — custom scrollbar + auto-scroll
+    (function() {
       var wrap = document.querySelector('.pi-table-wrap');
       if (!wrap) return;
-      var cell = wrap.querySelector('td:first-child') || wrap.querySelector('th:first-child');
-      if (cell) wrap.style.setProperty('--crit-w', cell.offsetWidth + 'px');
-    }());
-
-    // PI table auto-scroll
-    setTimeout(function () {
-      var wrap = document.querySelector('.pi-table-wrap');
-      if (!wrap) return;
-      var max = wrap.scrollWidth - wrap.clientWidth;
-      if (max <= 0) return;
-      var interrupted = false;
-      ['mousedown', 'touchstart'].forEach(function(ev) {
-        wrap.addEventListener(ev, function() { interrupted = true; }, { passive: true, once: true });
-      });
-      var direction = 1;
-      var start = null;
-      var duration = 5000;
-      function step(ts) {
-        if (interrupted) return;
-        if (!start) start = ts;
-        var t = Math.min((ts - start) / duration, 1);
-        var ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
-        wrap.scrollLeft = direction === 1 ? ease * max : (1 - ease) * max;
-        if (t < 1) {
-          requestAnimationFrame(step);
-        } else {
-          direction = -direction;
-          start = null;
-          setTimeout(function() { requestAnimationFrame(step); }, 800);
-        }
+      var thumb = document.querySelector('.pi-scrollbar-thumb');
+      function updateThumb() {
+        if (!thumb) return;
+        var max = wrap.scrollWidth - wrap.clientWidth;
+        if (max <= 0) { thumb.style.width = '100%'; thumb.style.left = '0'; return; }
+        var pct = wrap.clientWidth / wrap.scrollWidth;
+        thumb.style.width = (pct * 100) + '%';
+        thumb.style.left = (wrap.scrollLeft / max * (1 - pct) * 100) + '%';
       }
-      requestAnimationFrame(step);
-    }, 2000);
+      wrap.addEventListener('scroll', updateThumb);
+      setTimeout(updateThumb, 300);
+      setTimeout(function() {
+        var max = wrap.scrollWidth - wrap.clientWidth;
+        if (max <= 0) return;
+        var direction = 1, start = null, duration = 5000;
+        function step(ts) {
+          if (!start) start = ts;
+          var t = Math.min((ts - start) / duration, 1);
+          var ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+          wrap.scrollLeft = direction === 1 ? ease * max : (1 - ease) * max;
+          if (t < 1) { requestAnimationFrame(step); }
+          else { direction = -direction; start = null; setTimeout(function() { requestAnimationFrame(step); }, 800); }
+        }
+        requestAnimationFrame(step);
+      }, 2000);
+    }());
 
   </script>
   <script src="js/scroll-top.js"></script>
