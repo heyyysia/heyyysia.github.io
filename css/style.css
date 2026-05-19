@@ -959,7 +959,7 @@ a { text-decoration: none; color: inherit; }
 
   /* About */
   .about-heading { font-size: 1.8rem; margin-bottom: 0; }
-  .about-sub { margin-top: -0.3rem; }
+  .about-sub { margin-top: -0.3rem; margin-bottom: 1.2rem; }
   .about-content { padding: 2rem 1rem; }
   .mbti-cards { grid-template-columns: 1fr; gap: 1.2rem; }
   .mbti-x { display: none; }
