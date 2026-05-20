@@ -217,7 +217,8 @@
       .ctx-img { aspect-ratio: 4/5; }
       .ctx-text { padding: 3rem var(--margin); }
       .ch-split { grid-template-columns: 1fr; min-height: 0; }
-      .ch-split-img { height: auto !important; padding-top: 0 !important; padding-left: var(--margin) !important; padding-right: var(--margin) !important; }
+      .ch-split-img { height: auto !important; padding-left: var(--margin) !important; padding-right: var(--margin) !important; }
+      .ch-split.img-right .ch-split-img { padding-top: 0 !important; }
       .ch-split-2t1b { height: auto !important; grid-template-rows: auto auto; }
       .ch-split-2t1b > div:not(.wide) { aspect-ratio: 4/5; }
       .ch-split-2t1b > div.wide { aspect-ratio: 16/9; }
@@ -228,8 +229,9 @@
       .signature { height: auto; aspect-ratio: 4/3; }
       .ch-triple { grid-template-columns: 1fr; height: auto; }
       .ch-triple > div img { height: auto; width: 100%; }
-      .ch-photo-strip-inner { grid-template-columns: 1fr; height: auto; }
-      .ch-photo-strip-inner > div img { height: 260px; }
+      .ch-photo-strip-inner { grid-template-columns: repeat(3, 1fr); height: 200px; }
+      .ch-photo-strip-inner > div img { height: 100% !important; }
+      .ch-photo-strip-inner > div video { height: 100% !important; }
       .ch-split-2x2 { grid-template-columns: 1fr 1fr; height: auto; }
       .ch-split-2x2 > div img { aspect-ratio: 1/1 !important; height: auto !important; width: 100% !important; object-fit: cover !important; }
       .ch-mosaic-1v2 { grid-template-columns: 1fr; grid-template-rows: auto; height: auto; grid-template-areas: none; }
