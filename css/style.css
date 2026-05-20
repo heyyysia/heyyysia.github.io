@@ -901,10 +901,10 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0;
 }
 .menu-tagline {
-  font-size: 0.85rem;
-  line-height: 1.9;
+  font-size: 0.82rem;
+  line-height: 2;
   color: var(--muted);
-  font-family: var(--font-script);
+  font-style: italic;
 }
 .menu-bottom {
   display: flex;
