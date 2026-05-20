@@ -259,7 +259,7 @@
     .color-section {
       border-top: 1px solid var(--border-light);
       padding: 0;
-      scroll-margin-top: 70px;
+      scroll-margin-top: 10px;
     }
 
     /* Section header */
@@ -1036,14 +1036,17 @@
         thumb.style.left = (wrap.scrollLeft / max * (1 - pct) * 100) + '%';
       }
       wrap.addEventListener('scroll', updateThumb);
-      window.addEventListener('resize', updateThumb);
+      window.addEventListener('resize', function() { updateThumb(); startAutoScroll(); });
       setTimeout(updateThumb, 300);
-      setTimeout(function() {
+      var animStarted = false;
+      function startAutoScroll() {
         var max = wrap.scrollWidth - wrap.clientWidth;
-        if (max <= 0) return;
+        if (max <= 0 || animStarted) return;
+        animStarted = true;
         var direction = 1, start = null, duration = 8000;
         function step(ts) {
           if (!start) start = ts;
+          var max = wrap.scrollWidth - wrap.clientWidth;
           var t = Math.min((ts - start) / duration, 1);
           var ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
           wrap.scrollLeft = direction === 1 ? ease * max : (1 - ease) * max;
@@ -1051,7 +1054,8 @@
           else { direction = -direction; start = null; setTimeout(function() { requestAnimationFrame(step); }, 800); }
         }
         requestAnimationFrame(step);
-      }, 2000);
+      }
+      setTimeout(startAutoScroll, 2000);
     }());
   </script>
   <script src="js/scroll-top.js"></script>
