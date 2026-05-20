@@ -1025,10 +1025,12 @@
       var wrap = document.querySelector('.pi-table-wrap');
       if (!wrap) return;
       var thumb = document.querySelector('.pi-scrollbar-thumb');
+      var bar = document.querySelector('.pi-scrollbar');
       function updateThumb() {
         if (!thumb) return;
         var max = wrap.scrollWidth - wrap.clientWidth;
-        if (max <= 0) { thumb.style.width = '100%'; thumb.style.left = '0'; return; }
+        if (max <= 0) { if (bar) bar.style.display = 'none'; return; }
+        if (bar) bar.style.display = '';
         var pct = wrap.clientWidth / wrap.scrollWidth;
         thumb.style.width = (pct * 100) + '%';
         thumb.style.left = (wrap.scrollLeft / max * (1 - pct) * 100) + '%';
