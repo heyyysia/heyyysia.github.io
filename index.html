@@ -34,10 +34,15 @@
 
   <!-- 手機選單 -->
   <div class="mobile-menu" id="mobileMenu">
+    <button class="menu-close" onclick="toggleMenu()" aria-label="關閉選單">✕</button>
     <a href="index.html" class="active">HOME</a>
     <a href="journeys.html">JOURNEYS</a>
     <a href="#about">ABOUT US</a>
     <a href="contact.html">SAY HELLO</a>
+    <div class="menu-social">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
   </div>
 
   <!-- Hero -->
@@ -56,9 +61,9 @@
     <div class="trips-header">
       <h2 class="section-heading">我們的旅程</h2>
       <div class="trip-filter-tags">
-        <span class="filter-tag exploration">● 外向探索 exploration</span>
-        <span class="filter-tag inner-journey">● 內在旅程 inner journey</span>
-        <span class="filter-tag aesthetic">● 日常出走 everyday escape</span>
+        <span class="filter-tag exploration">● 外向探索 EXPLORATION</span>
+        <span class="filter-tag inner-journey">● 內在旅程 INNER JOURNEY</span>
+        <span class="filter-tag aesthetic">● 日常出走 EVERYDAY ESCAPE</span>
       </div>
       <a href="journeys.html" class="view-all-link">view all journeys →</a>
     </div>
@@ -99,13 +104,13 @@
     <div class="about-photo">
       <div class="about-photo-grid">
         <div class="about-photo-item" id="photoInfj">
-          <img src="images/about-1.jpg" alt="INFJ" />
+          <img src="images/about-1.jpg" alt="INFJ" loading="eager" />
         </div>
         <div class="about-photo-item" id="photoIntp">
-          <img src="images/about-2.jpg" alt="INTP" />
+          <img src="images/about-2.jpg" alt="INTP" loading="eager" />
         </div>
         <div class="about-photo-item" id="photoIsfp">
-          <img src="images/about-3.jpg" alt="ISFP" />
+          <img src="images/about-3.jpg" alt="ISFP" loading="eager" />
         </div>
       </div>
     </div>
@@ -119,8 +124,7 @@
           <div class="mbti-text-block">
             <p class="mbti-type">INFJ</p>
             <p class="mbti-title">the observer</p>
-            <p class="mbti-sub">sees ahead.</p>
-            <p class="mbti-hover">plans quietly,<br>feels everything.</p>
+            <div class="mbti-desc-row"><p class="mbti-sub">sees ahead.</p><p class="mbti-hover">plans quietly,<br>feels everything.</p></div>
           </div>
         </div>
         <div class="mbti-card intp-card">
@@ -128,8 +132,7 @@
           <div class="mbti-text-block">
             <p class="mbti-type">INTP</p>
             <p class="mbti-title">the thinker</p>
-            <p class="mbti-sub">questions why.</p>
-            <p class="mbti-hover">overthinks,<br>then figures it out.</p>
+            <div class="mbti-desc-row"><p class="mbti-sub">questions why.</p><p class="mbti-hover">overthinks,<br>then figures it out.</p></div>
           </div>
         </div>
         <div class="mbti-card isfp-card">
@@ -137,8 +140,7 @@
           <div class="mbti-text-block">
             <p class="mbti-type">ISFP</p>
             <p class="mbti-title">the feeler</p>
-            <p class="mbti-sub">feels deeply.</p>
-            <p class="mbti-hover">lives in the moment,<br>beautifully.</p>
+            <div class="mbti-desc-row"><p class="mbti-sub">feels deeply.</p><p class="mbti-hover">lives in the moment,<br>beautifully.</p></div>
           </div>
         </div>
       </div>
@@ -161,5 +163,6 @@
   <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
   <script src="js/map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/scroll-top.js"></script>
 </body>
 </html>

@@ -216,7 +216,7 @@
       .journeys-grid { grid-template-columns: 1fr; }
       .journey-card { height: 300px; }
       /* Filter bar — equal height, aligned rows */
-      .filter-bar { overflow-x: visible; justify-content: space-around; align-items: stretch; gap: 0; padding: 0 0.3rem; }
+      .filter-bar { overflow-x: visible; justify-content: space-around; align-items: stretch; gap: 0; padding: 0 0.3rem; top: 77px; }
       .filter-btn { flex: 1; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; white-space: normal; padding: 0.7rem 0.1rem 0.5rem; gap: 0; }
       .filter-dot { flex-shrink: 0; margin-bottom: 0.25rem; }
       .filter-zh { display: flex; align-items: center; justify-content: center; height: 1.1rem; font-size: 0.7rem; margin-bottom: 0.2rem; }
@@ -256,10 +256,15 @@
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
+    <button class="menu-close" onclick="toggleMenu()" aria-label="關閉選單">✕</button>
     <a href="index.html">HOME</a>
     <a href="journeys.html" class="active">JOURNEYS</a>
     <a href="index.html#about">ABOUT US</a>
     <a href="contact.html">SAY HELLO</a>
+    <div class="menu-social">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
   </div>
 
   <!-- Filter bar -->
@@ -274,7 +279,7 @@
   <main class="journeys-grid" id="journeysGrid">
 
     <a class="journey-card" data-tag="aesthetic" href="journey-japan-color-hunt.html">
-      <img class="card-img" src="images/hero/18575573560022909.jpg" alt="Japan" loading="lazy" />
+      <img class="card-img" src="images/hero/18575573560022909.jpg" alt="Japan" loading="eager" />
       <div class="card-overlay"></div>
       <div class="card-content">
         <div class="card-tag">
@@ -297,7 +302,7 @@
     </a>
 
     <a class="journey-card" data-tag="exploration" href="journey-oman.html">
-      <img class="card-img" src="images/hero/18079057231881703.jpg" alt="Oman" loading="lazy" />
+      <img class="card-img" src="images/hero/18079057231881703.jpg" alt="Oman" loading="eager" />
       <div class="card-overlay"></div>
       <div class="card-content">
         <div class="card-tag">
@@ -320,7 +325,7 @@
     </a>
 
     <a class="journey-card" data-tag="exploration" href="journey-vietnam.html">
-      <img class="card-img" src="images/hero/17976696626866298.jpg" alt="Vietnam" loading="lazy" />
+      <img class="card-img" src="images/hero/17976696626866298.jpg" alt="Vietnam" loading="eager" />
       <div class="card-overlay"></div>
       <div class="card-content">
         <div class="card-tag">
@@ -343,7 +348,7 @@
     </a>
 
     <a class="journey-card" data-tag="inner-journey" href="journey-camino.html">
-      <img class="card-img" src="images/hero/18098972719603321.jpg" alt="Camino" loading="lazy" />
+      <img class="card-img" src="images/hero/18098972719603321.jpg" alt="Camino" loading="eager" />
       <div class="card-overlay"></div>
       <div class="card-content">
         <div class="card-tag">
@@ -366,7 +371,7 @@
     </a>
 
     <a class="journey-card" data-tag="exploration" href="journey-indonesia.html">
-      <img class="card-img" src="images/hero/18046696997192376.jpg" alt="Indonesia" loading="lazy" />
+      <img class="card-img" src="images/hero/18046696997192376.jpg" alt="Indonesia" loading="eager" />
       <div class="card-overlay"></div>
       <div class="card-content">
         <div class="card-tag">
@@ -424,5 +429,6 @@
     applyFilter(urlFilter || 'all');
   </script>
 
+  <script src="js/scroll-top.js"></script>
 </body>
 </html>

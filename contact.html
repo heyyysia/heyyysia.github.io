@@ -35,10 +35,15 @@
 
   <!-- 手機選單 -->
   <div class="mobile-menu" id="mobileMenu">
+    <button class="menu-close" onclick="toggleMenu()" aria-label="關閉選單">✕</button>
     <a href="index.html">HOME</a>
     <a href="journeys.html">JOURNEYS</a>
     <a href="index.html#about">ABOUT US</a>
     <a href="contact.html" class="active">SAY HELLO</a>
+    <div class="menu-social">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
   </div>
 
   <!-- 主體 -->
@@ -67,7 +72,7 @@
 
     <!-- 右側表單 -->
     <div class="contact-right">
-      <form class="contact-form" action="https://formspree.io/wenchenlee1127@gmail.com" method="POST">
+      <form class="contact-form" id="contactForm">
         <div class="form-group">
           <label for="name">your name</label>
           <input type="text" id="name" name="name" placeholder="what do we call you?" required />
@@ -80,7 +85,16 @@
           <label for="message">message</label>
           <textarea id="message" name="message" rows="6" placeholder="tell us anything ↓" required></textarea>
         </div>
-        <button type="submit" class="contact-submit">send it →</button>
+        <button type="submit" class="contact-submit" id="submitBtn">send it →</button>
+        <p id="formSuccess" style="display:none; margin-top:1.2rem; font-size:0.85rem; color:#1A1714; letter-spacing:0.05em; line-height:2; max-width:100%; overflow-wrap:break-word; word-break:break-word;">
+          Thanks for reaching out.<br>
+          Message received — we'll be in touch soon. ✦<br>
+          You can also reach us via Instagram or Facebook.<br>
+          <br>
+          已經收到你的訊息了，<br>
+          會找時間確認，並盡快回覆你！<br>
+          也歡迎透過 IG 或 FB 聯繫我們，謝謝 ✦
+        </p>
       </form>
     </div>
 
@@ -103,7 +117,32 @@
       menu.classList.toggle('open');
       btn.classList.toggle('open');
     }
+
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'sending…';
+      btn.disabled = true;
+
+      const data = new FormData(this);
+      const res = await fetch('https://formspree.io/f/xbdwyeqd', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        this.reset();
+        btn.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        btn.textContent = 'send it →';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    });
   </script>
 
+  <script src="js/scroll-top.js"></script>
 </body>
 </html>

@@ -699,19 +699,23 @@
     .closing-text {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 7rem 4rem 7rem var(--margin);
+      justify-content: flex-start;
+      padding: 5rem var(--margin);
       gap: 2rem;
+      min-width: 0;
     }
 
     .closing-videos {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 5rem 3rem;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      padding: 5rem var(--margin);
       background: #EDEAE3;
     }
+    .closing-videos-label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .closing-videos-inner { display: flex; gap: 10px; align-items: center; justify-content: center; width: 100%; }
 
     .closing-h {
       font-family: 'Playfair Display', serif;
@@ -737,6 +741,37 @@
       font-weight: 400;
       color: var(--text-muted);
     }
+
+    .pi-wrap { display: flex; flex-direction: column; gap: 2rem; min-width: 0; }
+    .pi-title { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .pi-desc { font-size: 12px; color: var(--text-muted); font-weight: 300; line-height: 1.9; margin-top: -1.4rem; }
+    .pi-table-wrap { position: relative; overflow-x: auto; width: 100%; min-width: 0; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; }
+    .pi-table-wrap::-webkit-scrollbar { display: none; }
+    .pi-scrollbar { height: 4px; background: #D4CCC4; border-radius: 2px; position: relative; overflow: hidden; margin-top: 6px; }
+    .pi-scrollbar-thumb { position: absolute; top: 0; left: 0; height: 100%; background: #8A8278; border-radius: 2px; }
+    .pi-table { border-collapse: separate; border-spacing: 0; min-width: 700px; }
+    .pi-table .pi-crit, .pi-table .pi-th:first-child { width: 180px; max-width: 180px; }
+    .pi-table .pi-score, .pi-table .pi-th:not(:first-child):not(.sum-head) { width: 80px; }
+    .pi-table .pi-row-sum, .pi-table .sum-head { width: 60px; }
+    .pi-table th, .pi-table td { padding: 0; }
+    .pi-table th:first-child, .pi-table td:first-child { position: sticky; left: 0; background: #F7F4EF; z-index: 2; }
+    .pi-th { text-align: center; vertical-align: bottom; padding: 0 2rem 1.6rem 2rem; font-weight: normal; }
+    .pi-th:first-child { padding-left: 0; padding-right: 1.2rem; text-align: left; }
+    .pi-th.sum-head { padding-left: 1rem; padding-right: 1rem; text-align: center; }
+    .pi-sym { font-size: 15px; color: var(--text-muted); line-height: 1; display: block; }
+    .pi-mbti { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); display: block; font-weight: 300; margin-top: 5px; }
+    .pi-table .pi-crit { vertical-align: top; padding: 1.3rem 1.2rem 1.3rem 0 !important; }
+    .pi-crit-en { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+    .pi-crit-zh { display: block; font-size: 12px; color: var(--text-muted); font-weight: 300; white-space: nowrap; margin-top: 4px; }
+    .pi-table .pi-score { text-align: center; padding: 1.3rem 2rem 1.3rem 2rem !important; vertical-align: middle; white-space: nowrap; }
+    .pi-dots { font-size: 13px; color: var(--text-main); letter-spacing: 5px; opacity: 0.65; }
+    .pi-table .pi-row-sum { font-size: 12px; color: var(--text-muted); text-align: center; padding: 1.3rem 1rem 1.3rem 1rem !important; letter-spacing: 0.05em; white-space: nowrap; vertical-align: middle; }
+    .br-m { display: none; }
+    .pi-comments { display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid var(--border-light); padding-top: 1.4rem; }
+    .pi-comment { display: flex; gap: 0.9rem; align-items: flex-start; }
+    .pi-c-sym { font-size: 14px; color: var(--text-muted); flex-shrink: 0; margin-top: 1px; }
+    .pi-c-text { font-size: 13px; font-style: italic; color: var(--text-muted); line-height: 1.75; }
+
     .back-link-bar {
       padding: 1rem var(--margin) 2rem;
       border-top: 1px solid var(--border);
@@ -867,9 +902,10 @@
     /* ═══ RWD ═══ */
     @media (max-width: 900px) {
       :root { --margin: 2rem; }
+      .br-m { display: block; }
 
       .context { grid-template-columns: 1fr; }
-      .ctx-img { aspect-ratio: 4/3; }
+      .ctx-img { aspect-ratio: 4/5; }
       .ctx-img img { height: 100%; aspect-ratio: unset; }
       .ctx-text { padding: 3rem var(--margin); }
 
@@ -877,9 +913,14 @@
       .ch-split-img { height: auto !important; }
       .ch-split .ch-split-text,
       .ch-split.img-right .ch-split-text { padding: 3rem var(--margin); }
-      .ch-split-img img { height: 280px; }
+      .ch-split-img img { height: auto; width: 100%; }
+      .ch-split-tall .ch-split-img img { object-position: center 35% !important; }
 
       .ch-strip-inner { height: 260px; }
+      .signature { height: auto; aspect-ratio: 4/3; }
+      .ch-triple { grid-template-columns: 1fr; height: auto; }
+      .ch-triple > div img { height: auto; width: 100%; }
+      .ch-triple-caption p { font-size: 18px !important; line-height: 1.5 !important; }
       .ch-mosaic-1v2 { grid-template-columns: 1fr; grid-template-rows: auto; height: auto; }
       .ch-mosaic-1v2 .tall { grid-row: auto; }
       .ch-mosaic-1v2 > div img { height: 260px; }
@@ -900,8 +941,9 @@
       .pg-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .closing { grid-template-columns: 1fr; }
       .closing-text { padding: 3rem var(--margin); }
-      .closing-videos { flex-wrap: wrap; padding: 3rem 1.5rem; gap: 16px; }
-      .closing-videos video { width: 100% !important; height: auto !important; }
+      .closing-videos { padding: 3rem 1.5rem; gap: 1rem; }
+      .closing-videos-inner { flex-wrap: wrap; gap: 16px; justify-content: center; }
+      .closing-videos-inner video { width: 100% !important; height: auto !important; }
       .back-link-bar { padding-bottom: 4rem; }
       .footer { margin-top: 0; }
     }
@@ -935,10 +977,15 @@
     </div>
   </header>
   <div class="mobile-menu" id="mobileMenu">
+    <button class="menu-close" onclick="toggleMenu()" aria-label="關閉選單">✕</button>
     <a href="index.html">HOME</a>
     <a href="journeys.html">JOURNEYS</a>
     <a href="index.html#about">ABOUT US</a>
     <a href="contact.html">SAY HELLO</a>
+    <div class="menu-social">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
   </div>
 
   <!-- ══ FRAME 01 — HERO ══ -->
@@ -1010,7 +1057,7 @@
     <div><img src="images/oman/18109795366601364.jpg" alt="Muscat Mosque Garden" /></div>
     <div><img src="images/oman/17860181439515426.jpg" alt="Muscat Mosque Interior" /></div>
     <div><img src="images/oman/18119795092522006.jpg" alt="Muscat Mosque Corridor" /></div>
-    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 4rem var(--margin) 2.5rem 32px; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%); pointer-events: none;">
+    <div class="ch-triple-caption" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 4rem var(--margin) 2.5rem 32px; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%); pointer-events: none;">
       <p style="font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 400; font-style: italic; color: #fff; line-height: 1.4;">We entered a culture shaped by light, silence, and devotion.</p>
     </div>
   </section>
@@ -1154,19 +1201,70 @@
 
   <!-- ══ FRAME 08 — CLOSING ══ -->
   <section class="closing">
-    <div class="closing-text">
-      <h2 class="closing-h fi">We did not just travel.</h2>
-      <p class="closing-body fi fi-delay-1">
-        我們離開的不是地方，<br>
-        而是某種熟悉的自己。
-      </p>
-      <p class="closing-line fi fi-delay-2">Something stayed behind.</p>
-    </div>
     <div class="closing-videos fi">
-      <video src="images/oman/18084491224989059.mp4" poster="images/oman/poster_18084491224989059.jpg" controls playsinline preload="metadata"
-        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
-      <video src="images/oman/17927681910115819.mp4" poster="images/oman/poster_17927681910115819.jpg" controls playsinline preload="metadata"
-        style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+      <p class="closing-videos-label">Fragments We Kept</p>
+      <div class="closing-videos-inner">
+        <video src="images/oman/18084491224989059.mp4" poster="images/oman/poster_18084491224989059.jpg" controls playsinline preload="metadata"
+          style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+        <video src="images/oman/17927681910115819.mp4" poster="images/oman/poster_17927681910115819.jpg" controls playsinline preload="metadata"
+          style="width:240px;height:427px;object-fit:cover;flex-shrink:0;display:block;background:#0a0a0a;"></video>
+      </div>
+    </div>
+    <div class="closing-text">
+      <div class="pi-wrap fi">
+        <p class="pi-title">The Personality Index <br class="br-m">｜10-Point Distribution</p>
+        <p class="pi-desc">每人有 10 分，分配於四個指標中。<br class="br-m">分數呈現相對高低，而非絕對評價。</p>
+        <div class="pi-table-wrap">
+          <table class="pi-table">
+            <thead>
+              <tr>
+                <th class="pi-th"></th>
+                <th class="pi-th"><span class="pi-sym">✦</span><span class="pi-mbti">INFJ</span></th>
+                <th class="pi-th"><span class="pi-sym">○</span><span class="pi-mbti">INTP</span></th>
+                <th class="pi-th"><span class="pi-sym">〜</span><span class="pi-mbti">ISFP</span></th>
+                <th class="pi-th sum-head"><span class="pi-mbti">∑</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="pi-crit"><span class="pi-crit-en">Emotional Impact</span><span class="pi-crit-zh">後勁強不強</span></td>
+                <td class="pi-score"><span class="pi-dots">●●●</span></td>
+                <td class="pi-score"><span class="pi-dots">●●●●</span></td>
+                <td class="pi-score"><span class="pi-dots">●●●</span></td>
+                <td class="pi-row-sum">10 pts</td>
+              </tr>
+              <tr>
+                <td class="pi-crit"><span class="pi-crit-en">Energy Cost</span><span class="pi-crit-zh">電量開支</span></td>
+                <td class="pi-score"><span class="pi-dots">●●</span></td>
+                <td class="pi-score"><span class="pi-dots">●</span></td>
+                <td class="pi-score"><span class="pi-dots">●</span></td>
+                <td class="pi-row-sum">4 pts</td>
+              </tr>
+              <tr>
+                <td class="pi-crit"><span class="pi-crit-en">Food Compatibility</span><span class="pi-crit-zh">胃口合不合</span></td>
+                <td class="pi-score"><span class="pi-dots">●●</span></td>
+                <td class="pi-score"><span class="pi-dots">●●</span></td>
+                <td class="pi-score"><span class="pi-dots">●</span></td>
+                <td class="pi-row-sum">5 pts</td>
+              </tr>
+              <tr>
+                <td class="pi-crit"><span class="pi-crit-en">Adventure Level</span><span class="pi-crit-zh">冒險刺激度</span></td>
+                <td class="pi-score"><span class="pi-dots">●●●</span></td>
+                <td class="pi-score"><span class="pi-dots">●●●</span></td>
+                <td class="pi-score"><span class="pi-dots">●●●●●</span></td>
+                <td class="pi-row-sum">11 pts</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pi-scrollbar"><div class="pi-scrollbar-thumb"></div></div>
+        <div class="pi-comments">
+          <p class="pi-title">Short Comment</p>
+          <div class="pi-comment"><span class="pi-c-sym">✦</span><p class="pi-c-text">宗教深植於法律與日常之中，整體氛圍友善而平和，但仍能明顯感受到本地阿拉伯人與巴基斯坦、菲律賓移工之間存在的階級差異。無論是文化衝擊，還是壯闊而荒涼的自然景觀，都讓這趟旅程十分值得。</p></div>
+          <div class="pi-comment"><span class="pi-c-sym">○</span><p class="pi-c-text">雖然不是第一次訪問中東國家，但卻是第一次在中東國家自駕旅行。開著車在很不一樣的風景景觀中大概是最特別的體驗，即便四輪驅動還是可能陷入沙漠中，然後需仰賴當地人支援逃出他們習以為常的日常。</p></div>
+          <div class="pi-comment"><span class="pi-c-sym">〜</span><p class="pi-c-text">原本對這個國家幾乎一無所知，連在哪裡都不知道，出發前還要擔心簽證和入境問題。但真正到了之後，一切都比期待中更新奇又好玩，當地人也很友善。很想推薦自駕旅行的朋友都來體驗看看～</p></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1210,7 +1308,39 @@
       entries.forEach(e => { if (e.isIntersecting) sigEl.classList.add('in'); });
     }, { threshold: 0.4 }).observe(sigEl);
 
+    // PI table — custom scrollbar + auto-scroll
+    (function() {
+      var wrap = document.querySelector('.pi-table-wrap');
+      if (!wrap) return;
+      var thumb = document.querySelector('.pi-scrollbar-thumb');
+      function updateThumb() {
+        if (!thumb) return;
+        var max = wrap.scrollWidth - wrap.clientWidth;
+        if (max <= 0) { thumb.style.width = '100%'; thumb.style.left = '0'; return; }
+        var pct = wrap.clientWidth / wrap.scrollWidth;
+        thumb.style.width = (pct * 100) + '%';
+        thumb.style.left = (wrap.scrollLeft / max * (1 - pct) * 100) + '%';
+      }
+      wrap.addEventListener('scroll', updateThumb);
+      setTimeout(updateThumb, 300);
+      setTimeout(function() {
+        var max = wrap.scrollWidth - wrap.clientWidth;
+        if (max <= 0) return;
+        var direction = 1, start = null, duration = 8000;
+        function step(ts) {
+          if (!start) start = ts;
+          var t = Math.min((ts - start) / duration, 1);
+          var ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+          wrap.scrollLeft = direction === 1 ? ease * max : (1 - ease) * max;
+          if (t < 1) { requestAnimationFrame(step); }
+          else { direction = -direction; start = null; setTimeout(function() { requestAnimationFrame(step); }, 800); }
+        }
+        requestAnimationFrame(step);
+      }, 2000);
+    }());
+
   </script>
 
+  <script src="js/scroll-top.js"></script>
 </body>
 </html>

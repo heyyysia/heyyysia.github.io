@@ -345,7 +345,7 @@
     }
     .ch-closing-dot { width: 10px; height: 10px; border-radius: 50%; }
     .back-wrap {
-      padding: 1rem 4rem 2rem;
+      padding: 1rem 4rem 2rem calc(var(--sidebar) + 4rem);
       background: var(--bg-page);
       border-top: 1px solid var(--border-light);
     }
@@ -440,6 +440,10 @@
        RESPONSIVE
     ══════════════════════════ */
     @media (max-width: 860px) {
+      :root { --margin: 2rem; }
+      .br-m { display: block; }
+      .ch-signature { height: auto; aspect-ratio: 4/3; }
+      .ch-sig-text { font-size: 22px; }
       .ch-sidenav { display: none; }
       .ch-hero-title { font-size: 68px; }
       .ch-hero-content { padding-left: 2rem; padding-right: 2rem; }
@@ -449,7 +453,42 @@
       .cs-num { font-size: 56px; }
       .ch-picker-row { flex-wrap: wrap; gap: 1.8rem; padding: 0 1.5rem; }
       .ch-picker-circle { width: 64px; height: 64px; font-size: 18px; }
+      .back-wrap { padding: 1rem 1.5rem 4rem; }
     }
+    /* ── The Personality Index ── */
+    .pi-section { padding: 6rem var(--margin) 4rem; border-top: 1px solid var(--border-light); }
+    .pi-heading { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 400; color: var(--text-main); }
+    .pi-wrap { display: flex; flex-direction: column; gap: 2rem; min-width: 0; }
+    .pi-title { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+    .pi-desc { font-size: 12px; color: var(--text-muted); font-weight: 300; line-height: 1.9; margin-top: -1.4rem; }
+    .pi-table-wrap { position: relative; overflow-x: auto; width: 100%; min-width: 0; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; }
+    .pi-table-wrap::-webkit-scrollbar { display: none; }
+    .pi-scrollbar { height: 4px; background: #D4CCC4; border-radius: 2px; position: relative; overflow: hidden; margin-top: 6px; }
+    .pi-scrollbar-thumb { position: absolute; top: 0; left: 0; height: 100%; background: #8A8278; border-radius: 2px; }
+    .pi-table { border-collapse: separate; border-spacing: 0; min-width: 700px; }
+    .pi-table .pi-crit, .pi-table .pi-th:first-child { width: 180px; max-width: 180px; }
+    .pi-table .pi-score, .pi-table .pi-th:not(:first-child):not(.sum-head) { width: 80px; }
+    .pi-table .pi-row-sum, .pi-table .sum-head { width: 60px; }
+    .pi-table th, .pi-table td { padding: 0; }
+    .pi-table th:first-child, .pi-table td:first-child { position: sticky; left: 0; background: #F7F4EF; z-index: 2; }
+    .pi-th { text-align: center; vertical-align: bottom; padding: 0 2rem 1.6rem 2rem; font-weight: normal; }
+    .pi-th:first-child { padding-left: 0; padding-right: 1.2rem; text-align: left; }
+    .pi-th.sum-head { padding-left: 1rem; padding-right: 1rem; text-align: center; }
+    .pi-sym { font-size: 15px; color: var(--text-muted); line-height: 1; display: block; }
+    .pi-mbti { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); display: block; font-weight: 300; margin-top: 5px; }
+    .pi-table .pi-crit { vertical-align: top; padding: 1.3rem 1.2rem 1.3rem 0 !important; }
+    .pi-crit-en { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+    .pi-crit-zh { display: block; font-size: 12px; color: var(--text-muted); font-weight: 300; white-space: nowrap; margin-top: 4px; }
+    .pi-table .pi-score { text-align: center; padding: 1.3rem 2rem 1.3rem 2rem !important; vertical-align: middle; white-space: nowrap; }
+    .pi-dots { font-size: 13px; color: var(--text-main); letter-spacing: 5px; opacity: 0.65; }
+    .pi-na { font-size: 13px; color: var(--text-muted); opacity: 0.4; }
+    .br-m { display: none; }
+    .pi-table .pi-row-sum { font-size: 12px; color: var(--text-muted); text-align: center; padding: 1.3rem 1rem 1.3rem 1rem !important; letter-spacing: 0.05em; white-space: nowrap; vertical-align: middle; }
+    .pi-comments { display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid var(--border-light); padding-top: 1.4rem; }
+    .pi-comment { display: flex; gap: 0.9rem; align-items: flex-start; }
+    .pi-c-sym { font-size: 14px; color: var(--text-muted); flex-shrink: 0; margin-top: 1px; }
+    .pi-c-text { font-size: 13px; font-style: italic; color: var(--text-muted); line-height: 1.75; }
+
   </style>
 </head>
 <body>
@@ -472,10 +511,15 @@
     </div>
   </header>
   <div class="mobile-menu" id="mobileMenu">
+    <button class="menu-close" onclick="toggleMenu()" aria-label="關閉選單">✕</button>
     <a href="index.html">HOME</a>
     <a href="journeys.html">JOURNEYS</a>
     <a href="index.html#about">ABOUT US</a>
     <a href="contact.html">SAY HELLO</a>
+    <div class="menu-social">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
   </div>
 
   <!-- ══ HERO ══ -->
@@ -602,15 +646,15 @@
         </div>
         <div class="cs-body fi fi-d1">
           <div class="cs-grid">
-            <div class="cs-grid-cell"><img src="ig-posts/202603/17989528316951950.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202603/18076177817174116.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202603/17865641850665094.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202603/17881983135506868.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202603/18002011667882524.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202603/18059459429432729.jpg" alt="" style="object-position:center 85%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202603/18099118201810735.jpg" alt="" style="object-position:25% center" /></div>
-            <div class="cs-grid-cell cell-scale"><img src="ig-posts/202603/18454115497104280.jpg" alt="" style="object-position:8% center" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202603/18099358667096329.jpg" alt="" style="object-position:center 5%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202603/17989528316951950.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202603/18076177817174116.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202603/17865641850665094.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202603/17881983135506868.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202603/18002011667882524.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202603/18059459429432729.jpg" alt="" style="object-position:center 85%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202603/18099118201810735.jpg" alt="" style="object-position:25% center" /></div>
+            <div class="cs-grid-cell cell-scale"><img loading="lazy" src="ig-posts/202603/18454115497104280.jpg" alt="" style="object-position:8% center" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202603/18099358667096329.jpg" alt="" style="object-position:center 5%" /></div>
           </div>
           <div class="cs-text">
             <p>誰能拒絕多巴胺爆棚的紅色？<br>走進紅色的扭蛋區，心跳自動加速；<br>看著那盤肥美的鮪魚，食慾瞬間滿格！</p>
@@ -632,15 +676,15 @@
         </div>
         <div class="cs-body fi fi-d1">
           <div class="cs-grid">
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18144128512491892.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17873390784571176.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17912491830358920.jpg" alt="" style="object-position:35% center" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17918782581328534.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17925813549260221.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17936394153039397.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-juice"><img src="ig-posts/202604/18353099713230789.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17971151823010831.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-daruma"><img src="ig-posts/202604/18004972409718377.jpg" alt="" style="object-position:center 40%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18144128512491892.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17873390784571176.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17912491830358920.jpg" alt="" style="object-position:35% center" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17918782581328534.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17925813549260221.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17936394153039397.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-juice"><img loading="lazy" src="ig-posts/202604/18353099713230789.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17971151823010831.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-daruma"><img loading="lazy" src="ig-posts/202604/18004972409718377.jpg" alt="" style="object-position:center 40%" /></div>
           </div>
           <div class="cs-text">
             <p>橘色是能量，也是慾望。它是黃昏時分的溫柔光芒，也是盤子裡閃閃發亮的鮭魚卵。更是永遠難以抗拒的魔力提袋。</p>
@@ -662,15 +706,15 @@
         </div>
         <div class="cs-body fi fi-d1">
           <div class="cs-grid">
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18212285290326358.jpg" alt="" style="object-position:center 35%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18016047914832948.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/sign-cropped.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18090607373142666.jpg" alt="" style="object-position:center 10%" /></div>
-            <div class="cs-grid-cell cell-hachiko"><img src="ig-posts/202604/18091581815128950.jpg" alt="" style="object-position:center 100%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18106481734849299.jpg" alt="" style="object-position:center 80%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18076440770628959.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17962885737064753.jpg" alt="" style="object-position:center 50%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18085235123603152.jpg" alt="" style="object-position:center 20%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18212285290326358.jpg" alt="" style="object-position:center 35%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18016047914832948.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/sign-cropped.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18090607373142666.jpg" alt="" style="object-position:center 10%" /></div>
+            <div class="cs-grid-cell cell-hachiko"><img loading="lazy" src="ig-posts/202604/18091581815128950.jpg" alt="" style="object-position:center 100%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18106481734849299.jpg" alt="" style="object-position:center 80%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18076440770628959.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17962885737064753.jpg" alt="" style="object-position:center 50%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18085235123603152.jpg" alt="" style="object-position:center 20%" /></div>
           </div>
           <div class="cs-text">
             <p>大腦很誠實，看到黃色就會忍不住多看一眼。它是布丁狗的療癒、玉子燒的幸福，也是街頭醒目的指引。</p>
@@ -692,15 +736,15 @@
         </div>
         <div class="cs-body fi fi-d1">
           <div class="cs-grid">
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17858253921586335.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17872391238593990.jpg" alt="" style="object-position:center 100%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17874730239568572.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17905394340219857.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-baseball"><img src="ig-posts/202604/18181221754377494.jpg" alt="" style="object-position:right 100%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17961107708914454.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18099916781067471.jpg" alt="" style="object-position:center center" /></div>
-            <div class="cs-grid-cell cell-clinic"><img src="ig-posts/202604/18063110756688186.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17992113803946710.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17858253921586335.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17872391238593990.jpg" alt="" style="object-position:center 100%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17874730239568572.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17905394340219857.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-baseball"><img loading="lazy" src="ig-posts/202604/18181221754377494.jpg" alt="" style="object-position:right 100%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17961107708914454.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18099916781067471.jpg" alt="" style="object-position:center center" /></div>
+            <div class="cs-grid-cell cell-clinic"><img loading="lazy" src="ig-posts/202604/18063110756688186.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17992113803946710.jpg" alt="" /></div>
           </div>
           <div class="cs-text">
             <p>世界太吵，讓眼睛吃點維他命。<br>它是抹茶的苦、山葵的辣，<br>也是 WBC 球場那讓人熱血沸騰的草皮！</p>
@@ -722,15 +766,15 @@
         </div>
         <div class="cs-body fi fi-d1">
           <div class="cs-grid">
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17853322089644073.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-up"><img src="ig-posts/202604/18013959923683576.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17944227986997915.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18189592540370188.jpg" alt="" style="object-position:center 30%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18332822566220153.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18044494565584637.jpg" alt="" style="object-position:center 55%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18108467839888691.jpg" alt="" style="object-position:center 25%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18089164616256105.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-watch"><img src="ig-posts/202604/17908276764202786.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17853322089644073.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-up"><img loading="lazy" src="ig-posts/202604/18013959923683576.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17944227986997915.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18189592540370188.jpg" alt="" style="object-position:center 30%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18332822566220153.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18044494565584637.jpg" alt="" style="object-position:center 55%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18108467839888691.jpg" alt="" style="object-position:center 25%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18089164616256105.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-watch"><img loading="lazy" src="ig-posts/202604/17908276764202786.jpg" alt="" /></div>
           </div>
           <div class="cs-text">
             <p>東京街頭的理智色，東京巨蛋裡的狂熱藍！<br>藍色視覺可以很冷靜，但應援團的靈魂絕對是滾燙的。</p>
@@ -752,15 +796,15 @@
         </div>
         <div class="cs-body fi fi-d1">
           <div class="cs-grid">
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18122276950613598.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18070596329285105.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18076862264428514.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-zoom11"><img src="ig-posts/202604/18077789081153845.jpg" alt="" style="object-position:center 0%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18089820556959361.jpg" alt="" style="object-position:right center" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18094685926890136.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18104898599498183.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-ticket"><img src="ig-posts/202604/18110744326793595.jpg" alt="" style="object-position:0% center" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18311380708262758.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18122276950613598.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18070596329285105.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18076862264428514.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-zoom11"><img loading="lazy" src="ig-posts/202604/18077789081153845.jpg" alt="" style="object-position:center 0%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18089820556959361.jpg" alt="" style="object-position:right center" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18094685926890136.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18104898599498183.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-ticket"><img loading="lazy" src="ig-posts/202604/18110744326793595.jpg" alt="" style="object-position:0% center" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18311380708262758.jpg" alt="" /></div>
           </div>
           <div class="cs-text">
             <p>這場旅行，從機艙裡的一抹淡紫開始。它沒有聲音，卻悄悄蔓延——落在街景、雪地與那些不經意的城市角落。</p>
@@ -782,15 +826,15 @@
         </div>
         <div class="cs-body fi fi-d1">
           <div class="cs-grid">
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17885146836474572.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-zoom11"><img src="ig-posts/202604/17937878727197152.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17988127769971241.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18087547675999488.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18089325650254395.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18092049962177366.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18093999869333134.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-figure"><img src="ig-posts/202604/18312539269273641.jpg" alt="" style="object-position:center 95%" /></div>
-            <div class="cs-grid-cell cell-sign"><img src="ig-posts/202604/18356294221226109.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17885146836474572.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-zoom11"><img loading="lazy" src="ig-posts/202604/17937878727197152.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17988127769971241.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18087547675999488.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18089325650254395.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18092049962177366.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18093999869333134.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-figure"><img loading="lazy" src="ig-posts/202604/18312539269273641.jpg" alt="" style="object-position:center 95%" /></div>
+            <div class="cs-grid-cell cell-sign"><img loading="lazy" src="ig-posts/202604/18356294221226109.jpg" alt="" /></div>
           </div>
           <div class="cs-text">
             <p>在粉紅色的面前，理智通常當場離職。<br>它是東京街頭的櫻花，也是讓人瞬間失守的草莓大福。</p>
@@ -812,15 +856,15 @@
         </div>
         <div class="cs-body fi fi-d1">
           <div class="cs-grid">
-            <div class="cs-grid-cell cell-zoomout"><img src="ig-posts/202604/18126473578582639.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17922537366305499.jpg" alt="" style="object-position:62% center" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/17958753492102330.jpg" alt="" /></div>
-            <div class="cs-grid-cell cell-washer"><img src="ig-posts/202604/18014876681838971.jpg" alt="" style="object-position:72% 100%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18038907992785338.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18063767219363683.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18107365048896306.jpg" alt="" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18078726362541745.jpg" alt="" style="object-position:center 8%" /></div>
-            <div class="cs-grid-cell"><img src="ig-posts/202604/18097973656957549.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-zoomout"><img loading="lazy" src="ig-posts/202604/18126473578582639.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17922537366305499.jpg" alt="" style="object-position:62% center" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/17958753492102330.jpg" alt="" /></div>
+            <div class="cs-grid-cell cell-washer"><img loading="lazy" src="ig-posts/202604/18014876681838971.jpg" alt="" style="object-position:72% 100%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18038907992785338.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18063767219363683.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18107365048896306.jpg" alt="" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18078726362541745.jpg" alt="" style="object-position:center 8%" /></div>
+            <div class="cs-grid-cell"><img loading="lazy" src="ig-posts/202604/18097973656957549.jpg" alt="" /></div>
           </div>
           <div class="cs-text">
             <p>世界太亂，只有黑白最簡單。它是東京巨蛋的榮耀刻痕，是路燈下拉長的孤傲影子，也是洗衣機或人孔蓋上，那些被忽略的幾何線條。</p>
@@ -832,7 +876,7 @@
       <!-- ══ SIGNATURE MOMENT ══ -->
       <div class="ch-signature">
         <div class="ch-sig-bg">
-          <img src="ig-posts/202604/sig-japan2-v3.jpg" alt="" />
+          <img loading="lazy" src="ig-posts/202604/sig-japan2-v3.jpg" alt="" />
         </div>
         <div class="ch-sig-overlay"></div>
         <div class="ch-sig-content" id="japanSig">
@@ -842,12 +886,70 @@
         </div>
       </div>
 
-      <div class="back-wrap">
-        <a href="journeys.html" class="back-link">← All Journeys</a>
+      <!-- ══ THE PERSONALITY INDEX ══ -->
+      <div class="pi-section">
+        <div class="pi-wrap fi">
+          <p class="pi-title">The Personality Index <br class="br-m">｜10-Point Distribution</p>
+          <p class="pi-desc">每人有 10 分，分配於四個指標中。<br class="br-m">分數呈現相對高低，而非絕對評價。</p>
+          <div class="pi-table-wrap">
+            <table class="pi-table">
+              <thead>
+                <tr>
+                  <th class="pi-th"></th>
+                  <th class="pi-th"><span class="pi-sym">✦</span><span class="pi-mbti">INFJ</span></th>
+                  <th class="pi-th"><span class="pi-sym">○</span><span class="pi-mbti">INTP</span></th>
+                  <th class="pi-th"><span class="pi-sym">〜</span><span class="pi-mbti">ISFP</span></th>
+                  <th class="pi-th sum-head"><span class="pi-mbti">∑</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="pi-crit"><span class="pi-crit-en">Emotional Impact</span><span class="pi-crit-zh">後勁強不強</span></td>
+                  <td class="pi-score pi-na">—</td>
+                  <td class="pi-score"><span class="pi-dots">●●●●●</span></td>
+                  <td class="pi-score"><span class="pi-dots">●●●●</span></td>
+                  <td class="pi-row-sum">9 pts</td>
+                </tr>
+                <tr>
+                  <td class="pi-crit"><span class="pi-crit-en">Energy Cost</span><span class="pi-crit-zh">電量開支</span></td>
+                  <td class="pi-score pi-na">—</td>
+                  <td class="pi-score pi-na">—</td>
+                  <td class="pi-score"><span class="pi-dots">●●</span></td>
+                  <td class="pi-row-sum">2 pts</td>
+                </tr>
+                <tr>
+                  <td class="pi-crit"><span class="pi-crit-en">Food Compatibility</span><span class="pi-crit-zh">胃口合不合</span></td>
+                  <td class="pi-score pi-na">—</td>
+                  <td class="pi-score"><span class="pi-dots">●●●●</span></td>
+                  <td class="pi-score"><span class="pi-dots">●●●●</span></td>
+                  <td class="pi-row-sum">8 pts</td>
+                </tr>
+                <tr>
+                  <td class="pi-crit"><span class="pi-crit-en">Adventure Level</span><span class="pi-crit-zh">冒險刺激度</span></td>
+                  <td class="pi-score pi-na">—</td>
+                  <td class="pi-score"><span class="pi-dots">●</span></td>
+                  <td class="pi-score pi-na">—</td>
+                  <td class="pi-row-sum">1 pt</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pi-scrollbar"><div class="pi-scrollbar-thumb"></div></div>
+          <div class="pi-comments">
+            <p class="pi-title">Short Comment</p>
+            <div class="pi-comment"><span class="pi-c-sym">✦</span><p class="pi-c-text pi-na">—</p></div>
+            <div class="pi-comment"><span class="pi-c-sym">○</span><p class="pi-c-text">為了現場觀賽的熱血體驗而安排的旅遊。一切圍繞著比賽安排一日的行程，心情是愉快的，就沒有任何疲憊了！</p></div>
+            <div class="pi-comment"><span class="pi-c-sym">〜</span><p class="pi-c-text">這次為了看 WBC 來到東京。第一次的東京巨蛋、第一次的海外球賽，場內熱血沸騰的應援至今還忘不了，每個瞬間都值得一再回味。</p></div>
+          </div>
+        </div>
       </div>
 
     </main><!-- /ch-main -->
   </div><!-- /ch-layout -->
+
+  <div class="back-wrap">
+    <a href="journeys.html" class="back-link">← All Journeys</a>
+  </div>
 
   <!-- ══ FOOTER ══ -->
   <footer class="footer">
@@ -903,6 +1005,38 @@
       }, { threshold: 0.15 });
       sigObs.observe(sigEl);
     }
+
+    // PI table — custom scrollbar + auto-scroll
+    (function() {
+      var wrap = document.querySelector('.pi-table-wrap');
+      if (!wrap) return;
+      var thumb = document.querySelector('.pi-scrollbar-thumb');
+      function updateThumb() {
+        if (!thumb) return;
+        var max = wrap.scrollWidth - wrap.clientWidth;
+        if (max <= 0) { thumb.style.width = '100%'; thumb.style.left = '0'; return; }
+        var pct = wrap.clientWidth / wrap.scrollWidth;
+        thumb.style.width = (pct * 100) + '%';
+        thumb.style.left = (wrap.scrollLeft / max * (1 - pct) * 100) + '%';
+      }
+      wrap.addEventListener('scroll', updateThumb);
+      setTimeout(updateThumb, 300);
+      setTimeout(function() {
+        var max = wrap.scrollWidth - wrap.clientWidth;
+        if (max <= 0) return;
+        var direction = 1, start = null, duration = 8000;
+        function step(ts) {
+          if (!start) start = ts;
+          var t = Math.min((ts - start) / duration, 1);
+          var ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+          wrap.scrollLeft = direction === 1 ? ease * max : (1 - ease) * max;
+          if (t < 1) { requestAnimationFrame(step); }
+          else { direction = -direction; start = null; setTimeout(function() { requestAnimationFrame(step); }, 800); }
+        }
+        requestAnimationFrame(step);
+      }, 2000);
+    }());
   </script>
+  <script src="js/scroll-top.js"></script>
 </body>
 </html>
