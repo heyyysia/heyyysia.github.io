@@ -1036,6 +1036,7 @@
         thumb.style.left = (wrap.scrollLeft / max * (1 - pct) * 100) + '%';
       }
       wrap.addEventListener('scroll', updateThumb);
+      window.addEventListener('resize', updateThumb);
       setTimeout(updateThumb, 300);
       setTimeout(function() {
         var max = wrap.scrollWidth - wrap.clientWidth;
