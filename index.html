@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
 </head>
 <body>
 
@@ -26,7 +26,6 @@
     <div class="nav-icons">
       <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <button class="search-btn" aria-label="搜尋" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
       <button class="hamburger" id="hamburgerBtn" aria-label="選單" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -35,16 +34,15 @@
 
   <!-- 手機選單 -->
   <div class="mobile-menu" id="mobileMenu">
+    <button class="menu-close" onclick="toggleMenu()" aria-label="關閉選單">✕</button>
     <a href="index.html" class="active">HOME</a>
     <a href="journeys.html">JOURNEYS</a>
     <a href="#about">ABOUT US</a>
     <a href="contact.html">SAY HELLO</a>
-  </div>
-
-  <!-- 搜尋列 -->
-  <div class="search-bar" id="searchBar">
-    <input type="text" placeholder="搜尋旅程、地點..." id="searchInput" />
-    <button onclick="toggleSearch()"><i class="fas fa-times"></i></button>
+    <div class="menu-social">
+      <a href="https://www.instagram.com/ah.heyyysia/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
   </div>
 
   <!-- Hero -->
@@ -63,9 +61,9 @@
     <div class="trips-header">
       <h2 class="section-heading">我們的旅程</h2>
       <div class="trip-filter-tags">
-        <span class="filter-tag exploration">● 外向探索 exploration</span>
-        <span class="filter-tag inner-journey">● 內在旅程 inner journey</span>
-        <span class="filter-tag aesthetic">● 日常出走 everyday escape</span>
+        <span class="filter-tag exploration">● 外向探索 EXPLORATION</span>
+        <span class="filter-tag inner-journey">● 內在旅程 INNER JOURNEY</span>
+        <span class="filter-tag aesthetic">● 日常出走 EVERYDAY ESCAPE</span>
       </div>
       <a href="journeys.html" class="view-all-link">view all journeys →</a>
     </div>
@@ -106,13 +104,13 @@
     <div class="about-photo">
       <div class="about-photo-grid">
         <div class="about-photo-item" id="photoInfj">
-          <img src="images/about-1.jpg" alt="INFJ" />
+          <img src="images/about-1.jpg" alt="INFJ" loading="eager" />
         </div>
         <div class="about-photo-item" id="photoIntp">
-          <img src="images/about-2.jpg" alt="INTP" />
+          <img src="images/about-2.jpg" alt="INTP" loading="eager" />
         </div>
         <div class="about-photo-item" id="photoIsfp">
-          <img src="images/about-3.jpg" alt="ISFP" />
+          <img src="images/about-3.jpg" alt="ISFP" loading="eager" />
         </div>
       </div>
     </div>
@@ -123,24 +121,27 @@
       <div class="mbti-cards">
         <div class="mbti-card infj-card">
           <div class="mbti-icon">✦</div>
-          <p class="mbti-type">INFJ</p>
-          <p class="mbti-title">the observer</p>
-          <p class="mbti-sub">sees ahead.</p>
-          <p class="mbti-hover">plans quietly,<br>feels everything.</p>
+          <div class="mbti-text-block">
+            <p class="mbti-type">INFJ</p>
+            <p class="mbti-title">the observer</p>
+            <div class="mbti-desc-row"><p class="mbti-sub">sees ahead.</p><p class="mbti-hover">plans quietly,<br>feels everything.</p></div>
+          </div>
         </div>
         <div class="mbti-card intp-card">
           <div class="mbti-icon">○</div>
-          <p class="mbti-type">INTP</p>
-          <p class="mbti-title">the thinker</p>
-          <p class="mbti-sub">questions why.</p>
-          <p class="mbti-hover">overthinks,<br>then figures it out.</p>
+          <div class="mbti-text-block">
+            <p class="mbti-type">INTP</p>
+            <p class="mbti-title">the thinker</p>
+            <div class="mbti-desc-row"><p class="mbti-sub">questions why.</p><p class="mbti-hover">overthinks,<br>then figures it out.</p></div>
+          </div>
         </div>
         <div class="mbti-card isfp-card">
           <div class="mbti-icon">〜</div>
-          <p class="mbti-type">ISFP</p>
-          <p class="mbti-title">the feeler</p>
-          <p class="mbti-sub">feels deeply.</p>
-          <p class="mbti-hover">lives in the moment,<br>beautifully.</p>
+          <div class="mbti-text-block">
+            <p class="mbti-type">ISFP</p>
+            <p class="mbti-title">the feeler</p>
+            <div class="mbti-desc-row"><p class="mbti-sub">feels deeply.</p><p class="mbti-hover">lives in the moment,<br>beautifully.</p></div>
+          </div>
         </div>
       </div>
       <p class="about-quote">we'll keep going,<br>and let it become what it is.</p>
@@ -162,5 +163,6 @@
   <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
   <script src="js/map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/scroll-top.js"></script>
 </body>
 </html>
