@@ -1,0 +1,19 @@
+# Mac 系統檔
+.DS_Store
+
+# 本機工具與設計稿（不上傳 GitHub）
+_archive/
+_full-*.jpg
+data/
+export/
+export-*.js
+export-japan.mjs
+node_modules/
+package.json
+package-lock.json
+pdf-screens.mjs
+pdf.mjs
+pick-red-photo.html
+screenshot-crop.mjs
+screenshot-fieldnotes.mjs
+screenshot.mjs

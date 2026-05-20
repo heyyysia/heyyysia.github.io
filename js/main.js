@@ -1,35 +1,17 @@
-// 手機選單側邊 drawer
-function toggleMenu() {
-  const menu    = document.getElementById('mobileMenu');
-  const btn     = document.getElementById('hamburgerBtn');
-  const overlay = document.getElementById('menuOverlay');
-  menu.classList.toggle('open');
-  btn.classList.toggle('open');
-  if (overlay) overlay.classList.toggle('open');
+// 搜尋列
+function toggleSearch() {
+  const bar = document.getElementById('searchBar');
+  bar.classList.toggle('open');
+  if (bar.classList.contains('open')) document.getElementById('searchInput').focus();
 }
 
-// 建立遮罩層
-(function() {
-  const overlay = document.createElement('div');
-  overlay.id = 'menuOverlay';
-  overlay.className = 'menu-overlay';
-  overlay.addEventListener('click', toggleMenu);
-  document.body.insertBefore(overlay, document.body.firstChild);
-})();
-
-// 點選連結後關閉選單（事件委派）
-(function() {
+// 手機選單
+function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
-  if (!menu) return;
-  menu.addEventListener('click', (e) => {
-    if (e.target.closest('a')) {
-      menu.classList.remove('open');
-      document.getElementById('hamburgerBtn').classList.remove('open');
-      const overlay = document.getElementById('menuOverlay');
-      if (overlay) overlay.classList.remove('open');
-    }
-  });
-})();
+  const btn  = document.getElementById('hamburgerBtn');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
 
 // 旅程資料（由舊到新）
 const trips = [
@@ -126,7 +108,7 @@ function buildCarousel() {
   carouselPhotos.forEach((src, i) => {
     const slide = document.createElement('div');
     slide.className = 'carousel-slide' + (i === 0 ? ' active' : '');
-    slide.innerHTML = `<img src="${src}" alt="recent trip photo" loading="${i === 0 ? 'eager' : 'auto'}" />`;
+    slide.innerHTML = `<img src="${src}" alt="recent trip photo" loading="lazy" />`;
     track.appendChild(slide);
   });
 }
@@ -202,11 +184,6 @@ matchTimelineHeight();
 setupPlaneScrollbar();
 window.addEventListener('resize', matchTimelineHeight);
 setInterval(() => changeSlide(1), 3000);
-
-// 頁面載入後背景預載其餘輪播圖片，避免切換時黑屏
-window.addEventListener('load', () => {
-  carouselPhotos.slice(1).forEach(src => { new Image().src = src; });
-});
 
 // MBTI 卡片捲入進場 + 自動輪播
 const mbtiCards = document.querySelectorAll('.mbti-card');
