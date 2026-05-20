@@ -982,14 +982,14 @@ a { text-decoration: none; color: inherit; }
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(0,0,0,0.25);
-  background: rgba(255,255,255,0.55);
+  border: none;
+  background: rgba(255,255,255,0.7);
   backdrop-filter: blur(6px);
-  color: #555;
-  font-size: 0.78rem;
+  color: #666;
+  font-size: 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -997,15 +997,33 @@ a { text-decoration: none; color: inherit; }
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
-  transition: opacity 0.3s, transform 0.3s, border-color 0.2s, color 0.2s;
+  transition: opacity 0.3s, transform 0.3s, color 0.2s;
   z-index: 400;
+  padding: 0;
 }
 .scroll-top-btn.visible {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
-.scroll-top-btn:hover {
-  border-color: rgba(0,0,0,0.55);
-  color: #222;
+.scroll-top-btn:hover { color: #222; }
+.scroll-top-btn .fas {
+  position: absolute;
+}
+.progress-ring {
+  position: absolute;
+  top: 0; left: 0;
+  transform: rotate(-90deg);
+}
+.progress-ring-track {
+  fill: none;
+  stroke: rgba(0,0,0,0.12);
+  stroke-width: 1.5;
+}
+.progress-ring-fill {
+  fill: none;
+  stroke: rgba(0,0,0,0.45);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.15s linear;
 }
