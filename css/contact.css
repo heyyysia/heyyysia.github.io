@@ -3,7 +3,6 @@
 .contact-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - 65px);
 }
 
 /* 左側 */
