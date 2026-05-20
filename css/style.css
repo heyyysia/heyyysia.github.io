@@ -903,7 +903,7 @@ a { text-decoration: none; color: inherit; }
 }
 .menu-tagline {
   margin-top: auto;
-  padding: 2rem;
+  padding: 2rem 2rem max(3rem, env(safe-area-inset-bottom, 3rem));
   font-size: 0.72rem;
   line-height: 1.9;
   color: var(--muted);
