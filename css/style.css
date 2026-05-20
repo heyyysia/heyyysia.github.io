@@ -260,7 +260,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   gap: 1rem;
   overflow: hidden;
-  padding-right: 3rem;
+  padding-right: 4rem;
 }
 
 /* 時間軸 */
