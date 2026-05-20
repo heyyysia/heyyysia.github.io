@@ -908,11 +908,10 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font-title);
 }
 .menu-bottom {
-  margin-top: auto;
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
-  padding: 1.8rem 2rem max(2.5rem, env(safe-area-inset-bottom, 2.5rem));
+  padding: 1.4rem 2rem 2.5rem;
 }
 
 /* ===== Tablet（≤ 900px）===== */
