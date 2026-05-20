@@ -904,8 +904,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 0.85rem;
   line-height: 1.9;
   color: var(--muted);
-  font-style: italic;
-  font-family: var(--font-title);
+  font-family: var(--font-script);
 }
 .menu-bottom {
   display: flex;
