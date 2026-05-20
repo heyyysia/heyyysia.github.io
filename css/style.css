@@ -854,7 +854,8 @@ a { text-decoration: none; color: inherit; }
   height: 100vh;
   background: var(--bg);
   z-index: 300;
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding-top: 5rem;
   overflow: hidden;
   transform: translateX(110%);
@@ -899,6 +900,15 @@ a { text-decoration: none; color: inherit; }
   border-bottom: none;
   font-size: 1rem;
   letter-spacing: 0;
+}
+.menu-tagline {
+  margin-top: auto;
+  padding: 2rem;
+  font-size: 0.72rem;
+  line-height: 1.9;
+  color: var(--muted);
+  font-style: italic;
+  font-family: var(--font-title);
 }
 
 /* ===== Tablet（≤ 900px）===== */
