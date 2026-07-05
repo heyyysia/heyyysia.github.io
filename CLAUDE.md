@@ -24,7 +24,7 @@ git push origin main
 - 正式網址:**https://heyyysia.pages.dev**
 - 部署平台:**Cloudflare Pages**,已連結此 GitHub 儲存庫,push 到 main 會自動部署(儲存庫名稱雖是 github.io 格式,但實際服務的是 Cloudflare Pages)
 - 單一檔案有大小上限——影片(.mp4)必須壓到 **15MB 以下**才能部署成功(見 commit 6e791fc)。新增影片前先檢查大小,過大要先壓縮。
-- 使用者用 GitHub Desktop 操作 git;儲存庫屬於 heyyysia 帳號,若出現「no write access」表示 GitHub Desktop 登入了她的另一個帳號,提醒她切換
+- 使用者用 GitHub Desktop 操作 git;儲存庫屬於共用帳號 heyyysia,使用者的個人帳號 **wshin14j** 已是 collaborator(2026-07-06 起),平常固定登入 wshin14j 即可推送
 
 ## 架構
 
