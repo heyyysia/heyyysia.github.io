@@ -1,52 +1,59 @@
-# 個人偏好設定
+# CLAUDE.md
 
-## 語言
-- 一律以繁體中文對話，除非有指定特別的語言
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## 溝通風格
-- 語氣自然像朋友對話，減少相似回覆的語句和冗詞
-- 避免生硬詞彙，例如「旨在」、「總的來說」
-- 非工程師背景，請用白話文、比喻方式說明，減少不必要的技術術語
+## 專案概述
 
-## 中文排版原則
-- 中文字遇到英文、數字時，加一個半形空格
-  - 例如：我有 3 台 iPhone 手機
-- 保留專業術語的英文與縮寫
-  - 例如：Google Search Console、Notion、OpenAI
+heyyysia 個人旅遊網站——純靜態網站,沒有任何建置工具(無 package.json、無 framework),直接編輯 HTML/CSS/JS 即可。內容以繁體中文為主(`lang="zh-Hant"`),導覽列為英文。
 
-## 背景與使用情境
-- 無技術背景，完全從零開始學習
-- 主要使用情境：文案撰寫、網頁建立
+## 常用指令
 
-## 技術解釋原則
-- 遇到任何技術概念，一律用日常比喻說明，不預設任何基礎知識
-- 建立網頁時，直接提供完整程式碼，方便使用者直接套用
-- 操作步驟要具體、分解到最小單位，例如「點左上角的...」
-- 遇到多個方案時，列出選項並說明各自的優缺點，讓使用者自行決定
+```bash
+# 本機預覽(沒有 dev server,用 Python 起一個)
+python3 -m http.server 8000
+# 然後開 http://localhost:8000
 
-## 開發工作流程
-- 執行重要開發行動前，先輸出簡要計劃，等確認後再執行
-- 信心度低或有更好方案時，上網研究後直接提出，無須護主
-- 可主動提問以獲取所需資訊
+# 部署 = push 到 main,沒有其他步驟
+git push origin main
+```
 
-## 時區
-- 永遠使用台北時間（Asia/Taipei, UTC+8）
-- 日期計算、時間戳記、檔案命名等操作前，先執行 `date` 確認系統時間
+**開工前先確認本機是最新版**:動手修改前先 `git fetch` 並檢查是否落後 origin/main,落後就先 pull(或請使用者在 GitHub Desktop 按 Pull origin)。這個專案曾發生本機落後雲端 50 個 commit 的狀況。
+
+## 部署(重要)
+
+- 正式網址:**https://heyyysia.pages.dev**
+- 部署平台:**Cloudflare Pages**,已連結此 GitHub 儲存庫,push 到 main 會自動部署(儲存庫名稱雖是 github.io 格式,但實際服務的是 Cloudflare Pages)
+- 單一檔案有大小上限——影片(.mp4)必須壓到 **15MB 以下**才能部署成功(見 commit 6e791fc)。新增影片前先檢查大小,過大要先壓縮。
+- 使用者用 GitHub Desktop 操作 git;儲存庫屬於 heyyysia 帳號,若出現「no write access」表示 GitHub Desktop 登入了她的另一個帳號,提醒她切換
+
+## 架構
+
+**頁面結構**:每個旅程是一個獨立的靜態頁面 `journey-<地點>.html`(約 50KB,自包含)。新增旅程的流程:
+
+1. 複製 `journey-template.html` 改名為 `journey-<地點>.html`,填入內容
+2. 在 `js/map.js` 的 `pins` 陣列加一筆(經緯度、標籤、連結),首頁世界地圖才會出現該地點的圖釘
+3. 在 `journeys.html` 加上該旅程的卡片連結
+
+**首頁地圖**:`index.html` 用 D3 + TopoJSON 畫世界地圖(`js/map.js`),圖釘資料寫死在 `pins` 陣列裡。旅程分類標籤有三種 tagClass:`exploration`、`inner-journey`、`aesthetic`。
+
+**圖片組織**:`images/<旅程名>/` 按旅程分資料夾,檔名多為 Instagram 匯出的數字 ID。`ig-posts/<YYYYMM>/` 存放 IG 貼文照片,按年月分資料夾。
+
+**RWD**:手機版斷點主要在 860px media query,手機換行用 `br-m` class 控制。
+
+## 已棄用的檔案(不要使用)
+
+`js/journal.js`、`js/journal-data.js`、`css/journal.css` 是早期「資料驅動」的旅程頁系統(用 `?trip=` 參數動態載入),目前**沒有任何 HTML 頁面引用**,已被靜態 journey-*.html 頁面取代。修改旅程內容時直接改對應的 journey-*.html,不要改 journal-data.js。
 
 ## 網頁爬取規則
 
-### 工具選擇
-- **Playwright**：適合需要登入、有互動操作（點擊、填表）、JavaScript 動態載入的網站
-- **Firecrawl**：適合一般靜態網站、快速抓取文字內容，不需要登入
-
-### 社群媒體（Instagram、Facebook 等）
-- 優先使用平台官方匯出功能（例如 Instagram 的「下載你的資訊」）
-- 需要自動化時，使用 Playwright + 登入帳號操作
-- 避免頻繁爬取，以免帳號被封鎖
+### 社群媒體(Instagram、Facebook 等)
+- 優先使用平台官方匯出功能(例如 Instagram 的「下載你的資訊」)
+- 需要自動化時,使用 Playwright + 登入帳號操作
+- 避免頻繁爬取,以免帳號被封鎖
 - 只爬取自己擁有或有授權的帳號內容
 
 ### 一般網站
-- 靜態內容優先用 Firecrawl，速度快且穩定
-- 動態網站（需要滾動、點擊才能載入內容）改用 Playwright
+- 靜態內容優先用 Firecrawl,速度快且穩定
+- 動態網站(需要滾動、點擊才能載入內容)改用 Playwright
 - 爬取前確認網站的 `robots.txt` 是否允許爬取
-- 加入適當延遲（每次請求間隔 1～3 秒），避免對伺服器造成負擔
+- 加入適當延遲(每次請求間隔 1~3 秒),避免對伺服器造成負擔
