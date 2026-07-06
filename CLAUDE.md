@@ -38,6 +38,8 @@ git push origin main
 
 **圖片組織**:`images/<旅程名>/` 按旅程分資料夾,檔名多為 Instagram 匯出的數字 ID。`ig-posts/<YYYYMM>/` 存放 IG 貼文照片,按年月分資料夾。
 
+**素材原料庫**:`~/Documents/heyyysia網站_ig全照片/`(不在 git 裡,也不要加進來——500MB+)。內有原始照片(HEIC)、影片(MOV)、字幕檔和未選用的照片,按 Homepage/Journeys 分類。要幫網站換圖或找新素材時,先來這裡找原圖,壓縮後再放進專案。
+
 **RWD**:手機版斷點主要在 860px media query,手機換行用 `br-m` class 控制。
 
 ## 已棄用的檔案(不要使用)
