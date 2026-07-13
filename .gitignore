@@ -2,6 +2,7 @@
 .DS_Store
 
 # 本機工具與設計稿（不上傳 GitHub）
+_本機筆記/
 _archive/
 _full-*.jpg
 data/
