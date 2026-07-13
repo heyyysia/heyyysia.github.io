@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /journey-template.html
+
+Sitemap: https://heyyysia.pages.dev/sitemap.xml
