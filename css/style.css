@@ -304,6 +304,7 @@ a.filter-tag:hover { opacity: 0.6; }
   width: 26px;
   flex-shrink: 0;
   position: relative;
+  z-index: 2; /* 高於底部淡出漸層，滑到底時飛機不會被蓋住 */
 }
 
 .plane-track::before {
