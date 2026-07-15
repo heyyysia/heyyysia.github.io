@@ -76,7 +76,7 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-bg" id="heroBg">
-      <img src="images/18052955750207024.jpg" alt="hero" />
+      <img src="images/18052955750207024.jpg" alt="越南峰牙洞穴口的旅人剪影" />
     </div>
     <div class="hero-content">
       <h1 class="hero-title">heyyysia</h1>
@@ -89,23 +89,24 @@
     <div class="trips-header">
       <h2 class="section-heading">我們的旅程</h2>
       <div class="trip-filter-tags">
-        <span class="filter-tag exploration">● 外向探索 EXPLORATION</span>
-        <span class="filter-tag inner-journey">● 內在旅程 INNER JOURNEY</span>
-        <span class="filter-tag aesthetic">● 日常出走 EVERYDAY ESCAPE</span>
+        <a href="journeys.html?filter=exploration" class="filter-tag exploration">● 外向探索 EXPLORATION</a>
+        <a href="journeys.html?filter=inner-journey" class="filter-tag inner-journey">● 內在旅程 INNER JOURNEY</a>
+        <a href="journeys.html?filter=aesthetic" class="filter-tag aesthetic">● 日常出走 EVERYDAY ESCAPE</a>
       </div>
       <a href="journeys.html" class="view-all-link">view all journeys →</a>
     </div>
     <div class="trips-layout">
       <div class="trips-carousel">
         <div class="carousel-track" id="carouselTrack"></div>
-        <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">&#8249;</button>
-        <button class="carousel-btn carousel-next" onclick="changeSlide(1)">&#8250;</button>
+        <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)" aria-label="上一張照片">&#8249;</button>
+        <button class="carousel-btn carousel-next" onclick="changeSlide(1)" aria-label="下一張照片">&#8250;</button>
       </div>
       <div class="timeline-scroll-wrapper">
           <div class="trips-timeline" id="tripsTimeline"></div>
           <div class="plane-track" id="planeTrack">
             <div class="plane-thumb" id="planeThumb"><i class="fas fa-plane"></i></div>
           </div>
+          <div class="tl-more-hint">more journeys ↓</div>
         </div>
     </div>
   </section>
@@ -185,6 +186,7 @@
       <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook"></i></a>
     </div>
+    <p class="footer-copy">© 2026 heyyysia｜用三種視角，記錄同一個世界</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>

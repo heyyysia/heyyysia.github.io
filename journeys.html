@@ -170,6 +170,9 @@
       letter-spacing: 0.06em;
     }
 
+    /* 中文標題與介紹：桌機隱藏（hover 才有完整版），手機直接顯示 */
+    .card-zh, .card-sentence { display: none; }
+
     /* Hover reveal */
     .card-reveal {
       position: absolute;
@@ -246,6 +249,10 @@
       .reveal-sentence { font-size: 12px; line-height: 1.8; }
       .reveal-cta { font-size: 10px; margin-top: 0.2rem; }
       .reveal-year { font-size: 11px; }
+      /* 手機沒有 hover，直接顯示中文標題與介紹 */
+      .card-zh { display: block; font-family: var(--serif); font-size: 17px; color: #fff; margin-top: 0.2rem; line-height: 1.3; }
+      .card-sentence { display: block; font-size: 12px; color: rgba(255,255,255,0.78); line-height: 1.7; margin-top: 0.4rem; }
+      .card-overlay { background: linear-gradient(to top, rgba(10,8,6,0.88) 0%, rgba(10,8,6,0.18) 62%, transparent 100%); }
     }
   </style>
 <!-- Google tag (gtag.js) -->
@@ -315,6 +322,8 @@
           <span class="card-tag-text">Everyday Escape</span>
         </div>
         <p class="card-country">Japan</p>
+        <p class="card-zh">日本｜東京 Color Hunt</p>
+        <p class="card-sentence">以色彩為線索，用鏡頭記錄每一種的顏色故事。</p>
         <p class="card-year">2026</p>
       </div>
       <div class="card-reveal">
@@ -338,6 +347,8 @@
           <span class="card-tag-text">Exploration</span>
         </div>
         <p class="card-country">Oman</p>
+        <p class="card-zh">阿曼｜自駕旅行</p>
+        <p class="card-sentence">沙漠、峽谷與星空，一路穿越遼闊與未知的阿拉伯世界。</p>
         <p class="card-year">2025</p>
       </div>
       <div class="card-reveal">
@@ -361,6 +372,8 @@
           <span class="card-tag-text">Exploration</span>
         </div>
         <p class="card-country">Vietnam</p>
+        <p class="card-zh">越南｜峰牙己榜國家公園</p>
+        <p class="card-sentence">健行、溯溪、溜索、洞穴露營，深入自然的一場冒險。</p>
         <p class="card-year">2025</p>
       </div>
       <div class="card-reveal">
@@ -384,6 +397,8 @@
           <span class="card-tag-text">Inner Journey</span>
         </div>
         <p class="card-country">Camino de Santiago</p>
+        <p class="card-zh">西班牙 × 葡萄牙｜朝聖之路</p>
+        <p class="card-sentence">不是為了抵達，而是為了理解。一步一步走著，某些感受慢慢浮現。</p>
         <p class="card-year">2024</p>
       </div>
       <div class="card-reveal">
@@ -407,6 +422,8 @@
           <span class="card-tag-text">Exploration</span>
         </div>
         <p class="card-country">Indonesia</p>
+        <p class="card-zh">印尼｜伊真火山</p>
+        <p class="card-sentence">夜行登山，藍火與硫磺煙霧交織。在黑暗與光之間，靠近火山的心跳。</p>
         <p class="card-year">2023</p>
       </div>
       <div class="card-reveal">
@@ -432,6 +449,7 @@
       <a href="https://www.instagram.com/ah.heyyysia/" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://www.facebook.com/oheurobeen?locale=zh_TW" target="_blank"><i class="fab fa-facebook"></i></a>
     </div>
+    <p class="footer-copy">© 2026 heyyysia｜用三種視角，記錄同一個世界</p>
   </footer>
 
   <script>

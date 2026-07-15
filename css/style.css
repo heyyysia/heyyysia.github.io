@@ -190,6 +190,9 @@ a { text-decoration: none; color: inherit; }
 .filter-tag.inner-journey { color: var(--green); }
 .filter-tag.aesthetic { color: var(--accent); }
 
+a.filter-tag { transition: opacity 0.2s; }
+a.filter-tag:hover { opacity: 0.6; }
+
 .view-all-link {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
@@ -261,6 +264,26 @@ a { text-decoration: none; color: inherit; }
   gap: 1rem;
   overflow: hidden;
   padding-right: 4rem;
+  position: relative;
+}
+
+/* 底部淡出漸層＋提示，暗示時間軸可以捲動 */
+.timeline-scroll-wrapper::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 72px;
+  background: linear-gradient(to top, var(--bg) 15%, transparent);
+  pointer-events: none;
+}
+
+.tl-more-hint {
+  position: absolute;
+  bottom: 4px; left: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  z-index: 2;
 }
 
 /* 時間軸 */
@@ -809,6 +832,13 @@ a { text-decoration: none; color: inherit; }
 }
 .footer-icons a { color: var(--muted); font-size: 1.1rem; }
 .footer-icons a:hover { color: var(--text); }
+
+.footer-copy {
+  margin-top: 1.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
 
 /* ===== Responsive ===== */
 /* ===== Hamburger ===== */
