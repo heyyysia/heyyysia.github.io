@@ -32,3 +32,13 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
+
+(function () {
+  var isLocal = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
+  var isEnabled = new URLSearchParams(location.search).get('annotate') === '1';
+  if (!isLocal || !isEnabled) return;
+
+  var script = document.createElement('script');
+  script.src = new URL('dev-agentation.bundle.js', document.baseURI).href;
+  document.body.appendChild(script);
+})();
