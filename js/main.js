@@ -44,7 +44,7 @@ const trips = [
     tag: 'exploration',
     tagClass: 'exploration',
     cover: 'images/hero/17898191754121455.jpg',
-    href: 'journey-indonesia.html',
+    href: '/journey-indonesia',
   },
   {
     id: 'portugal',
@@ -57,7 +57,7 @@ const trips = [
     tag: 'inner journey',
     tagClass: 'inner-journey',
     cover: 'images/hero/17978116487885637.jpg',
-    href: 'journey-camino.html',
+    href: '/journey-camino',
   },
   {
     id: 'vietnam',
@@ -70,7 +70,7 @@ const trips = [
     tag: 'exploration',
     tagClass: 'exploration',
     cover: 'images/hero/18033890543395352.jpg',
-    href: 'journey-vietnam.html',
+    href: '/journey-vietnam',
   },
   {
     id: 'oman',
@@ -83,7 +83,7 @@ const trips = [
     tag: 'exploration',
     tagClass: 'exploration',
     cover: 'images/hero/18046696997192376.jpg',
-    href: 'journey-oman.html',
+    href: '/journey-oman',
   },
   {
     id: 'japan',
@@ -96,7 +96,7 @@ const trips = [
     tag: 'aesthetic',
     tagClass: 'aesthetic',
     cover: 'images/hero/18051504734423085.jpg',
-    href: 'journey-japan-color-hunt.html',
+    href: '/journey-japan-color-hunt',
   },
 ];
 

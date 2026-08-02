@@ -2,11 +2,11 @@
 (function () {
 
 const pins = [
-  { id: 'indonesia', label: '印尼',           lon: 115, lat: -8,  tagClass: 'exploration',  href: 'journey-indonesia.html'            },
-  { id: 'portugal',  label: '葡萄牙・西班牙', lon: -5,  lat: 40, tagClass: 'inner-journey', href: 'journey-camino.html' },
-  { id: 'vietnam',   label: '越南',           lon: 106, lat: 17, tagClass: 'exploration',  href: 'journey-vietnam.html'              },
-  { id: 'oman',      label: '阿曼',           lon: 57,  lat: 22, tagClass: 'exploration',  href: 'journey-oman.html'                  },
-  { id: 'japan',     label: '日本',           lon: 139, lat: 36, tagClass: 'aesthetic',    href: 'journey-japan-color-hunt.html'    },
+  { id: 'indonesia', label: '印尼',           lon: 115, lat: -8,  tagClass: 'exploration',  href: '/journey-indonesia'            },
+  { id: 'portugal',  label: '葡萄牙・西班牙', lon: -5,  lat: 40, tagClass: 'inner-journey', href: '/journey-camino' },
+  { id: 'vietnam',   label: '越南',           lon: 106, lat: 17, tagClass: 'exploration',  href: '/journey-vietnam'              },
+  { id: 'oman',      label: '阿曼',           lon: 57,  lat: 22, tagClass: 'exploration',  href: '/journey-oman'                  },
+  { id: 'japan',     label: '日本',           lon: 139, lat: 36, tagClass: 'aesthetic',    href: '/journey-japan-color-hunt'    },
 ];
 
 const dotColors = {
