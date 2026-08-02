@@ -9,13 +9,24 @@ heyyysia 個人旅遊網站——純靜態網站,沒有任何建置工具(無 pa
 ## 常用指令
 
 ```bash
-# 本機預覽(沒有 dev server,用 Python 起一個)
-python3 -m http.server 8000
+# 本機預覽（一定要用這支，不要用 python3 -m http.server）
+python3 preview_server.py 8000
 # 然後開 http://localhost:8000
 
 # 部署 = push 到 main,沒有其他步驟
 git push origin main
 ```
+
+### ⚠️ 本機預覽（每次改完都要主動告訴使用者這件事）
+
+**使用者的操作方式：在 Finder 裡對專案根目錄的 `預覽.command` 點兩下。**
+每次協助她修改這個專案、要她自己看結果時，**都要主動提醒這一句**，不要假設她記得。
+
+- **不可以叫她用 `python3 -m http.server`** —— 全站內部連結自 2026-08-03 起
+  一律不含 `.html`（例如 `href="/journeys"`），內建的 http.server 不支援，點選單會全部 404。
+- `preview_server.py` 會模擬 Cloudflare Pages 的網址規則：
+  `/journeys` 直接顯示、`/journeys.html` 以 308 轉址到 `/journeys`、並關閉快取。
+- 這樣本機行為與線上一致——2026-07 的 canonical bug 就是因為兩邊規則不同，拖了三週才發現。
 
 **開工前先確認本機是最新版**:動手修改前先 `git fetch` 並檢查是否落後 origin/main,落後就先 pull(或請使用者在 GitHub Desktop 按 Pull origin)。這個專案曾發生本機落後雲端 50 個 commit 的狀況。
 
@@ -35,6 +46,21 @@ git push origin main
 1. 複製 `journey-template.html` 改名為 `journey-<地點>.html`,填入內容
 2. 在 `js/map.js` 的 `pins` 陣列加一筆(經緯度、標籤、連結),首頁世界地圖才會出現該地點的圖釘
 3. 在 `journeys.html` 加上該旅程的卡片連結
+4. 在 `sitemap.xml` 補一組 `<url>`,並更新 `lastmod`
+
+### 🔗 網址規則(2026-08-03 起,全站統一)
+
+Cloudflare Pages 服務的網址**不含 `.html`**;`/journeys.html` 會 308 轉址到 `/journeys`。
+因此新增或修改頁面時:
+
+- **內部連結**寫絕對路徑不加副檔名:`href="/journeys"`、`href="/journey-camino"`、首頁是 `href="/"`
+  (帶錨點或參數同理:`/#about`、`/journeys?filter=exploration`)
+- **canonical、og:url、sitemap 的 `<loc>`** 一律不加 `.html`,且**必須等於該頁自己的正式網址**
+- `js/main.js`、`js/map.js` 裡的 `href` 也遵守同一規則
+
+> ⚠️ **上線後一定要實測**:開 `https://heyyysia.pages.dev/<新頁>`(不加 `.html`)確認 200,
+> 並確認該頁 canonical 等於這個網址。2026-07 就是漏了這步,canonical 全寫成會轉址的 `.html`,
+> 導致 7 個頁面卡了三週沒被 Google 收錄。**不要照檔名推網址,要實際打開來看。**
 
 **首頁地圖**:`index.html` 用 D3 + TopoJSON 畫世界地圖(`js/map.js`),圖釘資料寫死在 `pins` 陣列裡。旅程分類標籤有三種 tagClass:`exploration`、`inner-journey`、`aesthetic`。
 
