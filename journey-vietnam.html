@@ -263,6 +263,15 @@
       .ch-mosaic-1v2 .tall { grid-row: auto; }
       .ch-mosaic-1v2 > div img { height: 260px; }
       .ch-fullbleed { min-height: 0; aspect-ratio: 4/3; }
+      .ch-fullbleed.hang-en-pause .ch-fb-content {
+        padding: 0 1rem 1.5rem !important;
+      }
+      .ch-fullbleed.hang-en-pause .ch-keytxt {
+        max-width: none;
+        font-size: clamp(13px, 4vw, 18px);
+        letter-spacing: -0.015em;
+        white-space: nowrap;
+      }
       .signature { height: auto; aspect-ratio: 4/3; }
       .ch-triple { grid-template-columns: 1fr !important; height: auto !important; }
       .ch-triple > div img { height: auto; width: 100%; }
@@ -512,7 +521,7 @@
   </div>
 
   <!-- ══ FRAME 05 — CH03 FULLBLEED ══ -->
-  <section class="ch-fullbleed">
+  <section class="ch-fullbleed hang-en-pause">
     <div class="ch-fb-img">
       <img src="images/vietnam/094639DD.jpg" alt="Hang En Cave" style="object-position: center 50%;" loading="lazy" />
     </div>
