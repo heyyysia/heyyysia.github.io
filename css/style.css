@@ -987,6 +987,7 @@ a.filter-tag:hover { opacity: 0.6; }
 /* ===== Mobile（≤ 480px）===== */
 @media (max-width: 480px) {
   /* Hero */
+  .hero-content { padding-bottom: 1.5rem; }
   .hero-title { font-size: clamp(3rem, 16vw, 6rem); }
   .hero-tagline { font-size: 0.78rem; }
   .hero-bg img { object-fit: cover; object-position: center center; transform: none; }
@@ -995,6 +996,8 @@ a.filter-tag:hover { opacity: 0.6; }
   .section-heading { font-size: 1.4rem; }
   .trip-filter-tags { gap: 0.6rem; flex-wrap: wrap; }
   .trips-carousel { aspect-ratio: 1/1; }
+  .timeline-scroll-wrapper { overflow: visible; }
+  .tl-more-hint { transform: translateY(0.75rem); }
 
   /* Map */
   .map-heading { font-size: 1.4rem; }
